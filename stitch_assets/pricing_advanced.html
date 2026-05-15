@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nacencomm - Nền tảng chuyển đổi số toàn diện</title>
+<!-- Google Fonts: Inter, Manrope -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#0047AB',
+              dark: '#030821',
+              red: '#E53E3E',
+              lightGray: '#F9FAFB',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Manrope', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-gradients">
+    .hero-gradient {
+      background: linear-gradient(135deg, #030821 0%, #1a2a6c 50%, #b21f1f 150%);
+    }
+    .card-shadow {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+    .blob-bg {
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+<!-- BEGIN: MainHeader -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+<nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+<!-- Logo Container -->
+<div class="flex items-center gap-2">
+<img alt="Nacencomm Logo" class="h-10 w-auto" data-purpose="brand-logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNKVJU9uJIENr9jEFc_GQQ-46GM4rAFCDfXIQXkspy8N61hqZzWk-uuAuS-cIsQY7e-d14T6qcVdScxvrpfr8QTJz4FPZou1lwJmZVxrEMzS4WLnesyeyJAtJoIYU2Aa_z9PqZK4LMSi63m4q76PSU0U6Ez7qkSiqX3sNMN_yZxBUViIh4r8CF4q6OxKfJMrNw1eFtVM7ERAi-1a8V8pvt4wq6y9pDaJuK7tHdMzQ-cgBN7GqUnrIrwo7glXsJlPEsjpM9CybrbFM"/>
+<span class="font-bold text-xl text-brand-dark">Nacencomm</span>
+</div>
+<!-- Navigation Links -->
+<ul class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600">
+<li class=""><a class="hover:text-brand-blue transition-colors flex items-center gap-1" href="#">Sản phẩm <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a></li>
+<li class=""><a class="hover:text-brand-blue transition-colors flex items-center gap-1" href="#">Giải pháp <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a></li>
+<li class=""><a class="hover:text-brand-blue transition-colors flex items-center gap-1" href="#">Hỗ trợ <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a></li>
+<li class=""><a class="hover:text-brand-blue transition-colors" href="#">Giới thiệu</a></li>
+<li class=""><a class="hover:text-brand-blue transition-colors" href="#">Liên hệ</a></li>
+</ul>
+<!-- Action Buttons -->
+<div class="flex items-center gap-4">
+<a class="bg-brand-red text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-red-700 transition-all shadow-md" href="#">Đăng ký ngay</a>
+<a class="flex items-center gap-2 border border-gray-200 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-50 transition-all" href="#">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        Đăng nhập
+      </a>
+</div>
+</nav>
+</header>
+<!-- END: MainHeader -->
+<main class="pt-20">
+<!-- BEGIN: HeroSection -->
+<section class="hero-gradient text-white overflow-hidden relative" data-purpose="hero-banner">
+<div class="container mx-auto px-6 py-20 lg:py-32 flex flex-col lg:flex-row items-center">
+<!-- Hero Text -->
+<div class="lg:w-1/2 z-10">
+<h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6">
+          Nền tảng chuyển đổi số toàn diện cho doanh nghiệp Việt
+        </h1>
+<p class="text-gray-300 text-lg mb-10 max-w-xl">
+          Tăng tốc số hóa, bảo mật hàng đầu và tối ưu hiệu quả kinh doanh cùng giải pháp chữ ký số và an ninh mạng từ Nacencomm.
+        </p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-white text-brand-dark px-8 py-3.5 rounded-full font-bold hover:bg-gray-100 transition-all" href="#">Khám phá nền tảng</a>
+<a class="bg-brand-red text-white px-8 py-3.5 rounded-full font-bold hover:bg-red-700 transition-all" href="#">Xem demo sản phẩm</a>
+</div>
+</div>
+<!-- Hero Graphic -->
+<div class="lg:w-1/2 mt-12 lg:mt-0 relative flex justify-center">
+<img alt="Digital Infrastructure Illustration" class="w-full max-w-2xl" data-purpose="hero-illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNq1kzEyQUdlyvM_aqBhPRetGWlEmnXszWNpRVlTxIlrU6chKV9pBa4fQDS1pbWdtfJdEVg5eP42jDuFHYCIb7l9UgeSbQPREuu41D4lmUxke2nae3OLd8Ni7rh9LsL_t6lab90rJMYHke-GBXrOU-dRo1z2XSTzWDA752Tmp3HG5ApifXr4_WcxuPRFoa6iaxMwZpu3NV-0LZLjnwNusju8rsU7xfEmut6o6JQx385deOkhpKHyeIZqLBJPY5cI6PTIPFbt4OBn4"/>
+</div>
+</div>
+<!-- Decorative element -->
+<div class="absolute bottom-0 left-0 w-full h-16 bg-white rounded-t-[50px]"></div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: AdvancedPricingSection -->
+<section class="py-24 bg-[#F8FAFC]" id="pricing-section">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<div class="inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+<span class="w-2 h-2 bg-brand-blue rounded-full"></span>
+          Bảng giá niêm yết
+        </div>
+<h2 class="text-3xl lg:text-5xl font-bold text-brand-dark mb-4">Chọn sản phẩm phù hợp với nhu cầu</h2>
+<p class="text-gray-500 max-w-2xl mx-auto">Giá đã bao gồm VAT. Bàn giao dịch vụ trong 24h làm việc. Đội ngũ hỗ trợ 1900 5454 07 luôn sẵn sàng.</p>
+</div>
+<!-- Product Tabs Navigation -->
+<div class="flex flex-wrap justify-center gap-4 mb-12 border-b border-gray-200">
+<button class="px-6 py-3 font-semibold text-brand-blue border-b-2 border-brand-blue flex items-center gap-2 transition-all">
+<span>🔑</span> CKS USB Token
+        </button>
+<button class="px-6 py-3 font-semibold text-gray-400 hover:text-brand-dark flex items-center gap-2 transition-all">
+<span>📱</span> Remote Signing
+        </button>
+<button class="px-6 py-3 font-semibold text-gray-400 hover:text-brand-dark flex items-center gap-2 transition-all">
+<span>📄</span> Hóa đơn điện tử
+        </button>
+<button class="px-6 py-3 font-semibold text-gray-400 hover:text-brand-dark flex items-center gap-2 transition-all">
+<span>🏗️</span> CA2 Platform
+        </button>
+</div>
+<!-- Sub-options: Subject & Token Type -->
+<div class="flex flex-col md:flex-row justify-center items-center gap-8 mb-12">
+<div class="flex bg-white p-1 rounded-lg border border-gray-200 shadow-sm">
+<button class="px-6 py-2 bg-brand-blue text-white rounded-md text-sm font-bold flex items-center gap-2">
+<span>🔑</span> USB Token
+          </button>
+<button class="px-6 py-2 text-gray-500 hover:text-brand-dark text-sm font-semibold flex items-center gap-2">
+<span>📱</span> Remote Signing
+          </button>
+</div>
+<div class="flex items-center gap-6">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="w-4 h-4 text-brand-blue border-gray-300 focus:ring-brand-blue" name="entity" type="radio"/>
+<span class="text-sm font-semibold text-brand-dark group-hover:text-brand-blue transition-colors">Doanh Nghiệp / Tổ Chức</span>
+<span class="bg-yellow-400 text-[10px] font-bold px-1.5 py-0.5 rounded text-white animate-pulse">Phổ biến</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-4 h-4 text-brand-blue border-gray-300 focus:ring-brand-blue" name="entity" type="radio"/>
+<span class="text-sm font-semibold text-gray-500 group-hover:text-brand-dark transition-colors">HKD / Cá Nhân</span>
+</label>
+</div>
+</div>
+<!-- Pricing Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+<!-- 1 Year -->
+<div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 flex flex-col hover:shadow-xl transition-all group">
+<div class="mb-6">
+<h3 class="text-2xl font-bold text-brand-dark mb-2">Gói 1 Năm</h3>
+<p class="text-gray-400 text-sm">Dành cho nhu cầu ngắn hạn</p>
+</div>
+<div class="mb-8">
+<span class="text-4xl font-bold text-brand-dark">1.826.000</span>
+<span class="text-gray-500 font-semibold ml-1">VNĐ</span>
+<p class="text-xs text-gray-400 mt-2">Đã bao gồm VAT 10%</p>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start gap-3 text-sm text-gray-600">
+<svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Chứng thư số công cộng CA2 (1 năm)</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-gray-600">
+<svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Tặng kèm 01 thiết bị USB Token chuyên dụng</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-gray-600">
+<svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Hỗ trợ kê khai thuế, BHXH, Hải quan 24/7</span>
+</li>
+</ul>
+<a class="w-full py-4 bg-brand-dark text-white rounded-xl font-bold hover:bg-black transition-all text-center group-hover:scale-[1.02]" href="#">Mua ngay</a>
+</div>
+<!-- 2 Years (Highlighted) -->
+<div class="bg-white rounded-3xl border-2 border-brand-blue shadow-xl p-8 flex flex-col relative scale-105 z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-blue text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">
+            Khuyên dùng
+          </div>
+<div class="mb-6">
+<h3 class="text-2xl font-bold text-brand-dark mb-2">Gói 2 Năm</h3>
+<p class="text-gray-400 text-sm">Cân bằng chi phí &amp; thời gian</p>
+</div>
+<div class="mb-8">
+<span class="text-4xl font-bold text-brand-blue">2.738.000</span>
+<span class="text-gray-500 font-semibold ml-1">VNĐ</span>
+<p class="text-xs text-gray-400 mt-2">Đã bao gồm VAT 10%</p>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start gap-3 text-sm text-gray-600">
+<svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Chứng thư số công cộng CA2 (2 năm)</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-gray-600">
+<svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Tặng kèm 01 thiết bị USB Token cao cấp</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-gray-600">
+<svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Ưu tiên hỗ trợ kỹ thuật tận nơi</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-gray-600">
+<svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Tặng 100 số hóa đơn điện tử CA2</span>
+</li>
+</ul>
+<a class="w-full py-4 bg-brand-red text-white rounded-xl font-bold hover:bg-red-700 transition-all text-center shadow-lg shadow-red-200" href="#">Mua ngay</a>
+</div>
+<!-- 3 Years -->
+<div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 flex flex-col hover:shadow-xl transition-all group">
+<div class="mb-6">
+<h3 class="text-2xl font-bold text-brand-dark mb-2">Gói 3 Năm</h3>
+<p class="text-gray-400 text-sm">Tiết kiệm tối đa đến 30%</p>
+</div>
+<div class="mb-8">
+<span class="text-4xl font-bold text-brand-dark">3.109.000</span>
+<span class="text-gray-500 font-semibold ml-1">VNĐ</span>
+<p class="text-xs text-gray-400 mt-2">Đã bao gồm VAT 10%</p>
+<div class="mt-2 inline-block bg-brand-blue/10 text-brand-blue text-[10px] font-bold px-2 py-0.5 rounded">Ưu đãi nhất</div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start gap-3 text-sm text-gray-600">
+<svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Chứng thư số công cộng CA2 (3 năm)</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-gray-600">
+<svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Tặng kèm 01 thiết bị USB Token cao cấp</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-gray-600">
+<svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Gói bảo hành phần cứng trọn đời</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-gray-600">
+<svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Tặng 300 số hóa đơn điện tử CA2</span>
+</li>
+</ul>
+<a class="w-full py-4 bg-brand-dark text-white rounded-xl font-bold hover:bg-black transition-all text-center group-hover:scale-[1.02]" href="#">Mua ngay</a>
+</div>
+</div>
+<div class="text-center text-gray-400 text-xs italic space-y-2">
+<p>* Giá đã bao gồm VAT 10%. Cấp mới CKS Token kèm USB Token.</p>
+<p>* Nhân viên kinh doanh sẽ xác nhận báo giá chi tiết trước khi thu phí.</p>
+</div>
+</div>
+</section>
+<!-- END: AdvancedPricingSection -->
+<!-- BEGIN: RemoteSigningFeature -->
+<section class="py-24 bg-white" data-purpose="feature-remote-signing">
+<div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2">
+<h2 class="text-3xl lg:text-4xl font-bold text-brand-dark mb-6 leading-tight">CA2 Remote Signing toàn Sign platform</h2>
+<p class="text-gray-500 mb-8 max-w-lg leading-relaxed">
+          Tăng tốc số hóa, bảo mật hàng đầu và tối ưu hiệu quả kinh doanh cùng giải pháp chữ ký số và an ninh mạng từ Nacencomm.
+        </p>
+<a class="inline-flex items-center gap-2 bg-brand-blue text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-800 transition-all" href="#">
+          Tìm hiểu thêm
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+<div class="lg:w-1/2 relative">
+<div class="absolute -inset-4 bg-brand-blue/5 rounded-[40px] blur-2xl"></div>
+<img alt="CA2 Remote Signing Dashboard" class="relative rounded-2xl shadow-2xl border border-gray-100" data-purpose="product-screenshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVd1pAt18ofyTrHk5Eb6o2izIHw4fKCHWbB-yuWWj7VZ8Jg_XLKpJmUNbWl6-WFTSqYduU0NO1eoVtZSy-skzK4Hr_fuzEwh53t-vH3h0Q94EWg-Rc6V7thDRLQEtH4JP1lyCoW_-W16ooZTcPOzdmlWW4n5XNdgcJDfMausQySDCzU5e5X2Q60y5dTxY2dqxSB7sVb2RpzUbKU2hjXH0qUFr8IVtnGdoQ4IP9_2X-i1baJk-pBi_wMixkXFt4d1WbKAP5cIoJm58"/>
+</div>
+</div>
+</section>
+<!-- END: RemoteSigningFeature -->
+<!-- BEGIN: SignPlatformFeature -->
+<section class="py-24 blob-bg" data-purpose="feature-sign-platform">
+<div class="container mx-auto px-6 flex flex-col lg:flex-row-reverse items-center gap-16">
+<div class="lg:w-1/2">
+<h2 class="text-3xl lg:text-4xl font-bold text-brand-dark mb-6 leading-tight">CA2 Sign Platform</h2>
+<p class="text-gray-500 mb-10 max-w-lg leading-relaxed">
+          Hệ thống hỗ trợ ký số linh hoạt và an toàn, phù hợp với mọi quy mô doanh nghiệp từ nhỏ đến lớn.
+        </p>
+<!-- Mini Icon Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+<div class="bg-white p-4 rounded-xl shadow-sm border border-gray-50 text-center">
+<div class="text-blue-500 mb-2">🛡️</div>
+<p class="text-xs font-bold text-brand-dark">CA2 010</p>
+</div>
+<div class="bg-white p-4 rounded-xl shadow-sm border border-gray-50 text-center">
+<div class="text-green-500 mb-2">📑</div>
+<p class="text-xs font-bold text-brand-dark">CA2 eInvoice</p>
+</div>
+<div class="bg-white p-4 rounded-xl shadow-sm border border-gray-50 text-center">
+<div class="text-purple-500 mb-2">✍️</div>
+<p class="text-xs font-bold text-brand-dark">CA2 Sign</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 border border-gray-300 text-brand-dark px-8 py-3 rounded-full font-semibold hover:bg-white transition-all" href="#">
+          Tìm hiểu thêm
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+<div class="lg:w-1/2">
+<img alt="CA2 Sign Platform Interface" class="rounded-2xl shadow-2xl border border-gray-100" data-purpose="product-screenshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVd1pAt18ofyTrHk5Eb6o2izIHw4fKCHWbB-yuWWj7VZ8Jg_XLKpJmUNbWl6-WFTSqYduU0NO1eoVtZSy-skzK4Hr_fuzEwh53t-vH3h0Q94EWg-Rc6V7thDRLQEtH4JP1lyCoW_-W16ooZTcPOzdmlWW4n5XNdgcJDfMausQySDCzU5e5X2Q60y5dTxY2dqxSB7sVb2RpzUbKU2hjXH0qUFr8IVtnGdoQ4IP9_2X-i1baJk-pBi_wMixkXFt4d1WbKAP5cIoJm58"/>
+</div>
+</div>
+</section>
+<!-- END: SignPlatformFeature -->
+<!-- BEGIN: FeaturesSection -->
+<section class="py-24 bg-white" data-purpose="key-features">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-center mb-20 text-brand-dark">Features</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Feature 1 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 mb-6 flex items-center justify-center bg-blue-50 text-brand-blue rounded-full">
+<img alt="Bảo mật tối đa" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuNxiMHBqS1GnXWH5ZYDZs4YFdZiimBDCHyXuwKCjWefCPCezsdd2RpVrjs51PPKK8Xf8MZkie8brFmS6r30zYaCT3-v5m1jD9lO5ixTaNf1QY5Z8g4o7dDLQ27ipBrt5QALcrm7ujImE-Hbm35VB61NDirUC2vVgoOQXfPRqbKs5m2GD2w38ZTRjTXDfqk0v9VA158PvW1AxBKOg7QFdmTA4Zud_rrDEOEmDY276WyV-h5CYQLc358VcQrC8i8tJtmpJg0GPUyrk"/>
+</div>
+<h3 class="text-xl font-bold mb-4 text-brand-dark">Bảo mật tối đa</h3>
+<p class="text-gray-500 text-sm leading-relaxed max-w-xs">
+            Hệ thống bảo mật đa lớp chuẩn quốc tế, đảm bảo an toàn tuyệt đối cho mọi dữ liệu và giao dịch.
+          </p>
+</div>
+<!-- Feature 2 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 mb-6 flex items-center justify-center bg-blue-50 text-brand-blue rounded-full">
+<img alt="Hỗ trợ 24/7" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7AgsjxYFGkql6VrQQT9G-COo0HfOLhwDikLg0wIcqGj3Gz7jod4UBCHW1BL2DzFEzNjICt270Gjf10_a4R5yQa-QF60cV1llNkyyLAo9UCHiQdE7l8P58dIsBPih9cFmDcjl1RBuRHrJY_-f-TS3uyXBT5twFAxbfSPgVk2ppzJhIBFWbcTldfeJhstGWC1JtVpYVAREKur2J2y9kG7W4zj0DKYAsT8aAJ7fHU5JF4dzYVmg7H9szJy6Z-XeQhsWh3ehMtI6JWwQ"/>
+</div>
+<h3 class="text-xl font-bold mb-4 text-brand-dark">Hỗ trợ 24/7 chuyên nghiệp</h3>
+<p class="text-gray-500 text-sm leading-relaxed max-w-xs">
+            Đội ngũ kỹ thuật giàu kinh nghiệm luôn sẵn sàng hỗ trợ khách hàng mọi lúc, mọi nơi.
+          </p>
+</div>
+<!-- Feature 3 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 mb-6 flex items-center justify-center bg-blue-50 text-brand-blue rounded-full">
+<img alt="Tuân thủ pháp lý" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkBgDjAdZ9-mL8_Cnj_O9htCmgHniu1uigtjx3aPs3YTvAeKf6eEP8eFpXrD02zPNUwXTXUy74qfWjB34GRyF0V4YpMqF8a6zb0meq0vr3NovL2_fE2XARB9EPr3M7lF_wkj6TECoZKWeTrPKS6T_X8a3TEu7rz70_h2YorjGiMWl39qUMHHHFXlF7gRabDBhy2F4EHO0aytLdjFcVOyIMoP9rMuZttMoaI-OJPcu4o_MhGHs1GcHgb4wkYdPhQFRBlXzJqRaYcaQ"/>
+</div>
+<h3 class="text-xl font-bold mb-4 text-brand-dark">Tuân thủ pháp lý cao nhất</h3>
+<p class="text-gray-500 text-sm leading-relaxed max-w-xs">
+            Mọi giải pháp đều tuân thủ nghiêm ngặt các quy định pháp luật Việt Nam về chữ ký số.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FeaturesSection -->
+</main>
+<!-- BEGIN: MainFooter -->
+<footer class="bg-brand-dark text-white py-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<div class="bg-brand-red text-white font-bold px-2 py-1 rounded text-sm">CA2</div>
+<span class="font-bold text-xl tracking-tight">NACENCOMM</span>
+</div>
+<p class="text-gray-400 text-sm leading-relaxed mb-6">
+          Đơn vị cung cấp giải pháp số hàng đầu Việt Nam. TOP 3 CA tại thị trường nội địa.
+        </p>
+<div class="text-sm">
+<p class="text-gray-500">Hotline: <span class="text-white font-semibold">1900 5454 07</span></p>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-white uppercase text-xs tracking-widest">Sản phẩm</h4>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Chữ ký số Token</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Remote Signing</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Hoá đơn điện tử</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Phần mềm BHXH</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-white uppercase text-xs tracking-widest">Công ty</h4>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Giới thiệu</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Liên hệ</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Tuyển dụng</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Tin tức</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-white uppercase text-xs tracking-widest">Pháp lý</h4>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Điều khoản sử dụng</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Chính sách bảo mật</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Quy chế chứng thực</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+<p>© 2023 Nacencomm. All rights reserved.</p>
+<p>Thiết kế bởi CA2 Premium Design System</p>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>

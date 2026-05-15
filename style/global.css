@@ -1,40 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
 
 :root {
-    /* ── Secure Clarity Design System Tokens ── */
-    --primary-navy: #002D72;
-    --primary-hover: #001A48;
-    --accent-red: #E32726;
-    --accent-hover: #BB0011;
-    --interactive-blue: #0055E6;
+    /* --- Core Colors (Stitch Parity) --- */
+    --primary-navy: #0047AB;    /* Brand Blue */
+    --dark-navy: #030821;       /* Brand Dark */
+    --accent-red: #E53E3E;      /* Brand Red */
+    --accent-red-hover: #C53030;
     
-    --bg-main: #FBF9F8;
-    --bg-soft: #F5F3F3;
-    --surface: #FFFFFF;
+    --bg-main: #FFFFFF;
+    --bg-soft: #F8FAFC;         /* Brand Light Grayish Blue */
+    --bg-glass: rgba(255, 255, 255, 0.95);
     
-    --text-main: #1B1C1C;
-    --text-muted: #444651;
-    --text-light: #747782;
+    --text-main: #1F2937;       /* Gray 800 */
+    --text-light: #6B7280;      /* Gray 500 */
+    --text-muted: #9CA3AF;      /* Gray 400 */
     
-    --border-main: #D0D5E0;
-    --border-soft: #E2E8F0;
+    --border-color: #E2E8F0;    /* Gray 200 */
+    --border-soft: #F1F5F9;     /* Gray 100 */
     
-    --shadow-premium: 0 4px 20px rgba(0, 45, 114, 0.05);
-    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.03);
+    /* --- Typography --- */
+    --font-display: 'Manrope', sans-serif;
+    --font-body: 'Inter', sans-serif;
     
-    --glass-bg: rgba(255, 255, 255, 0.8);
-    --glass-blur: blur(12px);
-    --glass-border: 1px solid rgba(255, 255, 255, 0.5);
+    /* --- Shadows --- */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
+    /* --- Radii --- */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
     --radius-xl: 24px;
+    --radius-full: 9999px;
     
-    --container-width: 1280px;
+    /* --- Spacing --- */
+    --container-max: 1200px;
+    
     --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    --hero-gradient: linear-gradient(135deg, #001a48 0%, #002d72 100%);
 }
 
 /* ── Global Resets ── */
@@ -77,34 +82,29 @@ section { padding: 80px 0; }
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    top: 0; left: 0; right: 0;
+    height: 72px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-soft);
     z-index: 1000;
-    height: 80px;
-    display: flex;
-    align-items: center;
     transition: var(--transition);
-    background: transparent;
-}
-#site-header.header-scrolled {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    border-bottom: var(--glass-border);
-    height: 70px;
-    box-shadow: var(--shadow-premium);
 }
 
 .header-inner {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 12px;
+    text-decoration: none;
 }
+
 .logo-badge {
     background: var(--accent-red);
     color: white;
@@ -113,37 +113,79 @@ section { padding: 80px 0; }
     border-radius: 4px;
     font-size: 14px;
 }
+
 .logo-text h1 {
+    font-family: var(--font-display);
     font-size: 20px;
-    letter-spacing: 1px;
-    margin: 0;
-    color: var(--primary-navy);
+    font-weight: 800;
+    color: var(--dark-navy);
+    letter-spacing: -0.5px;
+}
+
+#main-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #main-nav ul {
     display: flex;
     gap: 32px;
+    list-style: none;
 }
+
 #main-nav a {
-    font-weight: 600;
-    color: var(--text-muted);
+    text-decoration: none;
     font-size: 14px;
+    font-weight: 600;
+    color: var(--text-light);
+    transition: var(--transition);
 }
+
 #main-nav a:hover, #main-nav a.nav-active {
     color: var(--primary-navy);
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
 .btn-register-online {
-    background: var(--primary-navy);
-    color: white !important;
+    background: var(--accent-red);
+    color: white;
     padding: 10px 24px;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full);
     font-weight: 700;
     font-size: 14px;
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
 }
+
 .btn-register-online:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
+    background: var(--accent-red-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-login {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid var(--border-color);
+    padding: 9px 20px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.btn-login:hover {
+    background: var(--bg-soft);
 }
 
 /* ── SPLIT HERO ── */
@@ -168,15 +210,32 @@ section { padding: 80px 0; }
 .hero-btns { display: flex; gap: 16px; margin-top: 32px; }
 .btn-hero-white {
     background: white;
-    color: var(--primary-navy) !important;
+    color: var(--dark-navy);
     padding: 14px 32px;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
 }
+
+.btn-hero-white:hover {
+    background: #f3f4f6;
+    transform: translateY(-2px);
+}
+
 .btn-hero-red {
     background: var(--accent-red);
-    color: white !important;
+    color: white;
     padding: 14px 32px;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-hero-red:hover {
+    background: var(--accent-red-hover);
+    transform: translateY(-2px);
 }
 
 /* ── STITCH PRICING GRID ── */

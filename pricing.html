@@ -13,11 +13,12 @@
     <header id="site-header">
         <div class="container header-inner">
             <a href="index.html" class="logo">
-                <div class="logo-badge">CA2</div>
-                <div class="logo-text"><h1>NACENCOMM</h1></div>
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNKVJU9uJIENr9jEFc_GQQ-46GM4rAFCDfXIQXkspy8N61hqZzWk-uuAuS-cIsQY7e-d14T6qcVdScxvrpfr8QTJz4FPZou1lwJmZVxrEMzS4WLnesyeyJAtJoIYU2Aa_z9PqZK4LMSi63m4q76PSU0U6Ez7qkSiqX3sNMN_yZxBUViIh4r8CF4q6OxKfJMrNw1eFtVM7ERAi-1a8V8pvt4wq6y9pDaJuK7tHdMzQ-cgBN7GqUnrIrwo7glXsJlPEsjpM9CybrbFM" alt="Nacencomm Logo" style="height: 40px;">
+                <div class="logo-text"><h1>Nacencomm</h1></div>
             </a>
             <nav id="main-nav">
                 <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
                     <li><a href="products.html">Sản phẩm</a></li>
                     <li><a href="pricing.html" class="nav-active">Bảng giá</a></li>
                     <li><a href="index.html#solutions">Giải pháp</a></li>
@@ -25,55 +26,66 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <span class="hotline" style="font-weight: 700; color: var(--primary-navy); margin-right: 15px;">☎ 1900 5454 07</span>
-                <a href="pricing.html" class="btn-register-online">Gửi đăng ký ngay</a>
+                <a href="pricing.html" class="btn-register-online">Đăng ký ngay</a>
             </div>
         </div>
     </header>
 
-    <main>
-        <!-- Hero -->
-        <section class="pricing-hero">
-            <div class="container fade-in">
-                <span class="detail-kicker" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">💸 BẢNG GIÁ NIÊM YẾT</span>
-                <h1 style="font-size: 42px; font-weight: 800; letter-spacing: -1px; margin-top: 16px;">Chọn sản phẩm phù hợp với nhu cầu</h1>
-                <p style="font-size: 18px; opacity: 0.85; margin-top: 12px;">Giá đã bao gồm VAT. Bàn giao dịch vụ trong 24h làm việc.</p>
-            </div>
-        </section>
-
-        <!-- Product Tabs -->
-        <div class="pricing-tabs" id="pricing-tabs">
-            <button class="pricing-tab active" data-key="cks-token">
-                <span class="tab-icon">🔑</span> CKS
-            </button>
-            <button class="pricing-tab" data-key="hoa-don">
-                <span class="tab-icon">🧾</span> Hoá Đơn
-            </button>
-            <button class="pricing-tab" data-key="bao-hiem">
-                <span class="tab-icon">🛡️</span> Phần mềm BH
-            </button>
-            <button class="pricing-tab" data-key="ca2-platform">
-                <span class="tab-icon">🏗️</span> CA2 Platform
-            </button>
-            
-            <!-- Tab dropdown "Sản phẩm khác" -->
-            <div class="tab-dropdown-wrap" id="otherProductsWrap">
-                <button class="pricing-tab tab-dropdown-trigger" id="otherProductsBtn" onclick="toggleOtherDropdown()">
-                    ☰ Sản phẩm khác <span class="chevron">▾</span>
-                </button>
-                <div class="tab-dropdown-panel" id="otherDropdown" style="display:none">
-                    <!-- Render từ OTHER_PRODUCTS array -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="section" style="background: #F8FAFC; padding-top: 80px;">
+            <div class="container">
+                <div class="text-center mb-12">
+                    <div class="inline-badge" style="background: rgba(0, 71, 171, 0.1); color: var(--primary-navy); padding: 6px 16px; border-radius: 999px; font-size: 12px; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px;">
+                        <span style="width: 8px; height: 8px; background: var(--primary-navy); border-radius: 50%;"></span>
+                        BẢNG GIÁ NIÊM YẾT
+                    </div>
+                    <h1 style="font-size: 48px; font-weight: 800; color: var(--dark-navy); margin-bottom: 16px;">Bảng giá giải pháp chuyển đổi số cho doanh nghiệp hiện đại</h1>
+                    <div style="display: flex; justify-content: center; gap: 24px; font-size: 14px; color: var(--text-light);">
+                        <span>✅ ISO 27001</span>
+                        <span>⭐ Tin dùng bởi 280.000+ khách hàng</span>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Dynamic content area -->
-        <section class="pricing-cards-section">
-            <div class="pricing-controls" id="pricing-controls">
-                <!-- Sub-tabs, toggle, audience rendered here -->
-            </div>
-            <div id="pricing-cards-mount">
-                <!-- Package cards rendered here -->
+                <!-- Product Menu Tabs -->
+                <div class="pricing-tabs-wrap" style="border-bottom: 1px solid var(--border-soft); margin-bottom: 48px;">
+                    <div class="pricing-tabs" style="justify-content: center; border: none; background: transparent; backdrop-filter: none; position: static; box-shadow: none;">
+                        <button class="pricing-tab active" data-key="cks-token"><span>🔑</span> CKS USB Token</button>
+                        <button class="pricing-tab" data-key="remote-signing"><span>📱</span> Remote Signing</button>
+                        <button class="pricing-tab" data-key="hoa-don"><span>📄</span> Hóa đơn điện tử</button>
+                        <button class="pricing-tab" data-key="ca2-platform"><span>🏗️</span> CA2 Platform</button>
+                    </div>
+                </div>
+
+                <!-- Sub Options (Toggle) -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 32px; margin-bottom: 48px;">
+                    <div class="type-toggle-pills" style="display: flex; background: white; padding: 4px; border-radius: 12px; border: 1px solid var(--border-color); shadow: var(--shadow-sm);">
+                        <button class="type-btn active" onclick="switchType('usb')"><span>🔑</span> USB Token</button>
+                        <button class="type-btn" onclick="switchType('remote')"><span>📱</span> Remote Signing</button>
+                    </div>
+                    
+                    <div class="audience-toggle" style="display: flex; align-items: center; gap: 32px;">
+                        <label class="toggle-label active">
+                            <input type="radio" name="audience" checked>
+                            <span>Doanh Nghiệp / Tổ Chức</span>
+                            <span class="pulse-badge">Phổ biến</span>
+                        </label>
+                        <label class="toggle-label">
+                            <input type="radio" name="audience">
+                            <span>HKD / Cá Nhân</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Dynamic Content Mount -->
+                <div id="pricing-cards-mount" class="pricing-grid-stitch">
+                    <!-- Cards will be rendered here -->
+                </div>
+
+                <div class="pricing-footer-notes" style="text-align: center; margin-top: 64px; font-size: 13px; color: var(--text-muted); font-style: italic;">
+                    <p>* Giá đã bao gồm VAT 10%. Cấp mới CKS Token kèm USB Token.</p>
+                    <p>* Nhân viên kinh doanh sẽ xác nhận báo giá chi tiết trước khi thu phí.</p>
+                </div>
             </div>
         </section>
     </main>
@@ -331,59 +343,25 @@
             const data = PRICING_DATA[activeProduct];
             if (!data) return;
 
-            // If consult type
-            if (data.type === 'consult') {
-                controlsMount.innerHTML = '';
-                cardsMount.innerHTML = renderConsultPanel(data);
-                return;
-            }
-
             // Determine if CKS (has sub-tabs)
             const isCKS = activeProduct === 'cks-token';
             const currentPricingKey = isCKS ? activeCksSub : activeProduct;
             const currentData = PRICING_DATA[currentPricingKey] || data;
 
-            // Build controls
-            let controlsHTML = '';
-
-            // Tagline for other products
-            if (currentData.tagline) {
-                controlsHTML += `
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <h2 style="font-size: 22px; color: var(--primary-navy); margin-bottom: 8px;">${currentData.icon} ${currentData.name}</h2>
-                        <p style="color: var(--text-muted); font-size: 15px;">${currentData.tagline}</p>
-                    </div>
-                `;
-            }
-
-            // Sub-tabs for CKS
+            // Build Sub-Options (USB/Remote) if CKS
+            const typePills = document.querySelector('.type-toggle-pills');
             if (isCKS) {
-                controlsHTML += `
-                    <div class="pricing-subtabs">
-                        <button class="pricing-subtab ${activeCksSub === 'cks-token' ? 'active' : ''}" data-sub="cks-token">
-                            🔑 USB Token
-                        </button>
-                        <button class="pricing-subtab ${activeCksSub === 'remote-signing' ? 'active' : ''}" data-sub="remote-signing">
-                            📱 Remote Signing
-                        </button>
-                    </div>
+                typePills.style.display = 'flex';
+                typePills.innerHTML = `
+                    <button class="type-btn ${activeCksSub === 'cks-token' ? 'active' : ''}" onclick="switchCksSub('cks-token')"><span>🔑</span> USB Token</button>
+                    <button class="type-btn ${activeCksSub === 'remote-signing' ? 'active' : ''}" onclick="switchCksSub('remote-signing')"><span>📱</span> Remote Signing</button>
                 `;
-            }
-
-            // Toggle for RS
-            const isRS = currentPricingKey === 'remote-signing';
-            if (isRS && currentData.subtabs) {
-                controlsHTML += `
-                    <div class="pricing-toggle-wrap">
-                        <div class="pricing-toggle">
-                            <button class="${activeRsMode === 'theo-nam' ? 'active' : ''}" data-mode="theo-nam">Theo năm</button>
-                            <button class="${activeRsMode === 'theo-luot' ? 'active' : ''}" data-mode="theo-luot">Theo lượt ký</button>
-                        </div>
-                    </div>
-                `;
+            } else {
+                typePills.style.display = 'none';
             }
 
             // Resolve packages
+            const isRS = currentPricingKey === 'remote-signing';
             let packages;
             let tabs;
             if (isRS && currentData.subtabs) {
@@ -397,67 +375,84 @@
                 packages = currentData.packages[activeAudience];
             }
 
-            // Audience radio (only if more than 1 tab)
+            // Render Audience Toggle
+            const audienceToggle = document.querySelector('.audience-toggle');
             if (tabs.length > 1) {
-                controlsHTML += `
-                    <div class="pricing-audience">
-                        ${tabs.map(tab => `
-                            <label class="audience-option ${activeAudience === tab ? 'active' : ''}" data-audience="${tab}">
-                                <input type="radio" name="audience" value="${tab}" ${activeAudience === tab ? 'checked' : ''}>
-                                ${tab}
-                            </label>
-                        `).join('')}
-                    </div>
-                `;
+                audienceToggle.style.display = 'flex';
+                audienceToggle.innerHTML = tabs.map(tab => `
+                    <label class="toggle-label ${activeAudience === tab ? 'active' : ''}" onclick="switchAudience('${tab}')">
+                        <input type="radio" name="audience" ${activeAudience === tab ? 'checked' : ''}>
+                        <span>${tab}</span>
+                        ${tab.includes('Doanh Nghiệp') ? '<span class="pulse-badge">Phổ biến</span>' : ''}
+                    </label>
+                `).join('');
+            } else {
+                audienceToggle.style.display = 'none';
             }
-
-            controlsMount.innerHTML = controlsHTML;
 
             // Render cards
             const slug = currentData.slug;
-            const colsClass = packages.length === 4 ? 'cols-4' : packages.length === 2 ? 'cols-2' : '';
-
-            let cardsHTML = `<div class="pricing-cards-grid ${colsClass}">`;
+            let cardsHTML = '';
+            
             packages.forEach(pkg => {
-                const popularClass = pkg.popular ? ' popular' : '';
-                const badgeHTML = pkg.popular ? '<span class="badge-popular">⭐ Phổ biến</span>' : '';
-                const noteHTML = pkg.note && !pkg.popular ? `<span class="badge-note">${pkg.note}</span>` : '';
+                const isFeatured = pkg.popular;
+                const featuredClass = isFeatured ? ' featured' : '';
+                const ribbonHTML = isFeatured ? '<div class="ribbon-featured">Khuyên dùng</div>' : '';
+                const priceVal = pkg.priceStr.split(' ')[0]; // Basic split to get number
+                const priceUnit = 'VNĐ';
                 
-                let priceHTML;
-                if (pkg.price !== null) {
-                    priceHTML = `
-                        <span class="price-amount">${pkg.priceStr}</span>
-                        <span class="price-note">Đã bao gồm VAT 10%</span>
-                    `;
-                } else {
-                    priceHTML = `<span class="price-contact">Liên hệ báo giá</span>`;
+                // Mock features based on package duration
+                let features = [
+                    `Chứng thư số công cộng CA2 (${pkg.label})`,
+                    isCKS ? 'Tặng kèm 01 thiết bị USB Token chuyên dụng' : 'Ký số linh hoạt trên thiết bị di động',
+                    'Hỗ trợ kê khai thuế, BHXH, Hải quan 24/7'
+                ];
+                if (pkg.label.includes('2 Năm') || pkg.label.includes('3 Năm')) {
+                    features.push('Ưu tiên hỗ trợ kỹ thuật tận nơi');
+                    features.push('Tặng gói hóa đơn điện tử ưu đãi');
                 }
 
-                const btnText = pkg.price !== null ? 'Mua ngay' : 'Đăng ký tư vấn';
-
                 cardsHTML += `
-                    <div class="pkg-card${popularClass}" data-slug="${slug}" data-label="${pkg.label}" data-audience="${activeAudience}">
-                        ${badgeHTML}
-                        ${noteHTML}
-                        <div class="pkg-name">${pkg.label}</div>
-                        ${pkg.duration ? `<div class="pkg-duration">${pkg.duration}</div>` : ''}
-                        <div class="pkg-price">${priceHTML}</div>
-                        <button class="btn-select-pkg">${btnText}</button>
+                    <div class="pricing-card-stitch${featuredClass}" data-slug="${slug}" data-label="${pkg.label}" data-audience="${activeAudience}">
+                        ${ribbonHTML}
+                        <div class="mb-6">
+                            <h3>${pkg.label}</h3>
+                            <p class="pkg-desc">${pkg.note || 'Giải pháp số hóa toàn diện'}</p>
+                        </div>
+                        <div class="price-box">
+                            <span class="price-val">${priceVal}</span>
+                            <span class="price-unit">${priceUnit}</span>
+                            <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Đã bao gồm VAT 10%</p>
+                        </div>
+                        <ul>
+                            ${features.map(f => `
+                                <li>
+                                    <span>check_circle</span>
+                                    <span>${f}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                        <button class="btn-buy-stitch" onclick="onSelectPackage('${slug}', '${pkg.label}', '${activeAudience}')">Mua ngay</button>
                     </div>
                 `;
             });
-            cardsHTML += `</div>`;
-
-            // Footer note
-            cardsHTML += `
-                <div class="pricing-footer-note">
-                    <p>* Giá đã bao gồm VAT 10%. Cấp mới CKS Token kèm USB Token.</p>
-                    <p>* Nhân viên kinh doanh sẽ xác nhận báo giá chi tiết trước khi thu phí.</p>
-                </div>
-            `;
 
             cardsMount.innerHTML = cardsHTML;
         }
+
+        window.switchCksSub = function(sub) {
+            activeCksSub = sub;
+            render();
+        };
+
+        window.switchAudience = function(aud) {
+            activeAudience = aud;
+            render();
+        };
+
+        window.switchType = function(type) {
+            // Placeholder for type switching logic if needed
+        };
 
         function renderConsultPanel(data) {
             return `

@@ -156,157 +156,191 @@
     margin: 4px 0;
 }
 
-/* ===== SUB-TABS (CKS: Token / RS) ===== */
-.pricing-subtabs {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    padding: 20px 0 0;
-}
-
-.pricing-subtab {
-    padding: 10px 24px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    border: 2px solid var(--border-color);
-    background: white;
-    color: var(--text-muted);
-    transition: all 0.25s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.pricing-subtab:hover {
-    border-color: var(--primary-navy);
-    color: var(--primary-navy);
-}
-
-.pricing-subtab.active {
-    background: var(--primary-navy);
-    color: white;
-    border-color: var(--primary-navy);
-}
-
-/* ===== TOGGLE (RS: Theo năm / Theo lượt) ===== */
-.pricing-toggle-wrap {
-    display: flex;
-    justify-content: center;
-    padding: 16px 0 0;
-}
-
-.pricing-toggle {
-    display: inline-flex;
-    background: var(--light-navy);
-    border-radius: 999px;
-    padding: 4px;
-    gap: 0;
-}
-
-.pricing-toggle button {
-    padding: 8px 24px;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    background: none;
-    color: var(--text-muted);
-    transition: all 0.25s;
-}
-
-.pricing-toggle button.active {
-    background: var(--primary-navy);
-    color: white;
-    box-shadow: 0 2px 8px rgba(11, 59, 142, 0.25);
-}
-
-/* ===== AUDIENCE RADIO (DN / HKD) ===== */
-.pricing-audience {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    padding: 20px 0 0;
-}
-
-.audience-option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-muted);
-    padding: 8px 16px;
-    border-radius: 12px;
-    border: 2px solid var(--border-color);
-    background: white;
-    transition: all 0.25s;
-}
-
-.audience-option:hover {
-    border-color: var(--primary-navy);
-}
-
-.audience-option.active {
-    border-color: var(--primary-navy);
-    background: var(--light-navy);
-    color: var(--primary-navy);
-    font-weight: 600;
-}
-
-.audience-option input[type="radio"] {
-    accent-color: var(--primary-navy);
-    width: 16px;
-    height: 16px;
-}
-
-/* ===== CONTROLS SECTION ===== */
-.pricing-controls {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* ===== PACKAGE CARDS GRID ===== */
-.pricing-cards-section {
-    padding: 32px 0 80px;
-}
-
-.pricing-cards-grid {
+/* ===== STITCH PRICING GRID ===== */
+.pricing-grid-stitch {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 900px;
+    gap: 32px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
-.pricing-cards-grid.cols-4 {
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 1100px;
-}
-
-.pricing-cards-grid.cols-2 {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 600px;
-}
-
-/* ===== PACKAGE CARD ===== */
-.pkg-card {
-    position: relative;
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
-    padding: 28px 20px 24px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.25s;
+.pricing-card-stitch {
     background: white;
+    border-radius: 24px;
+    border: 1px solid var(--border-soft);
+    padding: 40px 32px;
     display: flex;
     flex-direction: column;
+    transition: var(--transition);
+    position: relative;
+}
+
+.pricing-card-stitch:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px);
+}
+
+.pricing-card-stitch.featured {
+    border: 2px solid var(--primary-navy);
+    box-shadow: var(--shadow-xl);
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+/* Ribbon */
+.ribbon-featured {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-navy);
+    color: white;
+    padding: 6px 20px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pricing-card-stitch h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--dark-navy);
+    margin-bottom: 8px;
+}
+
+.pricing-card-stitch .pkg-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+
+.pricing-card-stitch .price-box {
+    margin-bottom: 40px;
+}
+
+.pricing-card-stitch .price-val {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--dark-navy);
+}
+
+.pricing-card-stitch.featured .price-val {
+    color: var(--primary-navy);
+}
+
+.pricing-card-stitch .price-unit {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-left: 4px;
+}
+
+.pricing-card-stitch ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+    flex-grow: 1;
+}
+
+.pricing-card-stitch li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.pricing-card-stitch li span:first-child {
+    color: #10B981; /* Success Green */
+    font-size: 18px;
+    line-height: 1;
+}
+
+.btn-buy-stitch {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.pricing-card-stitch .btn-buy-stitch {
+    background: var(--dark-navy);
+    color: white;
+}
+
+.pricing-card-stitch.featured .btn-buy-stitch {
+    background: var(--accent-red);
+    box-shadow: 0 10px 15px -3px rgba(229, 62, 62, 0.2);
+}
+
+.pricing-card-stitch .btn-buy-stitch:hover {
+    background: black;
+}
+
+.pricing-card-stitch.featured .btn-buy-stitch:hover {
+    background: var(--accent-red-hover);
+}
+
+/* Toggles */
+.type-btn {
+    padding: 10px 32px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    transition: var(--transition);
+    display: flex;
     align-items: center;
+    gap: 8px;
+}
+
+.type-btn.active {
+    background: var(--primary-navy);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-light);
+    position: relative;
+}
+
+.toggle-label.active {
+    color: var(--dark-navy);
+}
+
+.toggle-label input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-navy);
+}
+
+.pulse-badge {
+    background: #FACC15; /* Yellow */
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 4px;
 }
 
 .pkg-card:hover {
