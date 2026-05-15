@@ -9,27 +9,25 @@
     <link rel="stylesheet" href="style/pricing.css?v=6">
 </head>
 <body>
-    <header>
+    <!-- ═══ HEADER ═══ -->
+    <header id="site-header">
         <div class="container header-inner">
             <a href="index.html" class="logo">
                 <div class="logo-badge">CA2</div>
-                <div class="logo-text">
-                    <h1>NACENCOMM</h1>
-                    <p>Tổng Công ty Truyền thông</p>
-                </div>
+                <div class="logo-text"><h1>NACENCOMM</h1></div>
             </a>
             <nav>
                 <ul>
                     <li><a href="index.html">Trang chủ</a></li>
                     <li><a href="products.html">Sản phẩm</a></li>
-                    <li><a href="pricing.html" style="color: var(--accent-red);">Bảng giá</a></li>
-                    <li><a href="index.html#support">Hỗ trợ</a></li>
+                    <li><a href="pricing.html" class="nav-active">Bảng giá</a></li>
+                    <li><a href="index.html#about">Giới thiệu</a></li>
                     <li><a href="index.html#contact">Liên hệ</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                <div class="hotline">☎ 1900 5454 07</div>
-                <a href="pricing.html" class="btn-register-online">Đăng ký online</a>
+                <span class="hotline" style="font-weight: 700; color: var(--primary-navy); margin-right: 15px;">☎ 1900 5454 07</span>
+                <a href="pricing.html" class="btn-register-online">Gửi đăng ký ngay</a>
             </div>
         </div>
     </header>
@@ -37,9 +35,10 @@
     <main>
         <!-- Hero -->
         <section class="pricing-hero">
-            <div class="container">
-                <h1>Chọn sản phẩm phù hợp với nhu cầu của bạn</h1>
-                <p>Giá đã bao gồm VAT. Hỗ trợ 24/7 – 1900 5454 07</p>
+            <div class="container fade-in">
+                <span class="detail-kicker" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">💸 BẢNG GIÁ NIÊM YẾT</span>
+                <h1 style="font-size: 42px; font-weight: 800; letter-spacing: -1px; margin-top: 16px;">Chọn sản phẩm phù hợp với nhu cầu</h1>
+                <p style="font-size: 18px; opacity: 0.85; margin-top: 12px;">Giá đã bao gồm VAT. Bàn giao dịch vụ trong 24h làm việc.</p>
             </div>
         </section>
 
@@ -557,6 +556,66 @@
             const pkg = sessionStorage.getItem('selected_package');
             window.location.href = `register.html?slug=${slug}&package=${encodeURIComponent(pkg)}`;
         }
+    });
+    </script>
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-badge">CA2</div>
+                        <strong>NACENCOMM</strong>
+                    </div>
+                    <p>Đơn vị cung cấp giải pháp số hàng đầu Việt Nam. TOP 3 CA tại thị trường nội địa.</p>
+                    <p>Hotline: 1900 5454 07</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Sản phẩm</h3>
+                    <ul>
+                        <li><a href="product-detail.html?slug=cks-token">Chữ ký số Token</a></li>
+                        <li><a href="product-detail.html?slug=remote-signing">Remote Signing</a></li>
+                        <li><a href="product-detail.html?slug=hoa-don-dien-tu">Hoá đơn điện tử</a></li>
+                        <li><a href="product-detail.html?slug=bao-hiem-xa-hoi">Phần mềm BHXH</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Công ty</h3>
+                    <ul>
+                        <li><a href="index.html#about">Giới thiệu</a></li>
+                        <li><a href="index.html#contact">Liên hệ</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Tin tức</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Pháp lý</h3>
+                    <ul>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Quy chế chứng thực</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 NACENCOMM. Tất cả quyền được bảo lưu.</span>
+                <span>Thiết kế bởi CA2 Premium Design System</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // ... (existing script content would be inside the listener)
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('site-header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
     });
     </script>
 </body>

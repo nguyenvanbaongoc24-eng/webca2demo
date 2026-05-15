@@ -3,40 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh mục sản phẩm - Nacencomm</title>
-    <link rel="stylesheet" href="style/global.css">
+    <title>Danh mục sản phẩm - Nacencomm Premium</title>
+    <meta name="description" content="Khám phá hệ sinh thái giải pháp số toàn diện từ Nacencomm. Chữ ký số, Hoá đơn điện tử, Phần mềm bảo hiểm và nhiều dịch vụ khác.">
+    <link rel="stylesheet" href="style/global.css?v=6">
 </head>
 <body>
-    <header>
+    <!-- ═══ HEADER ═══ -->
+    <header id="site-header">
         <div class="container header-inner">
             <a href="index.html" class="logo">
                 <div class="logo-badge">CA2</div>
-                <div class="logo-text">
-                    <h1>NACENCOMM</h1>
-                    <p>Tổng Công ty Truyền thông</p>
-                </div>
+                <div class="logo-text"><h1>NACENCOMM</h1></div>
             </a>
             <nav>
                 <ul>
                     <li><a href="index.html">Trang chủ</a></li>
-                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="products.html" class="nav-active">Sản phẩm</a></li>
                     <li><a href="pricing.html">Bảng giá</a></li>
-                    <li><a href="index.html#support">Hỗ trợ</a></li>
+                    <li><a href="index.html#about">Giới thiệu</a></li>
                     <li><a href="index.html#contact">Liên hệ</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                <div class="hotline">☎ 1900 5454 07</div>
-                <a href="pricing.html" class="btn-register-online">Đăng ký online</a>
+                <span class="hotline" style="font-weight: 700; color: var(--primary-navy); margin-right: 15px;">☎ 1900 5454 07</span>
+                <a href="pricing.html" class="btn-register-online">Gửi đăng ký ngay</a>
             </div>
         </div>
     </header>
 
     <main>
         <section class="page-hero">
-            <div class="container">
+            <div class="container fade-in">
                 <h1>Danh mục giải pháp số</h1>
-                <p>Khám phá trọn bộ 14 sản phẩm, mỗi sản phẩm có luồng đăng ký riêng theo nhu cầu thực tế.</p>
+                <p>Khám phá hệ sinh thái 14 sản phẩm công nghệ tiên phong, giúp doanh nghiệp bứt phá trong kỷ nguyên số.</p>
             </div>
         </section>
 
@@ -47,9 +46,49 @@
         </section>
     </main>
 
+    <!-- ═══ FOOTER ═══ -->
     <footer>
         <div class="container">
-            <div class="footer-bottom">&copy; 2026 NACENCOMM. Website demo.</div>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-badge">CA2</div>
+                        <strong>NACENCOMM</strong>
+                    </div>
+                    <p>Đơn vị cung cấp giải pháp số hàng đầu Việt Nam. TOP 3 CA tại thị trường nội địa.</p>
+                    <p>Hotline: 1900 5454 07</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Sản phẩm</h3>
+                    <ul>
+                        <li><a href="product-detail.html?slug=cks-token">Chữ ký số Token</a></li>
+                        <li><a href="product-detail.html?slug=remote-signing">Remote Signing</a></li>
+                        <li><a href="product-detail.html?slug=hoa-don-dien-tu">Hoá đơn điện tử</a></li>
+                        <li><a href="product-detail.html?slug=bao-hiem-xa-hoi">Phần mềm BHXH</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Công ty</h3>
+                    <ul>
+                        <li><a href="index.html#about">Giới thiệu</a></li>
+                        <li><a href="index.html#contact">Liên hệ</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Tin tức</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Pháp lý</h3>
+                    <ul>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Quy chế chứng thực</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 NACENCOMM. Tất cả quyền được bảo lưu.</span>
+                <span>Thiết kế bởi CA2 Premium Design System</span>
+            </div>
         </div>
     </footer>
 
@@ -67,20 +106,25 @@
                 const groupSection = document.createElement('section');
                 groupSection.className = 'product-group';
                 groupSection.innerHTML = `
-                    <h2>${groupName}</h2>
-                    <div class="product-grid">
-                        ${products.map(product => `
-                            <article class="product-card">
-                                <div class="product-icon">${product.icon}</div>
-                                <h3>${product.name}</h3>
-                                <p>${product.tagline}</p>
-                                <div class="flow-chip">${flowLabel(product.flowType)}</div>
-                                <div class="product-card-footer">
-                                    <a href="product-detail.html?slug=${product.slug}" class="btn btn-outline">Tìm hiểu thêm</a>
-                                    <a href="pricing.html?product=${product.slug}" class="btn btn-accent">🛒 Mua ngay</a>
-                                </div>
-                            </article>
-                        `).join('')}
+                    <div class="fade-in">
+                        <h2>${groupName}</h2>
+                        <div class="product-grid">
+                            ${products.map(product => `
+                                <article class="product-card">
+                                    <div class="product-badge">${product.hot ? 'Bán chạy' : 'Mới'}</div>
+                                    <div class="product-icon-box" style="background: var(--light-navy); color: var(--primary-navy);">
+                                        ${product.icon}
+                                    </div>
+                                    <h3>${product.name}</h3>
+                                    <p>${product.tagline}</p>
+                                    <div class="flow-chip">${flowLabel(product.flowType)}</div>
+                                    <div class="product-card-footer">
+                                        <a href="product-detail.html?slug=${product.slug}" class="btn btn-outline" style="border: 1.5px solid var(--border-main);">Chi tiết</a>
+                                        <a href="pricing.html?product=${product.slug}" class="btn btn-accent" style="background: var(--primary-navy); color: white;">Mua ngay</a>
+                                    </div>
+                                </article>
+                            `).join('')}
+                        </div>
                     </div>
                 `;
                 container.appendChild(groupSection);
@@ -89,17 +133,27 @@
 
         function flowLabel(flowType) {
             const labels = {
-                standard_form: 'Form + thanh toán',
-                standard_vneid: 'Form + ký VNeID',
-                standard_upload: 'Form + upload hồ sơ',
-                remote_signing: 'Remote Signing 6 bước',
-                consult: 'Tư vấn nhanh',
-                consult_schedule: 'Đặt lịch khảo sát',
+                standard_form: 'Thủ tục online',
+                standard_vneid: 'Ký số VNeID',
+                standard_upload: 'Upload hồ sơ',
+                remote_signing: 'Remote 6 bước',
+                consult: 'Tư vấn chuyên sâu',
+                consult_schedule: 'Đặt lịch hẹn',
                 consult_survey: 'Khảo sát nhu cầu',
-                course_register: 'Đăng ký khóa học'
+                course_register: 'Đăng ký học'
             };
             return labels[flowType] || 'Đăng ký online';
         }
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('site-header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
     </script>
 </body>
 </html>
