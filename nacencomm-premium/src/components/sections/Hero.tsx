@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ChevronRight, PlayCircle } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 export function Hero() {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <section className="relative min-h-[90vh] pt-32 pb-20 overflow-hidden bg-[#0A1128]">
       {/* Background Gradients */}
@@ -44,14 +47,21 @@ export function Hero() {
             transition={{ duration: 1, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-white/10 glass-card">
-              <Image 
-                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" 
-                alt="Digital Security Platform"
-                width={800}
-                height={600}
-                className="w-full h-auto"
-              />
+            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-white/10 glass-card bg-white/5">
+              {!imageError ? (
+                <Image 
+                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" 
+                  alt="Digital Security Platform"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto"
+                  onError={() => setImageError(true)}
+                />
+              ) : (
+                <div className="w-full h-[400px] flex items-center justify-center bg-white/5">
+                  <span className="text-8xl">🔐</span>
+                </div>
+              )}
             </div>
             {/* Decorative elements */}
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-500/30 blur-2xl rounded-full" />
