@@ -336,7 +336,7 @@ function RegisterForm() {
                       size="lg" 
                       className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white font-black py-7 rounded-2xl shadow-xl shadow-brand-blue/20"
                     >
-                      GỬI ĐĂNG KÝ
+                      THANH TOÁN
                     </Button>
                     <Button variant="outline" className="w-full rounded-xl border-gray-200 text-gray-500 font-bold gap-2">
                       <FileDown className="w-4 h-4" /> Tải xuống báo giá
@@ -359,51 +359,81 @@ function RegisterForm() {
     );
   }
 
-  // Flow B: Sales Success
+  // Flow B: Sales Success (QR Payment Screen)
   if (flowState === "sales_success") {
     return (
-      <div className="pt-40 pb-20 px-4 flex items-center justify-center">
+      <div className="pt-40 pb-20 px-4 flex items-center justify-center bg-[#F4F7FA]">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
-          className="max-w-2xl w-full bg-white rounded-3xl shadow-premium overflow-hidden"
+          className="max-w-2xl w-full bg-white rounded-3xl shadow-premium overflow-hidden border border-gray-100"
         >
-          <div className="bg-brand-blue p-10 text-center text-white">
-            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle2 className="w-10 h-10 text-white" />
+          <div className="bg-brand-blue p-8 text-center text-white relative">
+            <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CreditCard className="w-7 h-7 text-white" />
             </div>
-            <h2 className="text-3xl font-black mb-2">Đăng ký thành công!</h2>
-            <div className="inline-block px-4 py-1.5 bg-black/10 rounded-full text-xs font-bold backdrop-blur-sm">
-              Mã hồ sơ: NCM-2026-88129
+            <h2 className="text-2xl font-black mb-1">Thanh toán đơn hàng</h2>
+            <div className="inline-block px-4 py-1.5 bg-black/10 rounded-full text-[10px] font-bold backdrop-blur-sm">
+              Mã hồ sơ: NCM-2026-81285
             </div>
           </div>
-          <div className="p-10">
-            <div className="grid grid-cols-2 gap-8 mb-10">
-              <div className="space-y-4">
-                <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Các bước tiếp theo</h3>
-                <div className="space-y-4">
-                  {[
-                    "Kinh doanh sẽ liên hệ xác nhận thông tin",
-                    "Nhận báo giá chính thức qua Email",
-                    "Ký hợp đồng và nhận bàn giao dịch vụ"
-                  ].map((step, i) => (
-                    <div key={i} className="flex gap-3">
-                      <div className="w-5 h-5 bg-blue-50 text-brand-blue rounded-full flex items-center justify-center font-bold text-[10px] shrink-0">{i+1}</div>
-                      <p className="text-xs text-gray-600 font-medium leading-relaxed">{step}</p>
-                    </div>
-                  ))}
+          
+          <div className="p-8 md:p-12">
+            <div className="flex flex-col md:flex-row gap-12 items-center">
+              {/* QR Code Section */}
+              <div className="w-full md:w-1/2 space-y-6 text-center">
+                <div className="p-4 bg-white border-2 border-brand-blue/10 rounded-3xl shadow-lg inline-block">
+                  <img 
+                    src="/vietqr_payment_mockup_1778841271490.png" 
+                    className="w-48 h-auto rounded-xl" 
+                    alt="VietQR Payment" 
+                  />
+                </div>
+                <div className="space-y-2">
+                  <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">Nội dung chuyển khoản</p>
+                  <div className="p-3 bg-[#F8FAFC] border-2 border-dashed border-brand-blue/30 rounded-xl text-lg font-black text-brand-blue tracking-wider">
+                    NCM-2026-81285
+                  </div>
+                  <p className="text-[10px] text-gray-500 italic">* Vui lòng nhập chính xác mã hồ sơ để tự động kích hoạt</p>
                 </div>
               </div>
-              <div className="bg-[#F8FAFC] p-6 rounded-2xl">
-                <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Hỗ trợ 24/7</h3>
-                <div className="space-y-3">
-                  <div className="text-lg font-black text-brand-blue">1900 5454 07</div>
-                  <div className="text-xs text-gray-500">sale@nacencomm.vn</div>
+
+              {/* Instructions Section */}
+              <div className="w-full md:w-1/2 space-y-8">
+                <div className="space-y-4">
+                  <h3 className="text-sm font-black text-brand-dark flex items-center gap-2">
+                    <Info className="w-5 h-5 text-brand-blue" /> Hướng dẫn thanh toán
+                  </h3>
+                  <div className="space-y-4">
+                    {[
+                      { t: "Mở ứng dụng Ngân hàng", d: "Chọn chức năng QR Pay hoặc Quét mã QR" },
+                      { t: "Quét mã QR bên cạnh", d: "Hệ thống sẽ tự động điền số tiền và nội dung" },
+                      { t: "Xác nhận giao dịch", d: "Hồ sơ sẽ được ưu tiên thẩm định ngay lập tức" }
+                    ].map((step, i) => (
+                      <div key={i} className="flex gap-4">
+                        <div className="w-6 h-6 bg-blue-50 text-brand-blue rounded-full flex items-center justify-center font-bold text-xs shrink-0">{i+1}</div>
+                        <div>
+                          <p className="text-sm font-bold text-gray-800">{step.t}</p>
+                          <p className="text-xs text-gray-500 leading-relaxed">{step.d}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-5 bg-yellow-50 rounded-2xl border border-yellow-100 space-y-2">
+                  <div className="flex items-center gap-2 text-yellow-700 font-bold text-xs">
+                    <ShieldAlert className="w-4 h-4" /> Lưu ý quan trọng
+                  </div>
+                  <p className="text-[10px] text-yellow-600 leading-relaxed">
+                    Sau khi thanh toán thành công, vui lòng giữ lại biên lai để đối chiếu nếu cần thiết. Hệ thống sẽ gửi xác nhận qua email trong vòng 5-10 phút.
+                  </p>
                 </div>
               </div>
             </div>
-            <div className="flex gap-4">
-              <Button onClick={() => window.location.href="/"} className="flex-1 rounded-xl bg-brand-blue text-white font-bold py-6">Về trang chủ</Button>
-              <Button onClick={() => window.location.href="/pricing"} variant="outline" className="flex-1 rounded-xl font-bold py-6">Xem sản phẩm khác</Button>
+
+            <div className="mt-12 pt-8 border-t border-gray-100 flex flex-wrap justify-center gap-4">
+              <Button onClick={() => window.location.href="/"} variant="outline" className="rounded-xl px-8 font-bold border-gray-200">Về trang chủ</Button>
+              <Button className="rounded-xl px-8 font-bold bg-brand-blue text-white shadow-lg shadow-brand-blue/20">Tôi đã chuyển khoản</Button>
             </div>
           </div>
         </motion.div>
