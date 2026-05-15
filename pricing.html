@@ -80,6 +80,71 @@
         </section>
     </main>
 
+    <!-- Cart Modal Overlay -->
+    <div class="cart-modal-overlay" id="cart-modal" style="display:none;">
+        <div class="cart-modal">
+            <button class="cart-modal-close" onclick="closeCartModal()">✕</button>
+            <h2 class="cart-modal-title">Chọn mua <span id="cm_productName">Bộ giải pháp Ký số</span></h2>
+            
+            <div class="cart-modal-content">
+                <div class="cart-modal-main">
+                    <div style="font-weight: 600; margin-bottom: 12px; font-size: 14px;">Gói sản phẩm</div>
+                    <table class="cart-modal-table">
+                        <thead>
+                            <tr>
+                                <th>Gói sản phẩm/Dịch vụ</th>
+                                <th>Đơn vị tính</th>
+                                <th>Số lượng</th>
+                                <th>Đơn giá (VND)</th>
+                                <th>Thành tiền (VND)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id="cm_pkgName" style="font-weight: 600; color: var(--primary-navy);">3 năm</div>
+                                    <button class="btn-text" onclick="closeCartModal()" style="color: #0066cc; font-size: 12px; margin-top: 4px; display: flex; align-items: center; gap: 4px; background: none; border: none; cursor: pointer;">
+                                        ✏️ Đổi gói
+                                    </button>
+                                </td>
+                                <td>Gói</td>
+                                <td>
+                                    <div class="qty-control">
+                                        <button onclick="updateQty(-1)">-</button>
+                                        <input type="text" id="cm_qty" value="1" readonly>
+                                        <button onclick="updateQty(1)">+</button>
+                                    </div>
+                                </td>
+                                <td id="cm_price">4.400.000</td>
+                                <td id="cm_total" style="font-weight: 600;">4.400.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="cart-modal-sidebar">
+                    <div class="cms-box">
+                        <div class="cms-header">
+                            Thông tin tài nguyên <span style="float: right;">^</span>
+                        </div>
+                        <div class="cms-body">
+                            <div class="cms-product" id="cm_sb_productName">MISA eSign - Chữ ký số từ xa</div>
+                            <div class="cms-row"><span>CTS / Số lượng</span><span id="cm_sb_qty">1</span></div>
+                            <div class="cms-row"><span>Thời hạn sử dụng</span><span id="cm_sb_duration">3 năm</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="cms-footer">
+                        <div class="cms-total-row">
+                            <span>Tổng tiền</span>
+                            <span id="cm_sb_total" style="font-size: 20px; font-weight: 700; color: #1a1c23;">4.400.000</span>
+                        </div>
+                        <button class="btn-accent" style="width: 100%; margin-bottom: 10px; font-size: 15px; padding: 12px; border-radius: 6px;" onclick="proceedToCheckout()">Thanh toán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <div class="footer-bottom">&copy; 2026 NACENCOMM. Website demo.</div>
@@ -412,10 +477,85 @@
         }
 
         function onSelectPackage(slug, packageLabel, doiTuong) {
+            // Find price
+            const isCKS = activeProduct === 'cks-token';
+            const currentPricingKey = isCKS ? activeCksSub : activeProduct;
+            let currentData = PRICING_DATA[currentPricingKey] || PRICING_DATA[slug];
+            if (!currentData) currentData = PRICING_DATA[activeProduct];
+            
+            let priceStr = "Liên hệ";
+            let priceNum = 0;
+            // Attempt to find package to get price
+            if (currentData && currentData.packages) {
+                 const isRS = currentPricingKey === 'remote-signing';
+                 let pkgs = null;
+                 if (isRS && currentData.subtabs) {
+                     pkgs = currentData.packages[activeRsMode][doiTuong];
+                 } else {
+                     pkgs = currentData.packages[doiTuong];
+                 }
+                 if (pkgs) {
+                     const found = pkgs.find(p => p.label === packageLabel);
+                     if (found) {
+                         priceStr = found.priceStr;
+                         priceNum = found.price || 0;
+                     }
+                 }
+            }
+
+            // Save to session just in case
             sessionStorage.setItem('selected_product', slug);
             sessionStorage.setItem('selected_package', packageLabel);
             sessionStorage.setItem('selected_doituong', doiTuong);
-            window.location.href = `register.html?slug=${slug}&package=${encodeURIComponent(packageLabel)}`;
+            sessionStorage.setItem('selected_price', priceStr);
+            sessionStorage.setItem('selected_price_num', priceNum);
+            sessionStorage.setItem('selected_qty', 1);
+
+            // Populate modal
+            const name = currentData ? currentData.name : slug;
+            document.getElementById('cm_productName').textContent = name;
+            document.getElementById('cm_pkgName').textContent = packageLabel;
+            document.getElementById('cm_price').textContent = priceStr;
+            document.getElementById('cm_total').textContent = priceStr;
+            
+            document.getElementById('cm_sb_productName').textContent = name;
+            document.getElementById('cm_sb_duration').textContent = packageLabel;
+            document.getElementById('cm_sb_total').textContent = priceStr;
+            document.getElementById('cm_qty').value = 1;
+            document.getElementById('cm_sb_qty').textContent = 1;
+
+            // Show modal
+            document.getElementById('cart-modal').style.display = 'flex';
+        }
+
+        window.closeCartModal = function() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        window.updateQty = function(delta) {
+            const qtyInput = document.getElementById('cm_qty');
+            let qty = parseInt(qtyInput.value) || 1;
+            qty += delta;
+            if (qty < 1) qty = 1;
+            qtyInput.value = qty;
+            document.getElementById('cm_sb_qty').textContent = qty;
+            sessionStorage.setItem('selected_qty', qty);
+
+            // Update total if numeric price is available
+            const priceNumStr = sessionStorage.getItem('selected_price_num');
+            if (priceNumStr && parseInt(priceNumStr) > 0) {
+                const total = parseInt(priceNumStr) * qty;
+                const formatted = total.toLocaleString('vi-VN') + ' đ';
+                document.getElementById('cm_total').textContent = formatted;
+                document.getElementById('cm_sb_total').textContent = formatted;
+                sessionStorage.setItem('selected_price', formatted);
+            }
+        }
+
+        window.proceedToCheckout = function() {
+            const slug = sessionStorage.getItem('selected_product');
+            const pkg = sessionStorage.getItem('selected_package');
+            window.location.href = `register.html?slug=${slug}&package=${encodeURIComponent(pkg)}`;
         }
     });
     </script>

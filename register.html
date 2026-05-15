@@ -21,33 +21,287 @@
     </header>
 
     <main>
-        <div class="container">
-            <!-- Product banner -->
-            <div id="product-banner" style="background: linear-gradient(135deg, var(--dark-navy), var(--primary-navy)); color: white; padding: 30px 40px; border-radius: var(--card-radius) var(--card-radius) 0 0; margin-top: 40px; max-width: 900px; margin-left: auto; margin-right: auto;">
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <span id="banner-icon" style="font-size: 40px;"></span>
-                    <div>
-                        <div id="banner-group" style="font-size: 11px; text-transform: uppercase; opacity: 0.7; letter-spacing: 1px;"></div>
-                        <h2 id="banner-name" style="font-size: 24px; margin: 4px 0;"></h2>
-                        <p id="banner-tagline" style="font-size: 14px; opacity: 0.8;"></p>
+        <div class="register-layout">
+            
+            <!-- Cột trái (Main Content) -->
+            <div class="form-main">
+                
+                <!-- ① Giỏ hàng -->
+                <div class="cart-section form-section">
+                    <div class="section-header" style="cursor: default; background: white;">
+                        <span class="section-num">1</span>
+                        <h3>Giỏ hàng</h3>
+                        <button class="btn-change-pkg" onclick="history.back()">← Đổi gói</button>
+                    </div>
+                    <div class="section-body" style="padding-top: 0;">
+                        <!-- Cart table -->
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Gói sản phẩm / Dịch vụ</th>
+                                    <th>Đơn vị tính</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn giá (VND)</th>
+                                    <th>Thành tiền (VND)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <div class="cart-product-icon" id="cart_icon" style="font-size: 24px;">🔑</div>
+                                            <div>
+                                                <div class="cart-product-name" id="cart_name">Chữ ký số USB Token</div>
+                                                <div class="cart-product-sub" id="cart_pkg">Gói 2 Năm</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Gói</td>
+                                    <td>1</td>
+                                    <td id="cart_price">2.189.000</td>
+                                    <td id="cart_total" style="font-weight: 600;">2.189.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Upsell: Sản phẩm thường mua cùng -->
+                        <div class="upsell-section">
+                            <div class="upsell-title">Sản phẩm thường được mua cùng</div>
+                            <div class="upsell-grid" id="upsell_grid">
+                                <!-- Render tùy theo sản phẩm chính đang mua -->
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- ② Thông tin người mua hàng -->
+                <div class="form-section accordion open" id="sec_buyer">
+                    <div class="section-header" onclick="toggleSection('sec_buyer')">
+                        <span class="section-num">2</span>
+                        <h3>Thông tin người mua hàng</h3>
+                        <span class="chevron">▲</span>
+                    </div>
+                    <div class="section-body">
+                        <div class="form-grid-3">
+                            <div class="field">
+                                <label>Họ và tên <span class="req">*</span></label>
+                                <input type="text" id="hoTen" placeholder="Nhập họ và tên" oninput="clearErr(this)">
+                                <div class="field-error" id="err_hoTen">Vui lòng nhập họ và tên</div>
+                            </div>
+                            <div class="field">
+                                <label>Số điện thoại <span class="req">*</span></label>
+                                <input type="tel" id="sdt" placeholder="Nhập số điện thoại" oninput="clearErr(this)">
+                                <div class="field-error" id="err_sdt">Vui lòng nhập SĐT hợp lệ</div>
+                            </div>
+                            <div class="field">
+                                <label>Chức danh <span class="req">*</span></label>
+                                <select id="chucDanh" onchange="clearErr(this)">
+                                    <option value="">Chọn chức danh</option>
+                                    <option>Giám đốc</option>
+                                    <option>Phó Giám đốc</option>
+                                    <option>Kế toán trưởng</option>
+                                    <option>Kế toán</option>
+                                    <option>Nhân viên</option>
+                                    <option>Chủ hộ kinh doanh</option>
+                                    <option>Cá nhân</option>
+                                </select>
+                                <div class="field-error" id="err_chucDanh">Vui lòng chọn chức danh</div>
+                            </div>
+                        </div>
+                        <div class="field mt16">
+                            <label>Email nhận mã kích hoạt và giấy phép sử dụng <span class="req">*</span></label>
+                            <input type="email" id="emailKichHoat" placeholder="Nhập địa chỉ email" oninput="clearErr(this)">
+                            <div class="field-error" id="err_emailKichHoat">Email không hợp lệ</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ③ Thông tin xuất hoá đơn -->
+                <div class="form-section accordion open" id="sec_invoice">
+                    <div class="section-header" onclick="toggleSection('sec_invoice')">
+                        <span class="section-num">3</span>
+                        <h3>Thông tin xuất hoá đơn</h3>
+                        <span class="chevron">▲</span>
+                    </div>
+                    <div class="section-body">
+                        <!-- Đối tượng nhận hoá đơn -->
+                        <div class="field">
+                            <label>Đối tượng nhận hoá đơn <span class="req">*</span></label>
+                            <div class="radio-inline-group">
+                                <label class="radio-inline">
+                                    <input type="radio" name="doiTuongHD" value="dn" checked onchange="onDoiTuongHD(this)">
+                                    Doanh nghiệp
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="doiTuongHD" value="hkd" onchange="onDoiTuongHD(this)">
+                                    Hộ kinh doanh
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="doiTuongHD" value="cn" onchange="onDoiTuongHD(this)">
+                                    Cá nhân
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Fields theo đối tượng -->
+                        <div class="form-grid-2 mt16" id="fields_dn_hkd">
+                            <div class="field">
+                                <label>Mã số thuế <span class="req">*</span></label>
+                                <input type="text" id="maSoThue" placeholder="Nhập mã số thuế" oninput="clearErr(this)">
+                                <div class="field-error" id="err_maSoThue">Vui lòng nhập MST</div>
+                            </div>
+                            <div class="field">
+                                <label>Tên đơn vị <span class="req">*</span></label>
+                                <input type="text" id="tenDonVi" placeholder="Nhập tên đơn vị" oninput="clearErr(this)">
+                                <div class="field-error" id="err_tenDonVi">Vui lòng nhập tên đơn vị</div>
+                            </div>
+                        </div>
+
+                        <div class="form-grid-3 mt16">
+                            <div class="field">
+                                <label>Quốc gia <span class="req">*</span></label>
+                                <select id="quocGia">
+                                    <option value="vn" selected>Việt Nam</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>Tỉnh / Thành phố <span class="req">*</span></label>
+                                <select id="tinhTp" onchange="clearErr(this)">
+                                    <option value="">Chọn tỉnh/thành phố</option>
+                                    <option value="HN">Hà Nội</option>
+                                    <option value="HCM">Hồ Chí Minh</option>
+                                    <option value="DN">Đà Nẵng</option>
+                                </select>
+                                <div class="field-error" id="err_tinhTp">Vui lòng chọn tỉnh/TP</div>
+                            </div>
+                            <div class="field">
+                                <label>Phường / Xã <span class="req">*</span></label>
+                                <select id="phuongXa" onchange="clearErr(this)">
+                                    <option value="">Chọn phường/xã</option>
+                                    <option value="1">Phường 1</option>
+                                    <option value="2">Phường 2</option>
+                                </select>
+                                <div class="field-error" id="err_phuongXa">Vui lòng chọn phường/xã</div>
+                            </div>
+                        </div>
+
+                        <div class="field mt16">
+                            <label>Địa chỉ đầy đủ <span class="req">*</span></label>
+                            <input type="text" id="diaChi" placeholder="Số nhà, tên đường..." oninput="clearErr(this)">
+                            <div class="field-error" id="err_diaChi">Vui lòng nhập địa chỉ</div>
+                        </div>
+
+                        <div class="field mt16">
+                            <label>Email nhận hoá đơn <span class="req">*</span></label>
+                            <input type="email" id="emailHD" placeholder="Nhập địa chỉ email" oninput="clearErr(this)">
+                            <div class="field-error" id="err_emailHD">Email không hợp lệ</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ④ Upload hồ sơ (chỉ hiện với sản phẩm cần hồ sơ) -->
+                <div class="form-section accordion open" id="sec_upload">
+                    <div class="section-header" onclick="toggleSection('sec_upload')">
+                        <span class="section-num">4</span>
+                        <h3>Upload hồ sơ điện tử</h3>
+                        <span class="chevron">▲</span>
+                    </div>
+                    <div class="section-body">
+                        <div class="notice-box" style="background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px 16px; margin-bottom: 16px; font-size: 13px; border-radius: 4px;">
+                            📌 Upload ảnh chụp / scan. File PDF hoặc JPG/PNG, tối đa 10MB mỗi file.
+                        </div>
+                        <div class="upload-grid" id="upload_grid">
+                            <!-- Render upload slots -->
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="register-container" style="border-radius: 0 0 var(--card-radius) var(--card-radius); margin-top: 0;">
-                <!-- Dynamic step indicator -->
-                <div class="step-indicator" id="step-indicator"></div>
+            <!-- Cột phải (Sidebar Sticky) -->
+            <aside class="order-sidebar">
+                <!-- Tóm tắt đơn hàng -->
+                <div class="sidebar-card">
+                    <div class="sidebar-title">📦 Thông tin tài nguyên</div>
+                    <div class="sidebar-product" id="sb_productName">Chữ ký số USB Token</div>
+                    <div class="sidebar-row">
+                        <span>Số lượng</span><span>1</span>
+                    </div>
+                    <div class="sidebar-row">
+                        <span>Thời hạn sử dụng / Gói</span>
+                        <span id="sb_duration">2 năm</span>
+                    </div>
+                </div>
 
-                <form id="register-form" novalidate>
-                    <div class="form-body" id="form-body">
-                        <!-- All step sections injected dynamically -->
+                <!-- Mã giới thiệu / Mã KM -->
+                <div class="sidebar-card">
+                    <div class="sidebar-title">🏷️ Mã giới thiệu / Khuyến mại</div>
+                    <div class="promo-row">
+                        <input type="text" id="maKM" placeholder="Nhập mã...">
+                        <button onclick="applyPromo()">Áp dụng</button>
                     </div>
-                    <div class="form-footer">
-                        <button type="button" class="btn btn-outline" id="prev-btn" style="visibility: hidden;">← Quay lại</button>
-                        <button type="button" class="btn btn-accent" id="next-btn">Tiếp theo →</button>
+                    <!-- Mã KD mặc định ẩn -->
+                    <input type="hidden" id="maKD" value="NCM-DEFAULT">
+                </div>
+
+                <!-- Phương thức thanh toán -->
+                <div class="sidebar-card">
+                    <div class="sidebar-title">💳 Phương thức thanh toán</div>
+                    <div class="payment-options">
+                        <label class="payment-opt selected" id="pt_ck">
+                            <input type="radio" name="ptTT" value="chuyen_khoan" checked onchange="onSelectPT(this)" style="display:none">
+                            <span style="font-size: 18px; margin-right: 8px;">🏦</span> Chuyển khoản ngân hàng
+                        </label>
+                        <label class="payment-opt" id="pt_atm">
+                            <input type="radio" name="ptTT" value="the_atm" onchange="onSelectPT(this)" style="display:none">
+                            <span style="font-size: 18px; margin-right: 8px;">💳</span> Thẻ ATM nội địa
+                        </label>
+                        <label class="payment-opt" id="pt_intl">
+                            <input type="radio" name="ptTT" value="the_qt" onchange="onSelectPT(this)" style="display:none">
+                            <span style="font-size: 18px; margin-right: 8px;">🌐</span> Thẻ quốc tế (Visa/Master)
+                        </label>
+                        <label class="payment-opt" id="pt_ewallet">
+                            <input type="radio" name="ptTT" value="vi_dt" onchange="onSelectPT(this)" style="display:none">
+                            <span style="font-size: 18px; margin-right: 8px;">📱</span> Ví điện tử (MoMo/ZaloPay)
+                        </label>
                     </div>
-                </form>
-            </div>
+                    <div class="payment-note">Hỗ trợ bởi cổng thanh toán <strong>JetPay</strong></div>
+                </div>
+
+                <!-- Tổng thanh toán -->
+                <div class="sidebar-card sidebar-total">
+                    <div class="total-row">
+                        <span id="sb_pkgLabel">Gói 2 Năm</span>
+                        <span id="sb_priceVal">2.189.000</span>
+                    </div>
+                    <div class="total-final">
+                        <span>Tổng thanh toán</span>
+                        <span id="sb_totalVal" class="total-amount">2.189.000 đ</span>
+                    </div>
+                    <div class="total-note">Đã bao gồm VAT 10%</div>
+                </div>
+
+                <!-- Điều khoản + CTA -->
+                <div class="sidebar-card">
+                    <label class="agree-row" style="display: flex; gap: 8px; font-size: 13px; cursor: pointer; margin-bottom: 4px;">
+                        <input type="checkbox" id="chkAgree" style="margin-top: 2px;">
+                        <div>
+                            Tôi đồng ý với <a href="https://nacencomm.vn" target="_blank" style="color: var(--primary-navy); text-decoration: none; font-weight: 600;">Thỏa thuận mua hàng</a> và <a href="https://nacencomm.vn" target="_blank" style="color: var(--primary-navy); text-decoration: none; font-weight: 600;">Chính sách bảo vệ dữ liệu</a>
+                        </div>
+                    </label>
+                    <div class="field-error" id="err_agree" style="margin: 0 0 12px 22px; font-size: 12px; display: none; color: var(--accent-red);">
+                        Vui lòng đồng ý điều khoản
+                    </div>
+
+                    <button class="btn-submit" id="btnSubmit" onclick="submitForm()">
+                        🛒 Gửi đăng ký
+                    </button>
+
+                    <button class="btn-download-quote" onclick="downloadQuote()">
+                        📥 Tải xuống báo giá
+                    </button>
+                </div>
+            </aside>
         </div>
     </main>
 
@@ -69,10 +323,8 @@
         </div>
     </div>
 
+    <script src="js/pricing-data.js"></script>
     <script src="js/products-data.js"></script>
-    <script src="js/step-controller.js"></script>
-    <script src="js/form-validator.js"></script>
-    <script src="js/flow-engine.js"></script>
     <script src="js/register-app.js"></script>
 </body>
 </html>
