@@ -374,6 +374,90 @@ footer {
     display: flex; justify-content: space-between; font-size: 13px; opacity: 0.6;
 }
 
+/* ═══ Homepage Pricing Section ═══ */
+.section-pricing-home { padding: 80px 0; background: var(--bg-light); }
+
+.home-pricing-tabs {
+    display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; flex-wrap: wrap;
+}
+.hp-tab {
+    padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 600;
+    cursor: pointer; border: 2px solid rgba(0,0,0,0.08); background: white;
+    color: var(--text-muted); transition: var(--transition); display: flex;
+    align-items: center; gap: 6px;
+}
+.hp-tab:hover { border-color: var(--dark-navy); color: var(--dark-navy); }
+.hp-tab.active {
+    background: var(--dark-navy); color: white; border-color: var(--dark-navy);
+}
+
+/* Cards Grid */
+.hp-cards-grid {
+    display: grid; gap: 20px; max-width: 900px; margin: 24px auto 0;
+    grid-template-columns: repeat(3, 1fr);
+}
+.hp-cards-grid.cols-2 { grid-template-columns: repeat(2, 1fr); max-width: 600px; }
+.hp-cards-grid.cols-4 { grid-template-columns: repeat(4, 1fr); max-width: 1100px; }
+
+/* Package Card */
+.hp-pkg-card {
+    position: relative; background: white; border: 2px solid rgba(0,0,0,0.06);
+    border-radius: 16px; padding: 32px 24px 24px; text-align: center;
+    transition: var(--transition); display: flex; flex-direction: column; align-items: center;
+}
+.hp-pkg-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--dark-navy); }
+.hp-pkg-card.popular { border-color: var(--accent-red); }
+
+.hp-badge-pop {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--accent-red); color: white; font-size: 11px; font-weight: 700;
+    padding: 4px 14px; border-radius: 20px; white-space: nowrap;
+}
+.hp-badge-note {
+    position: absolute; top: -10px; right: 12px; background: var(--dark-navy);
+    color: white; font-size: 10px; font-weight: 700; padding: 3px 10px;
+    border-radius: 20px; white-space: nowrap;
+}
+
+.hp-pkg-name { font-size: 20px; font-weight: 700; color: var(--dark-navy); margin-bottom: 4px; }
+.hp-pkg-dur { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+.hp-pkg-price { margin-bottom: 20px; }
+.hp-price { display: block; font-size: 26px; font-weight: 800; color: var(--dark-navy); }
+.hp-vat { display: block; font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.hp-price-contact { font-size: 17px; font-weight: 600; color: var(--dark-navy); }
+
+.btn-buy-now {
+    width: 100%; padding: 13px 0; border-radius: 8px; font-size: 15px; font-weight: 700;
+    cursor: pointer; border: none; background: var(--accent-red); color: white;
+    transition: var(--transition); margin-bottom: 8px;
+    box-shadow: 0 4px 15px rgba(230,57,70,0.25);
+}
+.btn-buy-now:hover { background: var(--accent-red-hover); transform: translateY(-1px); }
+.hp-pkg-card.popular .btn-buy-now { background: var(--accent-red); }
+
+.btn-consult-inline {
+    width: 100%; padding: 10px 0; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; border: 1.5px solid rgba(0,0,0,0.1); background: white;
+    color: var(--text-muted); transition: var(--transition);
+}
+.btn-consult-inline:hover { border-color: var(--dark-navy); color: var(--dark-navy); }
+
+/* Consult Panel */
+.hp-consult-panel { max-width: 600px; margin: 24px auto 0; }
+.hp-consult-card {
+    background: white; border: 2px solid rgba(0,0,0,0.06); border-radius: 16px;
+    padding: 48px 32px; text-align: center;
+}
+.hp-consult-card h3 { font-size: 22px; color: var(--dark-navy); margin-bottom: 12px; }
+.hp-consult-card p { color: var(--text-muted); font-size: 15px; margin-bottom: 24px; line-height: 1.7; }
+.hp-consult-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.btn-consult-small {
+    padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600;
+    border: 1.5px solid rgba(255,255,255,0.3); color: var(--dark-navy);
+    border-color: var(--dark-navy); transition: var(--transition);
+}
+.btn-consult-small:hover { background: var(--dark-navy); color: white; }
+
 /* ═══ Animation ═══ */
 .fade-in { animation: fadeIn 1s cubic-bezier(0.16,1,0.3,1) forwards; }
 @keyframes fadeIn {
@@ -401,4 +485,8 @@ footer {
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
     .hero-btns { flex-direction: column; align-items: center; }
+    .hp-cards-grid, .hp-cards-grid.cols-4 { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+    .hp-cards-grid.cols-2 { grid-template-columns: 1fr; max-width: 400px; }
+    .home-pricing-tabs { gap: 6px; }
+    .hp-tab { font-size: 12px; padding: 8px 14px; }
 }
