@@ -8,10 +8,11 @@ import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { name: "Trang chủ", href: "/" },
-  { name: "Sản phẩm", href: "/products" },
+  { name: "Sản phẩm", href: "#products" },
   { name: "Bảng giá", href: "/pricing" },
-  { name: "Giải pháp", href: "/solutions" },
-  { name: "Liên hệ", href: "/contact" },
+  { name: "Giải pháp", href: "#solutions" },
+  { name: "Hỗ trợ", href: "#support" },
+  { name: "Liên hệ", href: "#contact" },
 ];
 
 export function Header() {
@@ -30,17 +31,14 @@ export function Header() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {[
-            { name: "Sản phẩm", href: "#products" },
-            { name: "Giải pháp", href: "#solutions" },
-            { name: "Hỗ trợ", href: "#support" },
-            { name: "Giới thiệu", href: "#about" },
-            { name: "Liên hệ", href: "#contact" },
-          ].map((item) => (
+          {NAV_LINKS.map((item) => (
             <Link 
               key={item.name} 
               href={item.href}
-              className="text-sm font-semibold text-gray-600 hover:text-brand-blue transition-colors"
+              className={cn(
+                "text-sm font-semibold transition-colors hover:text-brand-blue",
+                pathname === item.href ? "text-brand-blue" : "text-gray-600"
+              )}
             >
               {item.name}
             </Link>
