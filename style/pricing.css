@@ -27,43 +27,47 @@
 .pricing-tabs {
     display: flex;
     justify-content: center;
-    gap: 0;
-    background: white;
-    border-bottom: 2px solid var(--border-color);
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-soft);
     position: sticky;
-    top: 62px;
+    top: 72px;
     z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 12px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
 .pricing-tab {
-    padding: 16px 28px;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-muted);
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-light);
     cursor: pointer;
-    border: none;
-    background: none;
-    border-bottom: 3px solid transparent;
-    transition: all 0.25s;
+    border: 1.5px solid transparent;
+    background: transparent;
+    border-radius: 999px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     white-space: nowrap;
 }
 
 .pricing-tab:hover {
     color: var(--primary-navy);
-    background: var(--light-navy);
+    background: rgba(0, 45, 114, 0.05);
 }
 
 .pricing-tab.active {
-    color: var(--primary-navy);
-    border-bottom-color: var(--primary-navy);
+    color: white;
+    background: var(--primary-navy);
+    border-color: var(--primary-navy);
+    box-shadow: 0 4px 12px rgba(0, 45, 114, 0.25);
 }
 
 .pricing-tab .tab-icon {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 /* ── Dropdown wrapper ── */
