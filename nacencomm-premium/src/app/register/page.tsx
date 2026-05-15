@@ -51,7 +51,7 @@ const UPSELL_ITEMS = [
   { id: "thuetncn", name: "Thuế TNCN", price: "240.000", icon: "⚖️" },
 ];
 
-type FlowState = "form" | "signing" | "reviewing" | "approved" | "activated" | "rejected" | "sales_success";
+type FlowState = "form" | "signing" | "reviewing" | "approved" | "activated" | "rejected" | "sales_success" | "payment_success";
 
 function RegisterForm() {
   const searchParams = useSearchParams();
@@ -433,8 +433,47 @@ function RegisterForm() {
 
             <div className="mt-12 pt-8 border-t border-gray-100 flex flex-wrap justify-center gap-4">
               <Button onClick={() => window.location.href="/"} variant="outline" className="rounded-xl px-8 font-bold border-gray-200">Về trang chủ</Button>
-              <Button className="rounded-xl px-8 font-bold bg-brand-blue text-white shadow-lg shadow-brand-blue/20">Tôi đã chuyển khoản</Button>
+              <Button 
+                onClick={() => setFlowState("payment_success")} 
+                className="rounded-xl px-8 font-bold bg-brand-blue text-white shadow-lg shadow-brand-blue/20"
+              >
+                Tôi đã chuyển khoản
+              </Button>
             </div>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // Flow B: Payment Success Final
+  if (flowState === "payment_success") {
+    return (
+      <div className="pt-40 pb-20 px-4 flex items-center justify-center bg-[#F4F7FA]">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
+          className="max-w-md w-full bg-white rounded-3xl shadow-premium p-10 text-center border border-gray-100"
+        >
+          <div className="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8">
+            <CheckCircle2 className="w-10 h-10" />
+          </div>
+          <h2 className="text-2xl font-black text-brand-dark mb-2">Thanh toán thành công!</h2>
+          <div className="text-xs text-gray-400 font-bold mb-8 flex flex-col items-center gap-1">
+            Mã giao dịch: <span className="text-brand-blue">TXN-88219-99</span>
+          </div>
+          
+          <div className="p-6 bg-[#F8FAFC] rounded-2xl text-sm text-gray-600 leading-relaxed mb-8">
+            Hệ thống đã ghi nhận thanh toán của bạn. <br/>
+            <strong>Nhân viên kinh doanh sẽ liên hệ bạn</strong> qua SĐT/Email trong vòng 1 ngày làm việc để bàn giao và hướng dẫn sử dụng dịch vụ.
+          </div>
+
+          <div className="space-y-3">
+            <Button onClick={() => window.location.href="/"} className="w-full rounded-xl bg-brand-blue text-white font-bold py-6 shadow-lg shadow-brand-blue/20">
+              Về trang chủ
+            </Button>
+            <Button onClick={() => window.location.href="/pricing"} variant="outline" className="w-full rounded-xl font-bold py-6 border-gray-200">
+              Xem sản phẩm khác
+            </Button>
           </div>
         </motion.div>
       </div>
