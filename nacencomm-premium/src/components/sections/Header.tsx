@@ -28,27 +28,33 @@ export function Header() {
           <span className="text-xl font-extrabold text-brand-dark tracking-tight">Nacencomm</span>
         </Link>
 
-        <div className="hidden md:flex items-center space-x-8">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={cn(
-                "text-sm font-semibold transition-colors hover:text-brand-blue",
-                pathname === link.href ? "text-brand-blue" : "text-gray-600"
-              )}
+        <div className="hidden md:flex items-center gap-8">
+          {[
+            { name: "Sản phẩm", href: "#products" },
+            { name: "Giải pháp", href: "#solutions" },
+            { name: "Hỗ trợ", href: "#support" },
+            { name: "Giới thiệu", href: "#about" },
+            { name: "Liên hệ", href: "#contact" },
+          ].map((item) => (
+            <Link 
+              key={item.name} 
+              href={item.href}
+              className="text-sm font-semibold text-gray-600 hover:text-brand-blue transition-colors"
             >
-              {link.name}
+              {item.name}
             </Link>
           ))}
         </div>
 
-        <div>
+        <div className="flex items-center gap-3">
           <Link href="/register">
-            <Button variant="red" size="md">
+            <Button variant="red" size="md" className="rounded-full px-6">
               Đăng ký ngay
             </Button>
           </Link>
+          <Button variant="outline" size="md" className="rounded-full px-6 hidden sm:flex items-center gap-2">
+            <User className="w-4 h-4" /> Đăng nhập
+          </Button>
         </div>
       </nav>
     </header>
