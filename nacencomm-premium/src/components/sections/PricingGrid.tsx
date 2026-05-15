@@ -2,11 +2,13 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Calendar, User, Users } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const PRICING_PLANS = [
   {
+    id: "1-nam",
     name: "1 Năm",
     price: "1.638.000 đ",
     icon: Calendar,
@@ -19,6 +21,7 @@ const PRICING_PLANS = [
     ]
   },
   {
+    id: "2-nam",
     name: "2 Năm",
     price: "2.189.000 đ",
     icon: User,
@@ -32,6 +35,7 @@ const PRICING_PLANS = [
     ]
   },
   {
+    id: "3-nam",
     name: "3 Năm",
     price: "3.100.000 đ",
     icon: Users,
@@ -83,12 +87,14 @@ export function PricingGrid() {
             <div className="text-3xl font-extrabold text-brand-blue mb-1">{plan.price}</div>
             <p className="text-xs text-gray-400 mb-8 font-medium italic">Đã bao gồm VAT 10%</p>
 
-            <Button 
-              variant={plan.popular ? "red" : "primary"} 
-              className="w-full mb-8 py-6 rounded-xl"
-            >
-              Mua ngay
-            </Button>
+            <Link href={`/register?pkg=${plan.id}`} className="w-full mb-8">
+              <Button 
+                variant={plan.popular ? "red" : "primary"} 
+                className="w-full py-6 rounded-xl"
+              >
+                Mua ngay
+              </Button>
+            </Link>
 
             <ul className="w-full space-y-4">
               {plan.features.map((feature) => (

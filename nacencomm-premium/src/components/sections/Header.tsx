@@ -44,9 +44,11 @@ export function Header() {
         </div>
 
         <div>
-          <Button variant="red" size="md">
-            Đăng ký ngay
-          </Button>
+          <Link href="/register">
+            <Button variant="red" size="md">
+              Đăng ký ngay
+            </Button>
+          </Link>
         </div>
       </nav>
     </header>
