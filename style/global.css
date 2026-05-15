@@ -613,3 +613,49 @@ footer {
     .feature-list, .package-grid { grid-template-columns: 1fr; }
     .sticky-buy { display: block; left: 24px; text-align: center; }
 }
+/* ═══ Stitch-Style Layout Patterns ═══ */
+.split-hero {
+    display: flex; align-items: center; justify-content: space-between; gap: 60px;
+    padding: 160px 0 100px; background: var(--hero-gradient); color: white;
+}
+.split-hero-content { flex: 1; max-width: 600px; }
+.split-hero-image { flex: 1; position: relative; }
+.split-hero-image img { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+.feature-block { 
+    display: flex; align-items: center; gap: 80px; padding: 100px 0;
+}
+.feature-block.reverse { flex-direction: row-reverse; }
+.feature-block-content { flex: 1; }
+.feature-block-image { flex: 1; }
+.feature-block-image img { 
+    width: 100%; border-radius: 16px; 
+    box-shadow: 0 30px 60px rgba(11, 59, 142, 0.15);
+    border: 1px solid var(--border-soft);
+}
+.feature-block h2 { font-size: 32px; font-weight: 800; color: var(--dark-navy); margin-bottom: 20px; }
+.feature-block p { font-size: 17px; color: var(--text-muted); line-height: 1.8; margin-bottom: 30px; }
+
+.stitch-pricing-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    margin-top: 48px;
+}
+.stitch-pkg-card {
+    background: white; border: 1px solid var(--border-soft); border-radius: 12px;
+    padding: 40px 24px; text-align: center; transition: var(--transition);
+}
+.stitch-pkg-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-premium); border-color: var(--primary-navy); }
+.stitch-pkg-icon { font-size: 40px; margin-bottom: 20px; }
+.stitch-pkg-card h3 { font-size: 18px; font-weight: 700; color: var(--dark-navy); margin-bottom: 12px; }
+.stitch-pkg-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; height: 40px; overflow: hidden; }
+
+@media (max-width: 1024px) {
+    .split-hero { flex-direction: column; text-align: center; padding: 120px 0 60px; }
+    .split-hero-content { max-width: 100%; }
+    .feature-block { flex-direction: column; text-align: center; gap: 40px; padding: 60px 0; }
+    .feature-block.reverse { flex-direction: column; }
+    .stitch-pricing-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .stitch-pricing-grid { grid-template-columns: 1fr; }
+}

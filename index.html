@@ -4,457 +4,185 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nacencomm – Nền tảng số toàn diện cho doanh nghiệp Việt</title>
-    <meta name="description" content="CA2 Nacencomm – TOP 3 nhà cung cấp chữ ký số tại Việt Nam. Hơn 200.000 khách hàng tin dùng.">
+    <meta name="description" content="Nacencomm – Nền tảng chuyển đổi số toàn diện. Tăng tốc số hóa, bảo mật hàng đầu và tối ưu hiệu quả kinh doanh.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="style/global.css?v=6">
-    <link rel="stylesheet" href="style/pricing.css?v=6">
+    <link rel="stylesheet" href="style/global.css?v=7">
 </head>
 <body>
     <!-- ═══ HEADER ═══ -->
     <header id="site-header">
         <div class="container header-inner">
-            <a href="index.html" class="logo" id="logo-link">
+            <a href="index.html" class="logo">
                 <div class="logo-badge">CA2</div>
                 <div class="logo-text"><h1>NACENCOMM</h1></div>
             </a>
-            <nav id="main-nav">
+            <nav>
                 <ul>
                     <li><a href="index.html" class="nav-active">Trang chủ</a></li>
                     <li><a href="products.html">Sản phẩm</a></li>
-                    <li><a href="#pricing">Bảng giá</a></li>
-                    <li><a href="#about">Giới thiệu</a></li>
-                    <li><a href="#contact">Liên hệ</a></li>
+                    <li><a href="pricing.html">Bảng giá</a></li>
+                    <li><a href="index.html#solutions">Giải pháp</a></li>
+                    <li><a href="index.html#contact">Liên hệ</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                <span class="hotline" style="font-weight: 700; color: var(--primary-navy); margin-right: 15px;">☎ 1900 5454 07</span>
-                <a href="#pricing" class="btn-register-online" style="border-radius: 12px; padding: 12px 24px;">Gửi đăng ký ngay</a>
+                <a href="pricing.html" class="btn-register-online" style="background: var(--accent-red); border: none; padding: 10px 20px;">Đăng ký ngay</a>
+                <a href="#" class="btn-login" style="margin-left: 10px; border: 1.5px solid var(--border-soft); padding: 9px 18px; border-radius: 10px; font-weight: 600; text-decoration: none; color: var(--text-main);">Đăng nhập</a>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- ═══ HERO ═══ -->
-        <section class="hero" id="hero-section">
-            <div class="hero-bg-orb hero-bg-orb-1"></div>
-            <div class="hero-bg-orb hero-bg-orb-2"></div>
-            <div class="container hero-content fade-in">
-                <span class="hero-kicker" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 6px 16px; font-size: 13px;">🏆 TOP 3 nhà cung cấp chữ ký số tại Việt Nam</span>
-                <h2 style="font-weight: 800; letter-spacing: -1.5px; margin-top: 20px;">Chữ ký số & Giải pháp số<br>Premium Enterprise</h2>
-                <p style="font-weight: 400; opacity: 0.9; max-width: 700px; margin: 0 auto 40px;">Hệ sinh thái dịch vụ số tin cậy cho hơn 200.000 doanh nghiệp. Đăng ký trực tuyến, bàn giao dịch vụ trong vòng 1 ngày làm việc.</p>
-                <div class="hero-btns">
-                    <a href="#pricing" class="btn-hero-white" style="border-radius: 12px; font-weight: 700;">🛒 Xem bảng giá & Mua ngay</a>
-                    <a href="tel:1900545407" class="btn-hero-red" style="border-radius: 12px; font-weight: 700; background: var(--accent-red);">☎ Gọi tư vấn miễn phí</a>
+        <!-- ═══ SPLIT HERO ═══ -->
+        <section class="split-hero">
+            <div class="container" style="display: flex; align-items: center; gap: 60px;">
+                <div class="split-hero-content fade-in">
+                    <h1 style="font-size: 56px; line-height: 1.1; font-weight: 800; margin-bottom: 24px;">Nền tảng chuyển đổi số toàn diện cho doanh nghiệp Việt</h1>
+                    <p style="font-size: 18px; opacity: 0.9; margin-bottom: 40px; line-height: 1.6;">Tăng tốc số hóa, bảo mật hàng đầu và tối ưu hiệu quả kinh doanh cùng giải pháp chữ ký số và an ninh mạng từ Nacencomm.</p>
+                    <div class="hero-btns" style="justify-content: flex-start;">
+                        <a href="products.html" class="btn-hero-white" style="border-radius: 12px; font-weight: 700;">Khám phá nền tảng</a>
+                        <a href="pricing.html" class="btn-hero-red" style="border-radius: 12px; font-weight: 700; background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.3);">Xem demo sản phẩm</a>
+                    </div>
+                </div>
+                <div class="split-hero-image fade-in">
+                    <img src="assets/hero-globe.png" alt="Digital Network Globe">
                 </div>
             </div>
         </section>
 
-        <!-- ═══ STATS BAR ═══ -->
-        <section class="stats-bar" id="stats-section">
-            <div class="container stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number">200,000+</span>
-                    <span class="stat-label">Khách hàng</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">63</span>
-                    <span class="stat-label">Tỉnh thành</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">14+</span>
-                    <span class="stat-label">Sản phẩm & dịch vụ</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">28</span>
-                    <span class="stat-label">Năm kinh nghiệm</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══ TRUSTED BY (LOGOS) ═══ -->
-        <section style="padding: 40px 0; border-bottom: 1px solid var(--border-soft);">
-            <div class="container" style="text-align: center;">
-                <p style="font-size: 13px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px;">ĐƯỢC TIN DÙNG BỞI CÁC CƠ QUAN CHÍNH PHỦ & DOANH NGHIỆP</p>
-                <div style="display: flex; justify-content: center; align-items: center; gap: 40px; opacity: 0.6; grayscale: 1; flex-wrap: wrap;">
-                    <span style="font-weight: 800; color: #8891a4; font-size: 18px;">BỘ TÀI CHÍNH</span>
-                    <span style="font-weight: 800; color: #8891a4; font-size: 18px;">TỔNG CỤC THUẾ</span>
-                    <span style="font-weight: 800; color: #8891a4; font-size: 18px;">BẢO HIỂM XH</span>
-                    <span style="font-weight: 800; color: #8891a4; font-size: 18px;">HẢI QUAN VN</span>
-                    <span style="font-weight: 800; color: #8891a4; font-size: 18px;">BỘ CA</span>
-                </div>
-            </div>
-        </section>
-        <section class="section-pricing-home" id="pricing">
+        <!-- ═══ PRICING SECTION (STITCH STYLE) ═══ -->
+        <section class="section" id="pricing" style="background: #fcfcfc;">
             <div class="container">
                 <div class="section-title section-title-center">
-                    <span class="section-kicker">BẢNG GIÁ SẢN PHẨM</span>
-                    <h2>Chọn sản phẩm — Mua ngay — Dùng liền</h2>
-                    <p>Giá đã bao gồm VAT. Hỗ trợ 24/7 qua hotline 1900 5454 07.</p>
+                    <h2 style="font-size: 32px; font-weight: 800; color: var(--dark-navy);">Bảng giá sản phẩm</h2>
+                    <p>Chọn gói phù hợp nhất với quy trình đăng ký online trong vài bước.</p>
+                </div>
+                
+                <div class="stitch-pricing-grid">
+                    <div class="stitch-pkg-card">
+                        <div class="stitch-pkg-icon">🔑</div>
+                        <h3>Chữ ký số USB Token</h3>
+                        <p>Giải pháp ký số công cộng phổ biến cho cá nhân và tổ chức.</p>
+                        <a href="product-detail.html?slug=cks-token" class="btn btn-outline" style="width: 100%; margin-bottom: 12px; border-radius: 8px;">Tìm hiểu thêm</a>
+                        <a href="pricing.html?product=cks-token" class="btn btn-accent" style="width: 100%; background: var(--accent-red); color: white; border-radius: 8px;">🛒 Mua ngay</a>
+                    </div>
+                    <div class="stitch-pkg-card">
+                        <div class="stitch-pkg-icon">📱</div>
+                        <h3>Remote Signing</h3>
+                        <p>Ký số không dùng thiết bị, an toàn và tiện lợi trên di động.</p>
+                        <a href="product-detail.html?slug=remote-signing" class="btn btn-outline" style="width: 100%; margin-bottom: 12px; border-radius: 8px;">Tìm hiểu thêm</a>
+                        <a href="pricing.html?product=remote-signing" class="btn btn-accent" style="width: 100%; background: var(--accent-red); color: white; border-radius: 8px;">🛒 Mua ngay</a>
+                    </div>
+                    <div class="stitch-pkg-card">
+                        <div class="stitch-pkg-icon">🏛️</div>
+                        <h3>CA2 Sign Platform</h3>
+                        <p>Nền tảng ký số tập trung cho quản trị doanh nghiệp hiện đại.</p>
+                        <a href="product-detail.html?slug=ca2-sign" class="btn btn-outline" style="width: 100%; margin-bottom: 12px; border-radius: 8px;">Tìm hiểu thêm</a>
+                        <a href="pricing.html?product=ca2-sign" class="btn btn-accent" style="width: 100%; background: var(--accent-red); color: white; border-radius: 8px;">🛒 Mua ngay</a>
+                    </div>
+                    <div class="stitch-pkg-card">
+                        <div class="stitch-pkg-icon">🧾</div>
+                        <h3>Hóa đơn điện tử CA2</h3>
+                        <p>Phát hành và quản lý hóa đơn điện tử chuẩn quy định BTC.</p>
+                        <a href="product-detail.html?slug=hoa-don-dien-tu" class="btn btn-outline" style="width: 100%; margin-bottom: 12px; border-radius: 8px;">Tìm hiểu thêm</a>
+                        <a href="pricing.html?product=hoa-don-dien-tu" class="btn btn-accent" style="width: 100%; background: var(--accent-red); color: white; border-radius: 8px;">🛒 Mua ngay</a>
+                    </div>
                 </div>
 
-                <!-- Product Tabs -->
-                <div class="home-pricing-tabs" id="home-pricing-tabs">
-                    <button class="hp-tab active" data-key="cks-token"><span>🔑</span> Chữ ký số</button>
-                    <button class="hp-tab" data-key="remote-signing"><span>📱</span> Remote Signing</button>
-                    <button class="hp-tab" data-key="hoa-don"><span>🧾</span> Hoá đơn ĐT</button>
-                    <button class="hp-tab" data-key="bao-hiem"><span>🛡️</span> Phần mềm BH</button>
-                    <button class="hp-tab" data-key="ca2-platform"><span>🏗️</span> CA2 Platform</button>
-                </div>
-
-                <!-- Controls (sub-tabs, audience) -->
-                <div id="home-controls"></div>
-
-                <!-- Cards Mount -->
-                <div id="home-cards-mount"></div>
-
-                <!-- See all -->
-                <div class="center-actions" style="margin-top: 32px;">
-                    <a href="pricing.html" class="btn-see-all">Xem tất cả 14 sản phẩm & bảng giá →</a>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="pricing.html" class="btn btn-outline" style="background: var(--dark-navy); color: white; border: none; padding: 10px 30px; border-radius: 8px; font-weight: 700;">Xem tất cả 14 sản phẩm</a>
                 </div>
             </div>
         </section>
 
-        <!-- ═══ WHY CHOOSE US ═══ -->
-        <section class="section-why" id="about">
+        <!-- ═══ FEATURE BLOCKS ═══ -->
+        <section id="solutions">
+            <div class="container">
+                <!-- Block 1 -->
+                <div class="feature-block fade-in">
+                    <div class="feature-block-content">
+                        <h2>CA2 Remote Signing toàn Sign platform</h2>
+                        <p>Tăng tốc số hóa, bảo mật hàng đầu và tối ưu hiệu quả kinh doanh cùng giải pháp chữ ký số và an ninh mạng từ Nacencomm.</p>
+                        <a href="product-detail.html?slug=remote-signing" class="btn btn-accent" style="padding: 12px 30px; border-radius: 999px; background: var(--primary-navy); color: white;">Tìm hiểu thêm →</a>
+                    </div>
+                    <div class="feature-block-image">
+                        <img src="assets/dashboard-remote.png" alt="Remote Signing Dashboard">
+                    </div>
+                </div>
+
+                <!-- Block 2 -->
+                <div class="feature-block reverse fade-in">
+                    <div class="feature-block-content">
+                        <h2>CA2 Sign Platform</h2>
+                        <p>Hệ thống hỗ trợ ký số linh hoạt và an toàn, phù hợp với mọi quy mô doanh nghiệp từ nhỏ đến lớn. Đảm bảo tính pháp lý và bảo mật dữ liệu tuyệt đối.</p>
+                        <div style="display: flex; gap: 40px; margin-top: 24px;">
+                            <div>
+                                <strong style="display: block; font-size: 18px; color: var(--primary-navy);">CA2 010</strong>
+                                <span style="font-size: 14px; color: var(--text-light);">Chuẩn hoá quy trình</span>
+                            </div>
+                            <div>
+                                <strong style="display: block; font-size: 18px; color: var(--primary-navy);">CA2 eInvoice</strong>
+                                <span style="font-size: 14px; color: var(--text-light);">Kết nối hoá đơn</span>
+                            </div>
+                            <div>
+                                <strong style="display: block; font-size: 18px; color: var(--primary-navy);">CA2 Sign</strong>
+                                <span style="font-size: 14px; color: var(--text-light);">Ký duyệt tập trung</span>
+                            </div>
+                        </div>
+                        <a href="product-detail.html?slug=ca2-sign" class="btn btn-outline" style="margin-top: 40px; border-radius: 8px;">Tìm hiểu thêm</a>
+                    </div>
+                    <div class="feature-block-image">
+                        <img src="assets/dashboard-sign.png" alt="Sign Platform Dashboard">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ FEATURES ROW ═══ -->
+        <section class="section" style="background: #f8faff;">
             <div class="container">
                 <div class="section-title section-title-center">
-                    <span class="section-kicker" style="color: var(--primary-navy); letter-spacing: 3px; font-weight: 800;">TẠI SAO CHỌN CHÚNG TÔI</span>
-                    <h2 style="font-weight: 800;">Vì sao doanh nghiệp tin tưởng Nacencomm?</h2>
+                    <h2 style="font-size: 24px; font-weight: 800; color: var(--primary-navy); letter-spacing: 2px;">FEATURES</h2>
                 </div>
                 <div class="why-grid">
-                    <div class="why-card">
-                        <div class="why-icon">🏆</div>
-                        <h3>Uy tín hàng đầu</h3>
-                        <p>Tiên phong trong lĩnh vực chữ ký số, PKI và ATTT. Thành viên Tập đoàn HANEL.</p>
-                    </div>
-                    <div class="why-card">
-                        <div class="why-icon">⚡</div>
-                        <h3>Triển khai siêu tốc</h3>
-                        <p>Đăng ký online, xử lý hồ sơ trong 24h. Luồng đăng ký tối ưu, nhanh chóng.</p>
-                    </div>
-                    <div class="why-card">
-                        <div class="why-icon">🛡️</div>
+                    <div class="why-card" style="background: transparent; border: none; box-shadow: none;">
+                        <div class="why-icon" style="background: var(--light-navy); width: 60px; height: 60px; margin: 0 auto 20px;">🛡️</div>
                         <h3>Bảo mật tối đa</h3>
-                        <p>Công nghệ mật mã đạt chuẩn quốc tế. Pháp lý giao dịch điện tử đầy đủ.</p>
+                        <p>Hệ thống bảo mật đa lớp chuẩn quốc tế, đảm bảo an toàn tuyệt đối cho mọi dữ liệu và giao dịch.</p>
                     </div>
-                    <div class="why-card">
-                        <div class="why-icon">🎧</div>
-                        <h3>Hỗ trợ 24/7</h3>
-                        <p>Đội ngũ chuyên gia luôn sẵn sàng. Phủ sóng 63 tỉnh thành toàn quốc.</p>
+                    <div class="why-card" style="background: transparent; border: none; box-shadow: none;">
+                        <div class="why-icon" style="background: var(--light-navy); width: 60px; height: 60px; margin: 0 auto 20px;">🎧</div>
+                        <h3>Hỗ trợ 24/7 chuyên nghiệp</h3>
+                        <p>Đội ngũ kỹ thuật giàu kinh nghiệm luôn sẵn sàng hỗ trợ khách hàng mọi lúc, mọi nơi.</p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══ CTA BAND ═══ -->
-        <section class="section-cta">
-            <div class="container">
-                <div class="cta-band">
-                    <h2>Sẵn sàng chuyển đổi số?</h2>
-                    <p>Đăng ký ngay hôm nay để được tư vấn và bàn giao dịch vụ phù hợp cho doanh nghiệp bạn.</p>
-                    <div class="cta-btns">
-                        <a href="#pricing" class="btn-cta-primary">🛒 Mua ngay</a>
-                        <a href="tel:19005454077" class="btn-cta-secondary">☎ Gọi tư vấn miễn phí</a>
+                    <div class="why-card" style="background: transparent; border: none; box-shadow: none;">
+                        <div class="why-icon" style="background: var(--light-navy); width: 60px; height: 60px; margin: 0 auto 20px;">📜</div>
+                        <h3>Tuân thủ pháp lý cao nhất</h3>
+                        <p>Mọi giải pháp đều tuân thủ nghiêm ngặt các quy định pháp luật Việt Nam về chữ ký số.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- ═══ CART MODAL ═══ -->
-    <div class="cart-modal-overlay" id="cart-modal" style="display:none;">
-        <div class="cart-modal">
-            <button class="cart-modal-close" onclick="closeCartModal()">✕</button>
-            <h2 class="cart-modal-title">Chọn mua <span id="cm_productName"></span></h2>
-            <div class="cart-modal-content">
-                <div class="cart-modal-main">
-                    <div style="font-weight:600;margin-bottom:12px;font-size:14px;">Gói sản phẩm</div>
-                    <table class="cart-modal-table">
-                        <thead><tr><th>Gói</th><th>ĐVT</th><th>SL</th><th>Đơn giá</th><th>Thành tiền</th></tr></thead>
-                        <tbody><tr>
-                            <td><div id="cm_pkgName" style="font-weight:600;color:var(--primary-navy);"></div>
-                                <button style="color:#0066cc;font-size:12px;margin-top:4px;background:none;border:none;cursor:pointer;" onclick="closeCartModal()">✏️ Đổi gói</button></td>
-                            <td>Gói</td>
-                            <td><div class="qty-control"><button onclick="updateQty(-1)">-</button><input type="text" id="cm_qty" value="1" readonly><button onclick="updateQty(1)">+</button></div></td>
-                            <td id="cm_price"></td>
-                            <td id="cm_total" style="font-weight:600;"></td>
-                        </tr></tbody>
-                    </table>
-                </div>
-                <div class="cart-modal-sidebar">
-                    <div class="cms-box">
-                        <div class="cms-header">Thông tin tài nguyên</div>
-                        <div class="cms-product" id="cm_sb_productName"></div>
-                        <div class="cms-row"><span>SL</span><span id="cm_sb_qty">1</span></div>
-                        <div class="cms-row"><span>Thời hạn</span><span id="cm_sb_duration"></span></div>
-                    </div>
-                    <div class="cms-footer">
-                        <div class="cms-total-row"><span>Tổng tiền</span><span id="cm_sb_total" style="font-size:20px;font-weight:700;color:#1a1c23;"></span></div>
-                        <button class="btn-accent" style="width:100%;margin-bottom:10px;font-size:15px;padding:12px;border-radius:6px;background:var(--accent-red);color:white;border:none;cursor:pointer;font-weight:700;" onclick="proceedToCheckout()">🛒 Gửi đăng ký</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- ═══ FOOTER ═══ -->
-    <footer id="contact">
+    <footer style="background: var(--dark-navy); color: white; padding: 40px 0; text-align: center;">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="footer-logo"><div class="logo-badge">CA2</div><strong>NACENCOMM</strong></div>
-                    <p>Tổng Công ty Truyền thông – Thành viên Tập đoàn HANEL. Cung cấp giải pháp CNTT, chữ ký số và an ninh mạng hàng đầu Việt Nam.</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Sản phẩm</h3>
-                    <ul>
-                        <li><a href="product-detail.html?slug=chu-ky-so-token">Chữ ký số USB Token</a></li>
-                        <li><a href="product-detail.html?slug=remote-signing">Remote Signing</a></li>
-                        <li><a href="product-detail.html?slug=hoa-don-dien-tu">Hóa đơn điện tử</a></li>
-                        <li><a href="product-detail.html?slug=ekyc">eKYC</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Giải pháp</h3>
-                    <ul>
-                        <li><a href="product-detail.html?slug=ca2-sign-platform">CA2 Sign Platform</a></li>
-                        <li><a href="product-detail.html?slug=security-pentest">An ninh mạng</a></li>
-                        <li><a href="product-detail.html?slug=chuyen-doi-so">Chuyển đổi số</a></li>
-                        <li><a href="product-detail.html?slug=ca2-co-van">CA2 CO-VAN</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Liên hệ</h3>
-                    <p>📍 Tầng 5, Tòa nhà Hanel, số 2 Chùa Bộc, Đống Đa, Hà Nội</p>
-                    <p>☎ 1900 5454 07</p>
-                    <p>✉ support@nacencomm.vn</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>&copy; 2026 NACENCOMM. All rights reserved.</span>
-                <span>Được cấp phép bởi Bộ TT&TT</span>
-            </div>
+            <p style="font-size: 14px; opacity: 0.6;">© 2026 Nacencomm. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/pricing-data.js"></script>
-    <script src="js/products-data.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // ── State ──
-        let activeProduct = 'cks-token';
-        let activeCksSub = 'cks-token';
-        let activeRsMode = 'theo-nam';
-        let activeAudience = null;
-
-        const tabsContainer = document.getElementById('home-pricing-tabs');
-        const controlsMount = document.getElementById('home-controls');
-        const cardsMount = document.getElementById('home-cards-mount');
-
-        // Tab clicks
-        tabsContainer.addEventListener('click', e => {
-            const tab = e.target.closest('.hp-tab');
-            if (!tab) return;
-            const key = tab.dataset.key;
-            // If it's remote-signing, set as sub of cks
-            if (key === 'remote-signing') {
-                activeProduct = 'cks-token';
-                activeCksSub = 'remote-signing';
-            } else {
-                activeProduct = key;
-                if (key === 'cks-token') activeCksSub = 'cks-token';
-            }
-            activeAudience = null;
-            updateActiveTab(key);
-            render();
-        });
-
-        // Delegated clicks
-        document.addEventListener('click', e => {
-            const toggle = e.target.closest('.pricing-toggle button');
-            if (toggle) { activeRsMode = toggle.dataset.mode; render(); return; }
-
-            const audienceOpt = e.target.closest('.audience-option');
-            if (audienceOpt) { activeAudience = audienceOpt.dataset.audience; render(); return; }
-
-            const buyBtn = e.target.closest('.btn-buy-now');
-            if (buyBtn) {
-                const card = buyBtn.closest('.hp-pkg-card');
-                onBuyNow(card.dataset.slug, card.dataset.label, card.dataset.audience);
-                return;
-            }
-
-            const consultBtn = e.target.closest('.btn-consult-inline');
-            if (consultBtn) {
-                const card = consultBtn.closest('.hp-pkg-card');
-                const slug = card ? card.dataset.slug : consultBtn.dataset.slug;
-                sessionStorage.setItem('selected_product', slug);
-                window.location.href = `register.html?slug=${slug}`;
-                return;
-            }
-        });
-
-        function updateActiveTab(key) {
-            tabsContainer.querySelectorAll('.hp-tab').forEach(t => {
-                t.classList.toggle('active', t.dataset.key === key);
-            });
-        }
-
-        function render() {
-            const isCKS = activeProduct === 'cks-token';
-            const currentPricingKey = isCKS ? activeCksSub : activeProduct;
-            const currentData = PRICING_DATA[currentPricingKey] || PRICING_DATA[activeProduct];
-            if (!currentData) return;
-
-            // Consult type
-            if (currentData.type === 'consult') {
-                controlsMount.innerHTML = '';
-                cardsMount.innerHTML = `
-                    <div class="hp-consult-panel">
-                        <div class="hp-consult-card">
-                            <div style="font-size:48px;margin-bottom:16px;">${currentData.icon}</div>
-                            <h3>${currentData.name}</h3>
-                            <p>${currentData.description}</p>
-                            <div class="hp-consult-btns">
-                                <a href="register.html?slug=${currentData.slug}" class="btn-buy-now" style="display:inline-block;">📋 Đăng ký nhận báo giá</a>
-                                <a href="tel:19005454077" class="btn-consult-small">☎ Gọi tư vấn</a>
-                            </div>
-                        </div>
-                    </div>`;
-                return;
-            }
-
-            // Controls
-            let ctrlHTML = '';
-            const isRS = currentPricingKey === 'remote-signing';
-            if (isRS && currentData.subtabs) {
-                ctrlHTML += `<div class="pricing-toggle-wrap"><div class="pricing-toggle">
-                    <button class="${activeRsMode === 'theo-nam' ? 'active' : ''}" data-mode="theo-nam">Theo năm</button>
-                    <button class="${activeRsMode === 'theo-luot' ? 'active' : ''}" data-mode="theo-luot">Theo lượt ký</button>
-                </div></div>`;
-            }
-
-            // Resolve packages
-            let packages, tabs;
-            if (isRS && currentData.subtabs) {
-                const modeData = currentData.packages[activeRsMode];
-                tabs = Object.keys(modeData);
-            } else {
-                tabs = currentData.tabs;
-            }
-            if (!activeAudience || !tabs.includes(activeAudience)) activeAudience = tabs[0];
-
-            if (isRS && currentData.subtabs) {
-                packages = currentData.packages[activeRsMode][activeAudience];
-            } else {
-                packages = currentData.packages[activeAudience];
-            }
-
-            // Audience tabs
-            if (tabs.length > 1) {
-                ctrlHTML += `<div class="pricing-audience">${tabs.map(t =>
-                    `<label class="audience-option ${activeAudience === t ? 'active' : ''}" data-audience="${t}">
-                        <input type="radio" name="aud" value="${t}" ${activeAudience === t ? 'checked' : ''}> ${t}
-                    </label>`
-                ).join('')}</div>`;
-            }
-            controlsMount.innerHTML = ctrlHTML;
-
-            // Cards
-            const slug = currentData.slug;
-            let html = `<div class="hp-cards-grid cols-${packages.length}">`;
-            packages.forEach(pkg => {
-                const pop = pkg.popular ? ' popular' : '';
-                const badge = pkg.popular ? '<span class="hp-badge-pop">⭐ Phổ biến</span>' : '';
-                const noteB = pkg.note && !pkg.popular ? `<span class="hp-badge-note">${pkg.note}</span>` : '';
-                const priceHTML = pkg.price !== null
-                    ? `<span class="hp-price">${pkg.priceStr}</span><span class="hp-vat">Đã bao gồm VAT</span>`
-                    : `<span class="hp-price-contact">Liên hệ báo giá</span>`;
-                const buyText = pkg.price !== null ? '🛒 Mua ngay' : '🛒 Đăng ký mua';
-
-                html += `
-                <div class="hp-pkg-card${pop}" data-slug="${slug}" data-label="${pkg.label}" data-audience="${activeAudience}">
-                    ${badge}${noteB}
-                    <div class="hp-pkg-name">${pkg.label}</div>
-                    ${pkg.duration ? `<div class="hp-pkg-dur">${pkg.duration}</div>` : ''}
-                    <div class="hp-pkg-price">${priceHTML}</div>
-                    <button class="btn-buy-now">${buyText}</button>
-                    <button class="btn-consult-inline" data-slug="${slug}">💬 Nhận tư vấn</button>
-                </div>`;
-            });
-            html += '</div>';
-            cardsMount.innerHTML = html;
-        }
-
-        function onBuyNow(slug, packageLabel, doiTuong) {
-            const isCKS = activeProduct === 'cks-token';
-            const currentPricingKey = isCKS ? activeCksSub : activeProduct;
-            let currentData = PRICING_DATA[currentPricingKey] || PRICING_DATA[slug];
-            if (!currentData) currentData = PRICING_DATA[activeProduct];
-
-            let priceStr = "Liên hệ", priceNum = 0;
-            if (currentData && currentData.packages) {
-                const isRS = currentPricingKey === 'remote-signing';
-                let pkgs = isRS && currentData.subtabs
-                    ? currentData.packages[activeRsMode][doiTuong]
-                    : currentData.packages[doiTuong];
-                if (pkgs) {
-                    const found = pkgs.find(p => p.label === packageLabel);
-                    if (found) { priceStr = found.priceStr; priceNum = found.price || 0; }
-                }
-            }
-
-            sessionStorage.setItem('selected_product', slug);
-            sessionStorage.setItem('selected_package', packageLabel);
-            sessionStorage.setItem('selected_doituong', doiTuong);
-            sessionStorage.setItem('selected_price', priceStr);
-            sessionStorage.setItem('selected_price_num', priceNum);
-            sessionStorage.setItem('selected_qty', 1);
-
-            const name = currentData ? currentData.name : slug;
-            document.getElementById('cm_productName').textContent = name;
-            document.getElementById('cm_pkgName').textContent = packageLabel;
-            document.getElementById('cm_price').textContent = priceStr;
-            document.getElementById('cm_total').textContent = priceStr;
-            document.getElementById('cm_sb_productName').textContent = name;
-            document.getElementById('cm_sb_duration').textContent = packageLabel;
-            document.getElementById('cm_sb_total').textContent = priceStr;
-            document.getElementById('cm_qty').value = 1;
-            document.getElementById('cm_sb_qty').textContent = 1;
-            document.getElementById('cart-modal').style.display = 'flex';
-        }
-
-        window.closeCartModal = () => { document.getElementById('cart-modal').style.display = 'none'; };
-        window.updateQty = (delta) => {
-            const inp = document.getElementById('cm_qty');
-            let q = Math.max(1, (parseInt(inp.value)||1) + delta);
-            inp.value = q;
-            document.getElementById('cm_sb_qty').textContent = q;
-            sessionStorage.setItem('selected_qty', q);
-            const pn = parseInt(sessionStorage.getItem('selected_price_num'));
-            if (pn > 0) {
-                const fmt = (pn * q).toLocaleString('vi-VN') + ' đ';
-                document.getElementById('cm_total').textContent = fmt;
-                document.getElementById('cm_sb_total').textContent = fmt;
-            }
-        };
-        window.proceedToCheckout = () => {
-            const s = sessionStorage.getItem('selected_product');
-            const p = sessionStorage.getItem('selected_package');
-            window.location.href = `register.html?slug=${s}&package=${encodeURIComponent(p)}`;
-        };
-
-        // Header scroll
-        const header = document.getElementById('site-header');
+        // Header Scroll Effect
         window.addEventListener('scroll', () => {
-            header.classList.toggle('header-scrolled', window.scrollY > 60);
+            const header = document.getElementById('site-header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
         });
-
-        // Init
-        updateActiveTab('cks-token');
-        render();
-    });
     </script>
 </body>
 </html>
