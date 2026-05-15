@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trạng thái hồ sơ - Nacencomm</title>
+    <link rel="stylesheet" href="style/global.css">
+    <style>
+        .status-card { max-width: 720px; margin: 40px auto; background: white; border-radius: var(--card-radius); box-shadow: var(--shadow-card); padding: 40px; }
+        .status-head { text-align: center; margin-bottom: 32px; }
+        .status-head .icon { font-size: 56px; color: var(--success-green); margin-bottom: 12px; }
+        .status-head h1 { color: var(--primary-navy); font-size: 28px; }
+        .timeline { position: relative; display: grid; gap: 24px; margin: 32px 0; padding-left: 42px; }
+        .timeline::before { content: ''; position: absolute; left: 14px; top: 6px; bottom: 6px; width: 2px; background: var(--light-navy); }
+        .timeline-item { position: relative; }
+        .timeline-dot { position: absolute; left: -38px; top: 2px; width: 28px; height: 28px; border-radius: 50%; background: white; border: 2px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 13px; color: white; }
+        .timeline-item.done .timeline-dot { background: var(--success-green); border-color: var(--success-green); }
+        .timeline-item.current .timeline-dot { background: var(--warning-yellow); border-color: var(--warning-yellow); }
+        .timeline-content h3 { color: var(--primary-navy); font-size: 17px; margin-bottom: 4px; }
+        .timeline-content p { color: var(--text-muted); font-size: 14px; }
+        .status-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        @media(max-width:600px){ .status-card { padding: 28px 20px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-badge">CA2</div>
+                <div class="logo-text"><h1>NACENCOMM</h1><p>Tổng Công ty Truyền thông</p></div>
+            </a>
+            <div class="header-actions"><span class="hotline">☎ 1900 5454 07</span></div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="status-card">
+                <div class="status-head">
+                    <div class="icon">✅</div>
+                    <h1>Đăng ký thành công</h1>
+                    <p>Mã hồ sơ: <strong id="order-id">NCM-000000</strong></p>
+                    <p>Sản phẩm: <strong id="product-name">Nacencomm</strong></p>
+                </div>
+
+                <div class="timeline" id="timeline"></div>
+
+                <div class="status-actions">
+                    <button class="btn btn-primary" id="advance-btn">✓ Mô phỏng bước tiếp theo</button>
+                    <button class="btn btn-outline" onclick="downloadPDF()">📥 Tải xác nhận PDF</button>
+                    <a href="register-activate.html" class="btn btn-accent" id="activate-link">Kích hoạt ngay →</a>
+                    <a href="index.html" class="btn btn-outline">Về trang chủ</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/products-data.js"></script>
+    <script src="js/step-controller.js"></script>
+    <script src="js/pdf-mock.js"></script>
+    <script>
+        const data = StepController.getData();
+        const product = PRODUCTS.find(p => p.slug === data.productSlug);
+        const orderId = data.orderId || `NCM-${Math.floor(100000 + Math.random() * 900000)}`;
+        let statusStep = Number(data.statusStep || 1);
+
+        document.getElementById('order-id').textContent = orderId;
+        document.getElementById('product-name').textContent = product ? product.name : 'Dịch vụ Nacencomm';
+
+        const statuses = [
+            ['Đăng ký hồ sơ thành công', data.submittedAt ? new Date(data.submittedAt).toLocaleString('vi-VN') : new Date().toLocaleString('vi-VN')],
+            ['Đang xử lý', 'Kinh doanh đã nhận hồ sơ và sẽ liên hệ trong 30 phút.'],
+            ['Ký hợp đồng', 'Chờ xác nhận hợp đồng hoặc ký qua VNeID/chữ ký số.'],
+            ['Bàn giao dịch vụ', 'Hướng dẫn kích hoạt và sử dụng dịch vụ.']
+        ];
+
+        function renderTimeline() {
+            document.getElementById('timeline').innerHTML = statuses.map(([title, desc], index) => {
+                const cls = index < statusStep ? 'done' : index === statusStep ? 'current' : '';
+                const mark = index < statusStep ? '✓' : index === statusStep ? '…' : '';
+                return `
+                    <div class="timeline-item ${cls}">
+                        <div class="timeline-dot">${mark}</div>
+                        <div class="timeline-content">
+                            <h3>${title}</h3>
+                            <p>${desc}</p>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        document.getElementById('advance-btn').addEventListener('click', () => {
+            statusStep = Math.min(statusStep + 1, statuses.length);
+            StepController.saveData({ statusStep });
+            renderTimeline();
+        });
+
+        function downloadPDF() {
+            const currentData = StepController.getData();
+            PDFMock.generateOrderPDF({
+                ...currentData,
+                orderId,
+                productName: product ? product.name : 'Dịch vụ Nacencomm'
+            });
+        }
+
+        renderTimeline();
+    </script>
+</body>
+</html>

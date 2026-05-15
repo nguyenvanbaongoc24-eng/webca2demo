@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục sản phẩm - Nacencomm</title>
+    <link rel="stylesheet" href="style/global.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-badge">CA2</div>
+                <div class="logo-text">
+                    <h1>NACENCOMM</h1>
+                    <p>Tổng Công ty Truyền thông</p>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="pricing.html">Bảng giá</a></li>
+                    <li><a href="index.html#support">Hỗ trợ</a></li>
+                    <li><a href="index.html#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="hotline">☎ 1900 5454 07</div>
+                <a href="pricing.html" class="btn-register-online">Đăng ký online</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Danh mục giải pháp số</h1>
+                <p>Khám phá trọn bộ 14 sản phẩm, mỗi sản phẩm có luồng đăng ký riêng theo nhu cầu thực tế.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div id="product-list-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">&copy; 2026 NACENCOMM. Website demo.</div>
+        </div>
+    </footer>
+
+    <script src="js/products-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('product-list-container');
+            const groups = PRODUCTS.reduce((acc, product) => {
+                acc[product.group] = acc[product.group] || [];
+                acc[product.group].push(product);
+                return acc;
+            }, {});
+
+            Object.entries(groups).forEach(([groupName, products]) => {
+                const groupSection = document.createElement('section');
+                groupSection.className = 'product-group';
+                groupSection.innerHTML = `
+                    <h2>${groupName}</h2>
+                    <div class="product-grid">
+                        ${products.map(product => `
+                            <article class="product-card">
+                                <div class="product-icon">${product.icon}</div>
+                                <h3>${product.name}</h3>
+                                <p>${product.tagline}</p>
+                                <div class="flow-chip">${flowLabel(product.flowType)}</div>
+                                <div class="product-card-footer">
+                                    <a href="product-detail.html?slug=${product.slug}" class="btn btn-outline">Tìm hiểu thêm</a>
+                                    <a href="pricing.html?product=${product.slug}" class="btn btn-accent">🛒 Mua ngay</a>
+                                </div>
+                            </article>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(groupSection);
+            });
+        });
+
+        function flowLabel(flowType) {
+            const labels = {
+                standard_form: 'Form + thanh toán',
+                standard_vneid: 'Form + ký VNeID',
+                standard_upload: 'Form + upload hồ sơ',
+                remote_signing: 'Remote Signing 6 bước',
+                consult: 'Tư vấn nhanh',
+                consult_schedule: 'Đặt lịch khảo sát',
+                consult_survey: 'Khảo sát nhu cầu',
+                course_register: 'Đăng ký khóa học'
+            };
+            return labels[flowType] || 'Đăng ký online';
+        }
+    </script>
+</body>
+</html>

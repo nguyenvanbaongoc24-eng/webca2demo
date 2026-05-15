@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kích hoạt dịch vụ - Nacencomm</title>
+    <link rel="stylesheet" href="style/global.css">
+    <style>
+        .activate-card { max-width: 520px; margin: 40px auto; background: white; border-radius: var(--card-radius); box-shadow: var(--shadow-card); padding: 40px; text-align: center; }
+        .activate-card h1 { color: var(--primary-navy); font-size: 28px; margin-bottom: 10px; }
+        .activate-card p { color: var(--text-muted); }
+        .pin-container { display: flex; justify-content: center; gap: 10px; margin: 30px 0; flex-wrap: wrap; }
+        .pin-input { width: 48px; height: 56px; border: 2px solid var(--border-color); border-radius: var(--input-radius); text-align: center; font-size: 24px; font-weight: 700; color: var(--primary-navy); }
+        .pin-input:focus { border-color: var(--primary-navy); outline: none; box-shadow: 0 0 0 3px rgba(0,48,135,0.1); }
+        .hint { margin-top: 18px; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-badge">CA2</div>
+                <div class="logo-text"><h1>NACENCOMM</h1><p>Tổng Công ty Truyền thông</p></div>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="activate-card">
+                <div style="font-size: 56px; margin-bottom: 18px;">🛡️</div>
+                <h1>Kích hoạt dịch vụ</h1>
+                <p>Nhập mã kích hoạt gồm 6 chữ số đã được gửi qua Email/SMS để hoàn tất bàn giao.</p>
+
+                <div class="pin-container">
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric">
+                </div>
+
+                <button class="btn btn-accent" style="width: 100%; justify-content: center;" id="activate-btn">Kích hoạt ngay</button>
+                <p class="hint">Chưa nhận được mã? <a href="#" style="color: var(--primary-navy); font-weight: 700;">Gửi lại mã</a></p>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/step-controller.js"></script>
+    <script>
+        const inputs = Array.from(document.querySelectorAll('.pin-input'));
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                input.value = input.value.replace(/\D/g, '');
+                if (input.value && inputs[index + 1]) inputs[index + 1].focus();
+            });
+            input.addEventListener('keydown', event => {
+                if (event.key === 'Backspace' && !input.value && inputs[index - 1]) inputs[index - 1].focus();
+            });
+        });
+
+        document.getElementById('activate-btn').addEventListener('click', () => {
+            const pin = inputs.map(input => input.value).join('');
+            if (!/^\d{6}$/.test(pin)) {
+                alert('Vui lòng nhập đủ mã kích hoạt 6 chữ số.');
+                return;
+            }
+            StepController.saveData({ statusStep: 4, activatedAt: new Date().toISOString() });
+            alert('Dịch vụ đã được kích hoạt thành công. Hồ sơ demo đã hoàn tất.');
+            window.location.href = 'register-status.html';
+        });
+    </script>
+</body>
+</html>

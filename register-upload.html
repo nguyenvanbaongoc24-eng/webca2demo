@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tải hồ sơ - Nacencomm</title>
+    <link rel="stylesheet" href="style/global.css">
+    <link rel="stylesheet" href="style/register.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-badge">CA2</div>
+                <div class="logo-text"><h1>NACENCOMM</h1><p>Tổng Công ty Truyền thông</p></div>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="register-container">
+                <div class="form-body">
+                    <h2 class="step-title">Tải hồ sơ pháp lý</h2>
+                    <p class="step-note">Trang này dùng cho trường hợp cần upload tách riêng. Luồng chính hiện đã tích hợp upload ngay trong form đăng ký.</p>
+                    <div id="upload-list"></div>
+                </div>
+                <div class="form-footer">
+                    <button type="button" class="btn btn-outline" onclick="history.back()">Quay lại</button>
+                    <button type="button" class="btn btn-accent" id="btn-next">Hoàn tất upload →</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/products-data.js"></script>
+    <script src="js/step-controller.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const product = StepController.getCurrentProduct();
+            if (!product || !product.requireUpload) {
+                window.location.href = 'products.html';
+                return;
+            }
+
+            const list = document.getElementById('upload-list');
+            product.uploadDocs.forEach(doc => {
+                const item = document.createElement('div');
+                item.className = 'upload-item';
+                item.innerHTML = `
+                    <label class="upload-label">${doc} <span class="required">*</span></label>
+                    <div class="upload-zone" data-doc="${doc}">
+                        <div class="upload-icon">📁</div>
+                        <p>Nhấp để chọn hoặc kéo thả file</p>
+                        <div class="file-name"></div>
+                    </div>`;
+                list.appendChild(item);
+            });
+
+            list.addEventListener('click', event => {
+                const zone = event.target.closest('.upload-zone');
+                if (!zone) return;
+                zone.classList.toggle('uploaded');
+                zone.querySelector('.file-name').textContent = zone.classList.contains('uploaded') ? `${zone.dataset.doc}.pdf (đã tải)` : '';
+            });
+
+            document.getElementById('btn-next').onclick = () => {
+                const uploadedDocs = Array.from(document.querySelectorAll('.upload-zone.uploaded')).map(zone => zone.dataset.doc);
+                if (uploadedDocs.length < product.uploadDocs.length) {
+                    alert('Vui lòng tải đủ hồ sơ bắt buộc.');
+                    return;
+                }
+                StepController.saveData({ uploadedDocs });
+                window.location.href = 'register-status.html';
+            };
+        });
+    </script>
+</body>
+</html>

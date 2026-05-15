@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng giá sản phẩm – Nacencomm CA2</title>
+    <meta name="description" content="Bảng giá chữ ký số CA2, Remote Signing, Hoá đơn điện tử, Phần mềm bảo hiểm. Chọn gói phù hợp và đăng ký online ngay.">
+    <link rel="stylesheet" href="style/global.css">
+    <link rel="stylesheet" href="style/pricing.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-badge">CA2</div>
+                <div class="logo-text">
+                    <h1>NACENCOMM</h1>
+                    <p>Tổng Công ty Truyền thông</p>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="pricing.html" style="color: var(--accent-red);">Bảng giá</a></li>
+                    <li><a href="index.html#support">Hỗ trợ</a></li>
+                    <li><a href="index.html#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="hotline">☎ 1900 5454 07</div>
+                <a href="pricing.html" class="btn-register-online">Đăng ký online</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="pricing-hero">
+            <div class="container">
+                <h1>Chọn sản phẩm phù hợp với nhu cầu của bạn</h1>
+                <p>Giá đã bao gồm VAT. Hỗ trợ 24/7 – 1900 5454 07</p>
+            </div>
+        </section>
+
+        <!-- Product Tabs -->
+        <div class="pricing-tabs" id="pricing-tabs">
+            <button class="pricing-tab active" data-key="cks-token">
+                <span class="tab-icon">🔑</span> CKS
+            </button>
+            <button class="pricing-tab" data-key="hoa-don">
+                <span class="tab-icon">🧾</span> Hoá Đơn
+            </button>
+            <button class="pricing-tab" data-key="bao-hiem">
+                <span class="tab-icon">🛡️</span> Phần mềm BH
+            </button>
+            <button class="pricing-tab" data-key="ca2-platform">
+                <span class="tab-icon">🏗️</span> CA2 Platform
+            </button>
+            
+            <!-- Tab dropdown "Sản phẩm khác" -->
+            <div class="tab-dropdown-wrap" id="otherProductsWrap">
+                <button class="pricing-tab tab-dropdown-trigger" id="otherProductsBtn" onclick="toggleOtherDropdown()">
+                    ☰ Sản phẩm khác <span class="chevron">▾</span>
+                </button>
+                <div class="tab-dropdown-panel" id="otherDropdown" style="display:none">
+                    <!-- Render từ OTHER_PRODUCTS array -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic content area -->
+        <section class="pricing-cards-section">
+            <div class="pricing-controls" id="pricing-controls">
+                <!-- Sub-tabs, toggle, audience rendered here -->
+            </div>
+            <div id="pricing-cards-mount">
+                <!-- Package cards rendered here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">&copy; 2026 NACENCOMM. Website demo.</div>
+        </div>
+    </footer>
+
+    <script src="js/pricing-data.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // State
+        let activeProduct = 'cks-token';
+        let activeCksSub = 'cks-token';   // 'cks-token' | 'remote-signing'
+        let activeRsMode = 'theo-nam';     // 'theo-nam' | 'theo-luot'
+        let activeAudience = null;         // first tab name
+
+        const tabsContainer = document.getElementById('pricing-tabs');
+        const controlsMount = document.getElementById('pricing-controls');
+        const cardsMount = document.getElementById('pricing-cards-mount');
+
+        // Integrate OTHER_PRODUCTS into PRICING_DATA
+        if (typeof OTHER_PRODUCTS !== 'undefined') {
+            OTHER_PRODUCTS.forEach(group => {
+                group.items.forEach(item => {
+                    PRICING_DATA[item.slug] = {
+                        name: item.name,
+                        icon: item.icon,
+                        slug: item.slug,
+                        tagline: item.tagline,
+                        tabs: ["Mặc định"],
+                        packages: {
+                            "Mặc định": item.packages.map(p => ({
+                                label: p.label,
+                                duration: "",
+                                price: null,
+                                priceStr: p.priceStr,
+                                popular: p.popular,
+                                note: ""
+                            }))
+                        }
+                    };
+                    SLUG_TO_PRICING[item.slug] = item.slug;
+                });
+            });
+        }
+
+        // Check URL params to auto-select product
+        const params = new URLSearchParams(window.location.search);
+        const productParam = params.get('product');
+        if (productParam) {
+            // Map slug → pricing key
+            const mapped = SLUG_TO_PRICING[productParam];
+            if (mapped) {
+                activeProduct = mapped;
+                if (mapped === 'remote-signing') {
+                    activeProduct = 'cks-token';
+                    activeCksSub = 'remote-signing';
+                }
+            }
+        }
+
+        // Initial render
+        renderOtherDropdown();
+        updateActiveTab();
+        render();
+
+        // Tab clicks
+        tabsContainer.addEventListener('click', e => {
+            const tab = e.target.closest('.pricing-tab');
+            if (!tab) return;
+            activeProduct = tab.dataset.key;
+            if (activeProduct === 'cks-token') activeCksSub = 'cks-token';
+            updateActiveTab();
+            render();
+        });
+
+        // Delegated clicks for controls + cards
+        document.addEventListener('click', e => {
+            // Sub-tab
+            const subtab = e.target.closest('.pricing-subtab');
+            if (subtab) {
+                activeCksSub = subtab.dataset.sub;
+                render();
+                return;
+            }
+
+            // Toggle (RS mode)
+            const toggle = e.target.closest('.pricing-toggle button');
+            if (toggle) {
+                activeRsMode = toggle.dataset.mode;
+                render();
+                return;
+            }
+
+            // Audience radio
+            const audienceOpt = e.target.closest('.audience-option');
+            if (audienceOpt) {
+                activeAudience = audienceOpt.dataset.audience;
+                render();
+                return;
+            }
+
+            // Select package → go to register
+            const selectBtn = e.target.closest('.btn-select-pkg');
+            if (selectBtn) {
+                const card = selectBtn.closest('.pkg-card');
+                onSelectPackage(card.dataset.slug, card.dataset.label, card.dataset.audience);
+                return;
+            }
+
+            // Dropdown item selection
+            const dropdownItem = e.target.closest('.dropdown-item');
+            if (dropdownItem) {
+                e.preventDefault();
+                activeProduct = dropdownItem.dataset.slug;
+                document.getElementById('otherDropdown').style.display = 'none';
+                document.getElementById('otherProductsBtn').classList.remove('open');
+                updateActiveTab();
+                render();
+                return;
+            }
+
+            // Consult CTA
+            const consultBtn = e.target.closest('.btn-consult-cta');
+            if (consultBtn) {
+                const slug = consultBtn.dataset.slug;
+                sessionStorage.setItem('selected_product', slug);
+                window.location.href = `register.html?slug=${slug}`;
+                return;
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const wrap = document.getElementById('otherProductsWrap');
+            if (wrap && !wrap.contains(e.target)) {
+                const panel = document.getElementById('otherDropdown');
+                if (panel) panel.style.display = 'none';
+                const btn = document.getElementById('otherProductsBtn');
+                if (btn) btn.classList.remove('open');
+            }
+        });
+
+        window.toggleOtherDropdown = function() {
+            const panel = document.getElementById('otherDropdown');
+            const btn = document.getElementById('otherProductsBtn');
+            const isOpen = panel.style.display === 'block';
+            panel.style.display = isOpen ? 'none' : 'block';
+            btn.classList.toggle('open', !isOpen);
+        };
+
+        function renderOtherDropdown() {
+            const panel = document.getElementById('otherDropdown');
+            if (!panel || typeof OTHER_PRODUCTS === 'undefined') return;
+            let html = '';
+            OTHER_PRODUCTS.forEach((group, gi) => {
+                if (gi > 0) html += '<div class="dropdown-divider"></div>';
+                html += `<div class="dropdown-group-label">${group.groupIcon} ${group.group}</div>`;
+                group.items.forEach(item => {
+                    html += `
+                        <a href="#" class="dropdown-item" data-slug="${item.slug}">
+                            <span class="dropdown-item-icon">${item.icon}</span>
+                            <div>
+                                <div class="dropdown-item-name">${item.name}</div>
+                                <div class="dropdown-item-tagline">${item.tagline}</div>
+                            </div>
+                        </a>`;
+                });
+            });
+            panel.innerHTML = html;
+        }
+
+        function updateActiveTab() {
+            let isMainTab = false;
+            tabsContainer.querySelectorAll('.pricing-tab:not(.tab-dropdown-trigger)').forEach(tab => {
+                const isActive = tab.dataset.key === activeProduct;
+                tab.classList.toggle('active', isActive);
+                if (isActive) isMainTab = true;
+            });
+            const dropBtn = document.getElementById('otherProductsBtn');
+            if (dropBtn) {
+                dropBtn.classList.toggle('active', !isMainTab);
+            }
+        }
+
+        function render() {
+            const data = PRICING_DATA[activeProduct];
+            if (!data) return;
+
+            // If consult type
+            if (data.type === 'consult') {
+                controlsMount.innerHTML = '';
+                cardsMount.innerHTML = renderConsultPanel(data);
+                return;
+            }
+
+            // Determine if CKS (has sub-tabs)
+            const isCKS = activeProduct === 'cks-token';
+            const currentPricingKey = isCKS ? activeCksSub : activeProduct;
+            const currentData = PRICING_DATA[currentPricingKey] || data;
+
+            // Build controls
+            let controlsHTML = '';
+
+            // Tagline for other products
+            if (currentData.tagline) {
+                controlsHTML += `
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <h2 style="font-size: 22px; color: var(--primary-navy); margin-bottom: 8px;">${currentData.icon} ${currentData.name}</h2>
+                        <p style="color: var(--text-muted); font-size: 15px;">${currentData.tagline}</p>
+                    </div>
+                `;
+            }
+
+            // Sub-tabs for CKS
+            if (isCKS) {
+                controlsHTML += `
+                    <div class="pricing-subtabs">
+                        <button class="pricing-subtab ${activeCksSub === 'cks-token' ? 'active' : ''}" data-sub="cks-token">
+                            🔑 USB Token
+                        </button>
+                        <button class="pricing-subtab ${activeCksSub === 'remote-signing' ? 'active' : ''}" data-sub="remote-signing">
+                            📱 Remote Signing
+                        </button>
+                    </div>
+                `;
+            }
+
+            // Toggle for RS
+            const isRS = currentPricingKey === 'remote-signing';
+            if (isRS && currentData.subtabs) {
+                controlsHTML += `
+                    <div class="pricing-toggle-wrap">
+                        <div class="pricing-toggle">
+                            <button class="${activeRsMode === 'theo-nam' ? 'active' : ''}" data-mode="theo-nam">Theo năm</button>
+                            <button class="${activeRsMode === 'theo-luot' ? 'active' : ''}" data-mode="theo-luot">Theo lượt ký</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Resolve packages
+            let packages;
+            let tabs;
+            if (isRS && currentData.subtabs) {
+                const modeData = currentData.packages[activeRsMode];
+                tabs = Object.keys(modeData);
+                if (!activeAudience || !tabs.includes(activeAudience)) activeAudience = tabs[0];
+                packages = modeData[activeAudience];
+            } else {
+                tabs = currentData.tabs;
+                if (!activeAudience || !tabs.includes(activeAudience)) activeAudience = tabs[0];
+                packages = currentData.packages[activeAudience];
+            }
+
+            // Audience radio (only if more than 1 tab)
+            if (tabs.length > 1) {
+                controlsHTML += `
+                    <div class="pricing-audience">
+                        ${tabs.map(tab => `
+                            <label class="audience-option ${activeAudience === tab ? 'active' : ''}" data-audience="${tab}">
+                                <input type="radio" name="audience" value="${tab}" ${activeAudience === tab ? 'checked' : ''}>
+                                ${tab}
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            controlsMount.innerHTML = controlsHTML;
+
+            // Render cards
+            const slug = currentData.slug;
+            const colsClass = packages.length === 4 ? 'cols-4' : packages.length === 2 ? 'cols-2' : '';
+
+            let cardsHTML = `<div class="pricing-cards-grid ${colsClass}">`;
+            packages.forEach(pkg => {
+                const popularClass = pkg.popular ? ' popular' : '';
+                const badgeHTML = pkg.popular ? '<span class="badge-popular">⭐ Phổ biến</span>' : '';
+                const noteHTML = pkg.note && !pkg.popular ? `<span class="badge-note">${pkg.note}</span>` : '';
+                
+                let priceHTML;
+                if (pkg.price !== null) {
+                    priceHTML = `
+                        <span class="price-amount">${pkg.priceStr}</span>
+                        <span class="price-note">Đã bao gồm VAT 10%</span>
+                    `;
+                } else {
+                    priceHTML = `<span class="price-contact">Liên hệ báo giá</span>`;
+                }
+
+                const btnText = pkg.price !== null ? 'Mua ngay' : 'Đăng ký tư vấn';
+
+                cardsHTML += `
+                    <div class="pkg-card${popularClass}" data-slug="${slug}" data-label="${pkg.label}" data-audience="${activeAudience}">
+                        ${badgeHTML}
+                        ${noteHTML}
+                        <div class="pkg-name">${pkg.label}</div>
+                        ${pkg.duration ? `<div class="pkg-duration">${pkg.duration}</div>` : ''}
+                        <div class="pkg-price">${priceHTML}</div>
+                        <button class="btn-select-pkg">${btnText}</button>
+                    </div>
+                `;
+            });
+            cardsHTML += `</div>`;
+
+            // Footer note
+            cardsHTML += `
+                <div class="pricing-footer-note">
+                    <p>* Giá đã bao gồm VAT 10%. Cấp mới CKS Token kèm USB Token.</p>
+                    <p>* Nhân viên kinh doanh sẽ xác nhận báo giá chi tiết trước khi thu phí.</p>
+                </div>
+            `;
+
+            cardsMount.innerHTML = cardsHTML;
+        }
+
+        function renderConsultPanel(data) {
+            return `
+                <div class="pricing-consult-panel">
+                    <div class="consult-card">
+                        <div class="consult-icon">${data.icon}</div>
+                        <h3>${data.name}</h3>
+                        <p>${data.description}</p>
+                        <button class="btn btn-accent btn-consult-cta" data-slug="${data.slug}">
+                            📋 ${data.cta}
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function onSelectPackage(slug, packageLabel, doiTuong) {
+            sessionStorage.setItem('selected_product', slug);
+            sessionStorage.setItem('selected_package', packageLabel);
+            sessionStorage.setItem('selected_doituong', doiTuong);
+            window.location.href = `register.html?slug=${slug}&package=${encodeURIComponent(packageLabel)}`;
+        }
+    });
+    </script>
+</body>
+</html>

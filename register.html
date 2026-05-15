@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký dịch vụ – Nacencomm</title>
+    <link rel="stylesheet" href="style/global.css">
+    <link rel="stylesheet" href="style/register.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-badge">CA2</div>
+                <div class="logo-text"><h1>NACENCOMM</h1><p>Tổng Công ty Truyền thông</p></div>
+            </a>
+            <div class="header-actions">
+                <span class="hotline">☎ 1900 5454 07</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Product banner -->
+            <div id="product-banner" style="background: linear-gradient(135deg, var(--dark-navy), var(--primary-navy)); color: white; padding: 30px 40px; border-radius: var(--card-radius) var(--card-radius) 0 0; margin-top: 40px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <span id="banner-icon" style="font-size: 40px;"></span>
+                    <div>
+                        <div id="banner-group" style="font-size: 11px; text-transform: uppercase; opacity: 0.7; letter-spacing: 1px;"></div>
+                        <h2 id="banner-name" style="font-size: 24px; margin: 4px 0;"></h2>
+                        <p id="banner-tagline" style="font-size: 14px; opacity: 0.8;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="register-container" style="border-radius: 0 0 var(--card-radius) var(--card-radius); margin-top: 0;">
+                <!-- Dynamic step indicator -->
+                <div class="step-indicator" id="step-indicator"></div>
+
+                <form id="register-form" novalidate>
+                    <div class="form-body" id="form-body">
+                        <!-- All step sections injected dynamically -->
+                    </div>
+                    <div class="form-footer">
+                        <button type="button" class="btn btn-outline" id="prev-btn" style="visibility: hidden;">← Quay lại</button>
+                        <button type="button" class="btn btn-accent" id="next-btn">Tiếp theo →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success overlay -->
+    <div class="success-overlay" id="success-overlay">
+        <div class="success-modal">
+            <div style="font-size: 70px; margin-bottom: 15px;">✅</div>
+            <h2 style="color: var(--primary-navy); margin-bottom: 10px;">Đăng ký thành công!</h2>
+            <p style="color: var(--text-muted); margin-bottom: 5px;">Mã hồ sơ: <strong id="order-id" style="color: var(--accent-red); font-size: 18px;"></strong></p>
+            <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 14px;">Nhân viên Nacencomm sẽ liên hệ bạn trong vòng 30 phút.</p>
+            <div style="background: var(--light-navy); padding: 15px; border-radius: 8px; margin-bottom: 25px; text-align: left; font-size: 13px;">
+                <p>📧 Đã gửi email xác nhận tới <strong id="confirm-email"></strong></p>
+                <p style="margin-top: 5px;">📋 Mã nhân viên KD phụ trách: <strong id="kd-code"></strong></p>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <a href="register-status.html" class="btn btn-primary">Theo dõi hồ sơ</a>
+                <a href="index.html" class="btn btn-outline">Về trang chủ</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/products-data.js"></script>
+    <script src="js/step-controller.js"></script>
+    <script src="js/form-validator.js"></script>
+    <script src="js/flow-engine.js"></script>
+    <script src="js/register-app.js"></script>
+</body>
+</html>

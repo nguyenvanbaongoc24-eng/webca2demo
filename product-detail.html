@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm - Nacencomm</title>
+    <link rel="stylesheet" href="style/global.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-badge">CA2</div>
+                <div class="logo-text">
+                    <h1>NACENCOMM</h1>
+                    <p>Tổng Công ty Truyền thông</p>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="pricing.html">Bảng giá</a></li>
+                    <li><a href="index.html#support">Hỗ trợ</a></li>
+                    <li><a href="index.html#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="products.html" class="btn-register-online">Đăng ký online</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="product-detail"></main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">&copy; 2026 NACENCOMM. Website demo.</div>
+        </div>
+    </footer>
+
+    <script src="js/products-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slug = new URLSearchParams(window.location.search).get('slug') || PRODUCTS[0].slug;
+            const product = PRODUCTS.find(p => p.slug === slug);
+            const mount = document.getElementById('product-detail');
+
+            if (!product) {
+                mount.innerHTML = `
+                    <section class="section">
+                        <div class="container empty-state">
+                            <h1>Sản phẩm không tồn tại</h1>
+                            <a href="products.html" class="btn btn-primary">Quay lại danh sách</a>
+                        </div>
+                    </section>`;
+                return;
+            }
+
+            document.title = `${product.name} - Nacencomm`;
+            const steps = getProductSteps(product);
+
+            mount.innerHTML = `
+                <section class="detail-hero">
+                    <div class="container detail-hero-inner">
+                        <div>
+                            <div class="detail-kicker">${product.group}</div>
+                            <h1>${product.name}</h1>
+                            <p>${product.tagline}</p>
+                            <div class="hero-btns detail-actions">
+                                <a href="pricing.html?product=${product.slug}" class="btn btn-accent">🛒 Mua ngay</a>
+                                <a href="#pricing" class="btn btn-outline hero-outline">Xem gói cước</a>
+                            </div>
+                        </div>
+                        <div class="detail-icon">${product.icon}</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <div class="container detail-layout">
+                        <div class="detail-main">
+                            <h2>Giới thiệu sản phẩm</h2>
+                            <p>${product.description}</p>
+
+                            <h2>Tính năng nổi bật</h2>
+                            <div class="feature-list">
+                                ${product.features.map(feature => `
+                                    <div class="feature-item">
+                                        <span>✓</span>
+                                        <strong>${feature}</strong>
+                                    </div>
+                                `).join('')}
+                            </div>
+
+                            <h2 id="pricing">Bảng gói cước</h2>
+                            <div class="package-grid">
+                                ${product.packages.map((pkg, index) => `
+                                    <article class="package-card ${index === 1 && product.packages.length > 2 ? 'popular' : ''}">
+                                        ${index === 1 && product.packages.length > 2 ? '<div class="package-badge">Phổ biến</div>' : ''}
+                                        <h3>${pkg.name}</h3>
+                                        <p>${pkg.price}</p>
+                                        <a href="pricing.html?product=${product.slug}" class="btn btn-accent">Mua gói này</a>
+                                    </article>
+                                `).join('')}
+                            </div>
+
+                            <h2>Quy trình đăng ký</h2>
+                            <div class="process-list">
+                                ${steps.map((step, index) => `
+                                    <div class="process-item">
+                                        <div class="process-number">${index + 1}</div>
+                                        <div>
+                                            <h3>${step.title}</h3>
+                                            <p>${step.desc}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <aside class="detail-sidebar">
+                            <div class="sidebar-card">
+                                <h3>Đăng ký dịch vụ</h3>
+                                <p>${flowLabel(product.flowType)}</p>
+                                <a href="pricing.html?product=${product.slug}" class="btn btn-accent">🛒 Mua ngay online</a>
+                                <a href="tel:1900545407" class="btn btn-outline">☎ Gọi tư vấn</a>
+                            </div>
+                        </aside>
+                    </div>
+                </section>
+                <a href="pricing.html?product=${product.slug}" class="sticky-buy">🛒 Mua ngay</a>
+            `;
+        });
+
+        function flowLabel(flowType) {
+            const labels = {
+                standard_form: 'Điền thông tin, chọn gói và thanh toán mock.',
+                standard_vneid: 'Chọn gói, điền thông tin, thanh toán và ký HĐ VNeID.',
+                standard_upload: 'Chọn gói, điền thông tin, tải hồ sơ và thanh toán mock.',
+                remote_signing: 'Luồng 6 bước: gói cước, ĐDPL, thanh toán, ký HĐ VNeID và kích hoạt.',
+                consult: 'Gửi thông tin để nhân viên kinh doanh tư vấn.',
+                consult_schedule: 'Mô tả hệ thống và đặt lịch khảo sát.',
+                consult_survey: 'Khảo sát nhu cầu trước khi tư vấn chuyển đổi số.',
+                course_register: 'Chọn khóa học và thanh toán mock.'
+            };
+            return labels[flowType] || labels.standard_form;
+        }
+
+        function getProductSteps(product) {
+            if (product.flowType === 'remote_signing') {
+                return [
+                    { title: 'Chọn gói Remote Signing', desc: 'Chọn thời hạn hoặc gói lượt ký phù hợp.' },
+                    { title: 'Thông tin doanh nghiệp', desc: 'Khách hàng nhập thông tin liên hệ, MST và địa chỉ.' },
+                    { title: 'Thông tin ĐDPL', desc: 'Bổ sung CCCD, ngày cấp và nơi cấp.' },
+                    { title: 'Thanh toán mock', desc: 'Chọn chuyển khoản, VietQR, ví điện tử hoặc thanh toán sau.' },
+                    { title: 'Ký hợp đồng VNeID', desc: 'Mô phỏng ký hợp đồng qua VNeID hoặc chữ ký số.' },
+                    { title: 'Kích hoạt', desc: 'Nhập mã PIN/OTP để hoàn tất bàn giao.' }
+                ];
+            }
+            if (product.flowType.includes('consult')) {
+                return [
+                    { title: 'Gửi nhu cầu', desc: 'Khách hàng để lại thông tin và mô tả nhu cầu.' },
+                    { title: 'Chuyển hồ sơ', desc: 'Hệ thống gán mã KD mặc định và gửi thông tin cho kinh doanh.' },
+                    { title: 'Tư vấn & chốt', desc: 'Nhân viên liên hệ để tư vấn, báo giá và thống nhất triển khai.' }
+                ];
+            }
+            const steps = [
+                { title: 'Chọn gói cước', desc: 'Lựa chọn gói phù hợp với nhu cầu.' }
+            ];
+            steps.push({ title: 'Nhập thông tin', desc: 'Điền thông tin doanh nghiệp, người liên hệ.' });
+            if (product.requireUpload) steps.push({ title: 'Upload hồ sơ', desc: 'Tải lên các giấy tờ pháp lý theo yêu cầu.' });
+            steps.push({ title: 'Thanh toán mock', desc: 'Xác nhận phương thức thanh toán để tạo hồ sơ demo.' });
+            if (product.flowType === 'standard_vneid') {
+                steps.push({ title: 'Ký HĐ VNeID', desc: 'Mô phỏng ký hợp đồng điện tử qua VNeID.' });
+            }
+            steps.push({ title: 'Kinh doanh tiếp nhận', desc: 'Hồ sơ được chuyển tới mã KD phụ trách để liên hệ và bàn giao.' });
+            return steps;
+        }
+    </script>
+</body>
+</html>
