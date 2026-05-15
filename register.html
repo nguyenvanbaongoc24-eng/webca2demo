@@ -312,25 +312,45 @@
         
         <!-- FLOW B: KINH DOANH LIÊN HỆ -->
         <div class="success-screen" id="screen_flow_b" style="display:none;">
-            <div class="success-icon">✅</div>
-            <h2>Đăng ký thành công!</h2>
+            <h2 style="color: var(--primary-navy); margin-bottom: 8px;">Đăng ký thành công!</h2>
             <div class="ticket-badge">
-                Mã hồ sơ: <strong id="ticketCode">NCM-2025-XXXXX</strong>
+                Mã hồ sơ: <strong id="ticketCode">NCM-2026-XXXXX</strong>
             </div>
+
+            <!-- QR Chuyển khoản -->
+            <div style="background: #fffdf0; border: 2px solid #ffc107; border-radius: 12px; padding: 20px; margin: 20px 0; text-align: center;">
+                <div style="font-size: 14px; font-weight: 700; color: var(--primary-navy); margin-bottom: 12px;">💳 Thông tin chuyển khoản</div>
+                <div id="qr_code_area" style="margin: 0 auto 16px; width: 180px; height: 180px; background: white; border: 1px solid #e0e0e0; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <canvas id="qr_canvas" width="160" height="160"></canvas>
+                </div>
+                <div style="font-size: 13px; color: #333; line-height: 1.8; text-align: left; max-width: 320px; margin: 0 auto;">
+                    <div><strong>Ngân hàng:</strong> Vietcombank</div>
+                    <div><strong>Số TK:</strong> 0011 0042 70886</div>
+                    <div><strong>Chủ TK:</strong> TỔNG CÔNG TY TRUYỀN THÔNG</div>
+                    <div><strong>Nội dung CK:</strong> <span id="qr_ck_content" style="color: var(--accent-red); font-weight: 700;"></span></div>
+                </div>
+            </div>
+
             <div class="success-summary">
                 <div class="summary-row"><span>Sản phẩm</span><span id="sc_product">Chữ ký số USB Token</span></div>
                 <div class="summary-row"><span>Gói</span><span id="sc_pkg">Gói 2 Năm</span></div>
                 <div class="summary-row"><span>Email liên hệ</span><span id="sc_email">—</span></div>
                 <div class="summary-row"><span>Số điện thoại</span><span id="sc_sdt">—</span></div>
             </div>
+
             <div class="next-steps-box">
                 <div class="next-steps-title">📌 Các bước tiếp theo</div>
                 <ol class="next-steps-list">
                     <li><strong>Nhân viên kinh doanh sẽ liên hệ bạn</strong> qua SĐT/Email trong vòng <strong>1 ngày làm việc</strong> để xác nhận thông tin.</li>
-                    <li>Sau khi xác nhận, bạn sẽ nhận được <strong>báo giá chính thức</strong> và hướng dẫn thanh toán.</li>
+                    <li>Sau khi xác nhận, bạn sẽ nhận được <strong>báo giá chính thức</strong> và hướng dẫn bàn giao dịch vụ.</li>
                     <li>Ký hợp đồng và <strong>nhận bàn giao dịch vụ</strong> trong vòng 1–2 ngày làm việc kế tiếp.</li>
                 </ol>
             </div>
+
+            <div style="background: #e8f5e9; border-radius: 8px; padding: 14px 16px; margin: 16px 0; font-size: 13px; color: #2e7d32; text-align: center;">
+                📞 <strong>Nhân viên kinh doanh sẽ liên hệ bạn qua SĐT/Email trong vòng 1 ngày làm việc</strong> để bàn giao và hướng dẫn sử dụng dịch vụ.
+            </div>
+
             <div class="support-note">
                 Cần hỗ trợ ngay? Gọi <a href="tel:1900545407"><strong>1900 5454 07</strong></a> hoặc email <a href="mailto:sale@nacencomm.vn">sale@nacencomm.vn</a>
             </div>

@@ -296,11 +296,69 @@ function goToSalesFlow() {
     const ticket = 'NCM-' + new Date().getFullYear() + '-' + Math.floor(10000 + Math.random() * 90000);
     document.getElementById('ticketCode').textContent = ticket;
     
+    // Nội dung CK theo mã hồ sơ
+    const ckContent = document.getElementById('qr_ck_content');
+    if (ckContent) ckContent.textContent = ticket;
+    
+    // Sinh QR code (VietQR format)
+    const canvas = document.getElementById('qr_canvas');
+    if (canvas) {
+        drawSimpleQR(canvas, ticket);
+    }
+
     // Summary
     document.getElementById('sc_product').textContent = document.getElementById('cart_name').textContent;
     document.getElementById('sc_pkg').textContent = document.getElementById('cart_pkg').textContent;
     document.getElementById('sc_email').textContent = document.getElementById('emailKichHoat').value || 'khachhang@email.com';
     document.getElementById('sc_sdt').textContent = document.getElementById('sdt').value || '09xxxxxxxx';
+}
+
+// Vẽ QR code giả lập (demo) — hiển thị mã hồ sơ dạng pattern
+function drawSimpleQR(canvas, text) {
+    const ctx = canvas.getContext('2d');
+    const size = canvas.width;
+    ctx.clearRect(0, 0, size, size);
+    
+    // Tạo QR pattern giả lập
+    const cellSize = 8;
+    const gridCount = Math.floor(size / cellSize);
+    
+    // Seed từ text
+    let seed = 0;
+    for (let i = 0; i < text.length; i++) seed += text.charCodeAt(i) * (i + 1);
+    const rand = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    
+    ctx.fillStyle = '#000';
+    
+    // Corner patterns (fixed QR markers)
+    const drawFinder = (x, y) => {
+        ctx.fillRect(x, y, 7*cellSize, cellSize);
+        ctx.fillRect(x, y+6*cellSize, 7*cellSize, cellSize);
+        ctx.fillRect(x, y, cellSize, 7*cellSize);
+        ctx.fillRect(x+6*cellSize, y, cellSize, 7*cellSize);
+        ctx.fillRect(x+2*cellSize, y+2*cellSize, 3*cellSize, 3*cellSize);
+    };
+    
+    drawFinder(0, 0);
+    drawFinder(size - 7*cellSize, 0);
+    drawFinder(0, size - 7*cellSize);
+    
+    // Random data cells
+    for (let row = 0; row < gridCount; row++) {
+        for (let col = 0; col < gridCount; col++) {
+            const inFinder = (row < 8 && col < 8) || (row < 8 && col >= gridCount-8) || (row >= gridCount-8 && col < 8);
+            if (inFinder) continue;
+            if (rand() > 0.55) {
+                ctx.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
+            }
+        }
+    }
+    
+    // Label
+    ctx.fillStyle = '#003087';
+    ctx.font = 'bold 9px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('VietQR', size/2, size - 4);
 }
 
 function goToVNeIDFlow() {
