@@ -157,9 +157,25 @@ window.submitForm = function() {
         return;
     }
 
-    // Pass -> Show modal
-    showPaymentModal();
+    // Pass -> Phân luồng Flow A hoặc Flow B
+    const productSlug = sessionStorage.getItem('selected_product')  || 'chu-ky-so-token';
+    const doiTuongVal = document.querySelector('input[name="doiTuongHD"]:checked').value; // 'dn', 'hkd', 'cn'
+    const flow = determineFlow(productSlug, doiTuongVal);
+
+    if (flow === 'flow_vneid') {
+        goToVNeIDFlow();
+    } else {
+        goToSalesFlow();
+    }
 };
+
+function determineFlow(productSlug, doiTuong) {
+    const isRS = productSlug === 'remote-signing';
+    const isHKDorCN = ['hkd', 'cn'].includes(doiTuong);
+  
+    if (isRS && isHKDorCN) return 'flow_vneid';
+    return 'flow_sales';
+}
 
 window.v = function(id) {
     const el = document.getElementById(id);
@@ -260,14 +276,205 @@ window.downloadQuote = function() {
     alert(`Đang tải xuống báo giá PDF cho...\nSản phẩm: ${product}\nGói: ${pkgLabel}`);
 };
 
-function showPaymentModal() {
-    const overlay = document.getElementById('success-overlay');
-    if (overlay) {
-        overlay.style.display = 'flex';
-        document.getElementById('order-id').textContent = 'NCM' + Math.floor(Math.random() * 1000000);
-        document.getElementById('confirm-email').textContent = document.getElementById('emailKichHoat').value || 'khachhang@email.com';
-        document.getElementById('kd-code').textContent = document.getElementById('maKD').value;
+// ==========================================
+// FLOW ROUTING HANDLERS
+// ==========================================
+
+function goToSalesFlow() {
+    const overlay = document.getElementById('flow-overlay');
+    if (!overlay) return;
+    
+    // Hide all screens
+    document.querySelectorAll('#flow-overlay > div').forEach(div => div.style.display = 'none');
+    
+    // Setup and show Flow B screen
+    const screen = document.getElementById('screen_flow_b');
+    overlay.style.display = 'flex';
+    screen.style.display = 'block';
+
+    // Mock ticket code
+    const ticket = 'NCM-' + new Date().getFullYear() + '-' + Math.floor(10000 + Math.random() * 90000);
+    document.getElementById('ticketCode').textContent = ticket;
+    
+    // Summary
+    document.getElementById('sc_product').textContent = document.getElementById('cart_name').textContent;
+    document.getElementById('sc_pkg').textContent = document.getElementById('cart_pkg').textContent;
+    document.getElementById('sc_email').textContent = document.getElementById('emailKichHoat').value || 'khachhang@email.com';
+    document.getElementById('sc_sdt').textContent = document.getElementById('sdt').value || '09xxxxxxxx';
+}
+
+function goToVNeIDFlow() {
+    const overlay = document.getElementById('flow-overlay');
+    if (!overlay) return;
+    
+    // Hide all screens
+    document.querySelectorAll('#flow-overlay > div').forEach(div => div.style.display = 'none');
+    
+    // Setup and show Flow A - Guide
+    const screen = document.getElementById('screen_vneid_guide');
+    overlay.style.display = 'flex';
+    screen.style.display = 'block';
+
+    document.getElementById('vn_email').textContent = document.getElementById('emailKichHoat').value || 'khachhang@email.com';
+}
+
+// Giả lập tải file PDF
+window.mockDownload = function(type) {
+    alert(`Đã tải xuống file PDF giả lập: ${type}`);
+};
+
+// Gọi khi người dùng bấm vào upload zone
+window.triggerUpload = function(id) {
+    document.getElementById('file_' + id).click();
+};
+
+window.onFileSelected = function(input, zoneId) {
+    if (input.files && input.files[0]) {
+        const zone = document.getElementById(zoneId);
+        zone.classList.add('uploaded');
+        zone.querySelector('span').textContent = '✅';
+        zone.querySelector('p').textContent = input.files[0].name;
+        
+        checkUploadDocsStatus();
+    }
+};
+
+function checkUploadDocsStatus() {
+    const dksd = document.getElementById('uz_dksd').classList.contains('uploaded');
+    const hdsd = document.getElementById('uz_hdsd').classList.contains('uploaded');
+    
+    const btn = document.getElementById('btnSubmitSigned');
+    if (dksd && hdsd) {
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
+    } else {
+        btn.disabled = true;
+        btn.style.opacity = '0.5';
+        btn.style.cursor = 'not-allowed';
     }
 }
+
+// Chuyển sang thẩm định
+window.submitSignedDocs = function() {
+    document.getElementById('screen_vneid_guide').style.display = 'none';
+    document.getElementById('screen_vneid_review').style.display = 'block';
+    
+    document.getElementById('rev_email').textContent = document.getElementById('emailKichHoat').value || 'khachhang@email.com';
+    document.getElementById('review_pending').style.display = 'block';
+    document.getElementById('screen_approved').style.display = 'none';
+    document.getElementById('screen_rejected').style.display = 'none';
+};
+
+window.mockApprove = function() {
+    document.getElementById('review_pending').style.display = 'none';
+    document.getElementById('screen_approved').style.display = 'block';
+    
+    // Sinh mã ngẫu nhiên
+    const code = 'RS-' + Math.floor(1000 + Math.random() * 9000) + '-' + Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('activationCode').textContent = code;
+    sessionStorage.setItem('mock_rs_code', code);
+};
+
+window.mockReject = function() {
+    document.getElementById('review_pending').style.display = 'none';
+    document.getElementById('screen_rejected').style.display = 'block';
+};
+
+window.goBackToUpload = function() {
+    document.getElementById('screen_vneid_review').style.display = 'none';
+    
+    // Reset upload zones
+    ['uz_dksd', 'uz_hdsd'].forEach(id => {
+        const zone = document.getElementById(id);
+        zone.classList.remove('uploaded');
+        zone.querySelector('span').textContent = '☁️';
+        zone.querySelector('p').textContent = id === 'uz_dksd' ? 'ĐKSD đã ký VNeID' : 'Hợp đồng đã ký VNeID';
+        document.getElementById('file_' + id).value = '';
+    });
+    checkUploadDocsStatus();
+    
+    document.getElementById('screen_vneid_guide').style.display = 'block';
+};
+
+// Kích hoạt App
+window.goToActivation = function() {
+    document.getElementById('screen_vneid_review').style.display = 'none';
+    document.getElementById('screen_vneid_activation').style.display = 'block';
+};
+
+window.onAppDownloaded = function() {
+    const chk = document.getElementById('chk_downloaded');
+    const act2 = document.getElementById('act2');
+    if (chk.checked) {
+        act2.classList.remove('disabled');
+        act2.style.opacity = '1';
+        act2.style.pointerEvents = 'auto';
+    } else {
+        act2.classList.add('disabled');
+        act2.style.opacity = '0.5';
+        act2.style.pointerEvents = 'none';
+    }
+};
+
+window.formatCodeInput = function(input) {
+    let val = input.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+    if (val.length > 4) {
+        val = val.slice(0,4) + '-' + val.slice(4);
+    }
+    input.value = val;
+};
+
+window.verifyCode = function() {
+    const inputCode = document.getElementById('codeInput').value;
+    const realCode = sessionStorage.getItem('mock_rs_code');
+    const expected = realCode ? realCode.replace('RS-', '') : '';
+    
+    if (inputCode === expected || inputCode === '1234-5678') { // fallback allow 1234-5678
+        document.getElementById('err_code').style.display = 'none';
+        const act3 = document.getElementById('act3');
+        act3.classList.remove('disabled');
+        act3.style.opacity = '1';
+        act3.style.pointerEvents = 'auto';
+    } else {
+        document.getElementById('err_code').style.display = 'block';
+    }
+};
+
+window.onPinInput = function() {
+    const p1 = document.getElementById('pin1').value;
+    const p2 = document.getElementById('pin2').value;
+    const btn = document.getElementById('btnFinish');
+    
+    if (p1.length === 6 && p1 === p2 && /^\d+$/.test(p1)) {
+        document.getElementById('err_pin').style.display = 'none';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+    } else {
+        document.getElementById('err_pin').style.display = 'block';
+        btn.disabled = true;
+        btn.style.opacity = '0.5';
+    }
+};
+
+window.finishActivation = function() {
+    document.getElementById('screen_vneid_activation').style.display = 'none';
+    document.getElementById('screen_vneid_final').style.display = 'block';
+    
+    document.getElementById('fs_name').textContent = document.getElementById('hoTen').value || 'Khách hàng';
+    
+    const doiTuongVal = document.querySelector('input[name="doiTuongHD"]:checked').value;
+    let typeLabel = "Cá nhân";
+    if(doiTuongVal === 'hkd') typeLabel = "Hộ kinh doanh";
+    document.getElementById('fs_type').textContent = typeLabel;
+    
+    document.getElementById('fs_pkg').textContent = document.getElementById('cart_pkg').textContent;
+    
+    const nextYear = new Date();
+    nextYear.setFullYear(nextYear.getFullYear() + parseInt(document.getElementById('cart_pkg').textContent.replace(/[^0-9]/g, '')) || 1);
+    const dd = String(nextYear.getDate()).padStart(2, '0');
+    const mm = String(nextYear.getMonth() + 1).padStart(2, '0');
+    document.getElementById('fs_expire').textContent = `${dd}/${mm}/${nextYear.getFullYear()}`;
+};
 
 document.addEventListener('DOMContentLoaded', initRegisterPage);

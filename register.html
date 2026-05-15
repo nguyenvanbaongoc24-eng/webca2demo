@@ -305,22 +305,207 @@
         </div>
     </main>
 
-    <!-- Success overlay -->
-    <div class="success-overlay" id="success-overlay">
-        <div class="success-modal">
-            <div style="font-size: 70px; margin-bottom: 15px;">✅</div>
-            <h2 style="color: var(--primary-navy); margin-bottom: 10px;">Đăng ký thành công!</h2>
-            <p style="color: var(--text-muted); margin-bottom: 5px;">Mã hồ sơ: <strong id="order-id" style="color: var(--accent-red); font-size: 18px;"></strong></p>
-            <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 14px;">Nhân viên Nacencomm sẽ liên hệ bạn trong vòng 30 phút.</p>
-            <div style="background: var(--light-navy); padding: 15px; border-radius: 8px; margin-bottom: 25px; text-align: left; font-size: 13px;">
-                <p>📧 Đã gửi email xác nhận tới <strong id="confirm-email"></strong></p>
-                <p style="margin-top: 5px;">📋 Mã nhân viên KD phụ trách: <strong id="kd-code"></strong></p>
+    <!-- ==============================================
+         FLOW ROUTING OVERLAYS
+         ============================================== -->
+    <div class="flow-overlay" id="flow-overlay" style="display:none;">
+        
+        <!-- FLOW B: KINH DOANH LIÊN HỆ -->
+        <div class="success-screen" id="screen_flow_b" style="display:none;">
+            <div class="success-icon">✅</div>
+            <h2>Đăng ký thành công!</h2>
+            <div class="ticket-badge">
+                Mã hồ sơ: <strong id="ticketCode">NCM-2025-XXXXX</strong>
             </div>
-            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                <a href="register-status.html" class="btn btn-primary">Theo dõi hồ sơ</a>
-                <a href="index.html" class="btn btn-outline">Về trang chủ</a>
+            <div class="success-summary">
+                <div class="summary-row"><span>Sản phẩm</span><span id="sc_product">Chữ ký số USB Token</span></div>
+                <div class="summary-row"><span>Gói</span><span id="sc_pkg">Gói 2 Năm</span></div>
+                <div class="summary-row"><span>Email liên hệ</span><span id="sc_email">—</span></div>
+                <div class="summary-row"><span>Số điện thoại</span><span id="sc_sdt">—</span></div>
+            </div>
+            <div class="next-steps-box">
+                <div class="next-steps-title">📌 Các bước tiếp theo</div>
+                <ol class="next-steps-list">
+                    <li><strong>Nhân viên kinh doanh sẽ liên hệ bạn</strong> qua SĐT/Email trong vòng <strong>1 ngày làm việc</strong> để xác nhận thông tin.</li>
+                    <li>Sau khi xác nhận, bạn sẽ nhận được <strong>báo giá chính thức</strong> và hướng dẫn thanh toán.</li>
+                    <li>Ký hợp đồng và <strong>nhận bàn giao dịch vụ</strong> trong vòng 1–2 ngày làm việc kế tiếp.</li>
+                </ol>
+            </div>
+            <div class="support-note">
+                Cần hỗ trợ ngay? Gọi <a href="tel:1900545407"><strong>1900 5454 07</strong></a> hoặc email <a href="mailto:sale@nacencomm.vn">sale@nacencomm.vn</a>
+            </div>
+            <div class="success-actions">
+                <a href="index.html" class="btn btn-primary">🏠 Về trang chủ</a>
+                <a href="pricing.html" class="btn btn-outline">📦 Xem sản phẩm khác</a>
             </div>
         </div>
+
+        <!-- FLOW A - BƯỚC 1: HƯỚNG DẪN KÝ VNeID -->
+        <div class="vneid-guide-screen" id="screen_vneid_guide" style="display:none;">
+            <div class="success-icon" style="font-size: 50px;">📄</div>
+            <h2>Hồ sơ đã được tiếp nhận!</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 5px;">Hệ thống đã tạo 2 file PDF và gửi về email của bạn:</p>
+            <div class="email-badge" id="vn_email" style="font-weight: 600; color: var(--primary-navy); margin-bottom: 20px;">—</div>
+
+            <div class="pdf-download-group">
+                <a class="pdf-btn" href="#" onclick="mockDownload('DKSD'); return false;">
+                    📄 Đăng_Ký_Sử_Dụng.pdf
+                    <span class="pdf-sub">Tải về & ký số</span>
+                </a>
+                <a class="pdf-btn" href="#" onclick="mockDownload('HDSD'); return false;">
+                    📄 Hop_Dong_Dich_Vu.pdf
+                    <span class="pdf-sub">Tải về & ký số</span>
+                </a>
+            </div>
+
+            <div class="guide-steps">
+                <div class="guide-title">📱 Hướng dẫn ký bằng VNeID</div>
+                <ol>
+                    <li>Tải app <strong>VNeID</strong> từ App Store / Google Play (nếu chưa có)</li>
+                    <li>Mở app → Chọn <strong>"Ký số"</strong> → Chọn file PDF vừa tải</li>
+                    <li>Xác thực sinh trắc học (khuôn mặt / vân tay)</li>
+                    <li>Ký vào <strong>cả 2 file</strong> (ĐKSD + Hợp đồng)</li>
+                    <li>Quay lại đây để <strong>upload 2 file đã ký</strong></li>
+                </ol>
+            </div>
+
+            <div class="upload-signed-section">
+                <div class="upload-signed-title">📤 Upload file đã ký VNeID</div>
+                <div class="upload-grid-2">
+                    <div class="upload-zone" id="uz_dksd" onclick="triggerUpload('uz_dksd')">
+                        <span style="font-size: 24px; display: block; margin-bottom: 8px;">☁️</span>
+                        <p style="margin:0; font-size: 13px; font-weight: 600;">ĐKSD đã ký VNeID</p>
+                        <input type="file" id="file_uz_dksd" accept=".pdf" style="display:none" onchange="onFileSelected(this,'uz_dksd')">
+                    </div>
+                    <div class="upload-zone" id="uz_hdsd" onclick="triggerUpload('uz_hdsd')">
+                        <span style="font-size: 24px; display: block; margin-bottom: 8px;">☁️</span>
+                        <p style="margin:0; font-size: 13px; font-weight: 600;">Hợp đồng đã ký VNeID</p>
+                        <input type="file" id="file_uz_hdsd" accept=".pdf" style="display:none" onchange="onFileSelected(this,'uz_hdsd')">
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btnSubmitSigned" style="width: 100%; margin-top: 20px; padding: 12px; opacity: 0.5; cursor: not-allowed;" disabled onclick="submitSignedDocs()">
+                    ✅ Gửi hồ sơ đã ký → CA2 thẩm định
+                </button>
+                <p class="upload-hint" style="font-size: 12px; color: var(--accent-red); margin-top: 8px; text-align: center;">Vui lòng upload đủ 2 file để tiếp tục</p>
+            </div>
+        </div>
+
+        <!-- FLOW A - BƯỚC 2: THẨM ĐỊNH -->
+        <div class="review-status-screen" id="screen_vneid_review" style="display:none;">
+            <div id="review_pending">
+                <div class="status-icon pending" style="font-size: 50px;">⏳</div>
+                <h2>Đang thẩm định hồ sơ</h2>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 5px;">CA2 đang xem xét hồ sơ của bạn. Kết quả sẽ gửi về email:</p>
+                <div class="email-badge" id="rev_email" style="font-weight: 600; color: var(--primary-navy); margin-bottom: 10px;">—</div>
+                <p class="time-note" style="font-size: 13px;">Thời gian xử lý: <strong>1 – 2 ngày làm việc</strong></p>
+
+                <!-- Demo controls -->
+                <div class="demo-controls" style="margin-top: 30px; padding-top: 20px; border-top: 1px dashed var(--border-color); text-align: left;">
+                    <p class="demo-label" style="font-size: 12px; font-weight: 600; color: #8891a4; margin-bottom: 10px;">⚙️ Demo controls:</p>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-outline" style="flex:1; border-color: var(--success-green); color: var(--success-green);" onclick="mockApprove()">✅ Mô phỏng: Duyệt</button>
+                        <button class="btn btn-outline" style="flex:1; border-color: var(--accent-red); color: var(--accent-red);" onclick="mockReject()">❌ Mô phỏng: Từ chối</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="screen_approved" style="display:none;">
+                <div class="status-icon success" style="font-size: 50px; color: var(--success-green);">✅</div>
+                <h2>Hồ sơ đã được duyệt!</h2>
+                <div class="activation-code-box" style="background: #f8faff; border: 1px solid #d0d5e0; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Mã kích hoạt Remote Signing của bạn:</p>
+                    <div class="code-display" id="activationCode" style="font-size: 24px; font-weight: 700; color: var(--primary-navy); letter-spacing: 2px;">RS-XXXX-XXXX</div>
+                    <p class="code-note" style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Mã đã gửi về email. Dùng để kích hoạt app.</p>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; padding: 12px;" onclick="goToActivation()">📱 Tiếp tục kích hoạt App →</button>
+            </div>
+
+            <div id="screen_rejected" style="display:none;">
+                <div class="status-icon danger" style="font-size: 50px; color: var(--accent-red);">❌</div>
+                <h2>Hồ sơ chưa đạt yêu cầu</h2>
+                <div class="reject-reason-box" style="background: #fff5f5; border: 1px solid #fed7d7; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <p style="font-size: 13px; margin-bottom: 8px;"><strong>Lý do:</strong></p>
+                    <div class="reject-reason" id="rejectReason" style="color: var(--accent-red); font-size: 14px;">Chữ ký VNeID không hợp lệ hoặc thiếu thông tin.</div>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; padding: 12px;" onclick="goBackToUpload()">🔄 Upload lại hồ sơ</button>
+            </div>
+        </div>
+
+        <!-- FLOW A - BƯỚC 3: KÍCH HOẠT APP -->
+        <div class="activation-screen" id="screen_vneid_activation" style="display:none; text-align: left;">
+            <h2 style="text-align: center; margin-bottom: 30px;">📱 Kích hoạt Remote Signing</h2>
+
+            <!-- Tải app -->
+            <div class="act-step" id="act1">
+                <div class="act-step-num">1</div>
+                <div class="act-step-content">
+                    <div class="act-step-title" style="font-weight: 600; margin-bottom: 10px;">Tải ứng dụng CA2 Remote Signing</div>
+                    <div class="app-store-btns" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <a href="#" class="btn btn-outline" style="flex:1;">🍎 App Store</a>
+                        <a href="#" class="btn btn-outline" style="flex:1;">🤖 Google Play</a>
+                    </div>
+                    <label style="display: flex; gap: 8px; font-size: 13px; cursor: pointer;">
+                        <input type="checkbox" id="chk_downloaded" onchange="onAppDownloaded()">
+                        Tôi đã tải ứng dụng thành công
+                    </label>
+                </div>
+            </div>
+
+            <!-- Nhập mã kích hoạt -->
+            <div class="act-step disabled" id="act2" style="margin-top: 20px; opacity: 0.5; pointer-events: none;">
+                <div class="act-step-num">2</div>
+                <div class="act-step-content">
+                    <div class="act-step-title" style="font-weight: 600;">Nhập mã kích hoạt</div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Mã đã gửi về email của bạn (RS-XXXX-XXXX)</p>
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <span style="display: flex; align-items: center; font-weight: 600;">RS - </span>
+                        <input type="text" id="codeInput" maxlength="9" placeholder="XXXX-XXXX" oninput="formatCodeInput(this)" style="flex:1; padding: 10px; border: 1px solid var(--border-color); border-radius: 4px;">
+                    </div>
+                    <div class="field-error" id="err_code" style="display:none; color: var(--accent-red); font-size: 12px; margin-bottom: 10px;">Mã kích hoạt không đúng</div>
+                    <button class="btn btn-primary" onclick="verifyCode()" style="padding: 8px 16px;">Xác nhận mã</button>
+                </div>
+            </div>
+
+            <!-- Tạo PIN -->
+            <div class="act-step disabled" id="act3" style="margin-top: 20px; opacity: 0.5; pointer-events: none;">
+                <div class="act-step-num">3</div>
+                <div class="act-step-content">
+                    <div class="act-step-title" style="font-weight: 600;">Tạo mã PIN bảo mật</div>
+                    <p style="font-size: 12px; color: var(--accent-red); margin-bottom: 15px;">⚠️ Không chia sẻ PIN với bất kỳ ai</p>
+                    <div class="field">
+                        <label>PIN (6 chữ số)</label>
+                        <input type="password" id="pin1" maxlength="6" placeholder="••••••" oninput="onPinInput()">
+                    </div>
+                    <div class="field mt12">
+                        <label>Nhập lại PIN</label>
+                        <input type="password" id="pin2" maxlength="6" placeholder="••••••" oninput="onPinInput()">
+                    </div>
+                    <div class="field-error" id="err_pin" style="display:none; color: var(--accent-red); font-size: 12px; margin-top: 5px; margin-bottom: 15px;">PIN không khớp hoặc chưa đủ 6 số</div>
+                    <button class="btn btn-primary" id="btnFinish" disabled onclick="finishActivation()" style="width: 100%; padding: 12px; opacity: 0.5; margin-top: 10px;">🎉 Hoàn tất kích hoạt</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLOW A - BƯỚC 4: HOÀN TẤT -->
+        <div class="final-screen" id="screen_vneid_final" style="display:none;">
+            <div class="final-icon" style="font-size: 50px;">🎉</div>
+            <h2>Dịch vụ đã được kích hoạt!</h2>
+            <div class="final-summary" style="background: #f8faff; border: 1px solid #d0d5e0; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: left;">
+                <div class="summary-row"><span>Họ tên</span><span id="fs_name" style="float: right; font-weight: 600;">—</span><div style="clear:both;"></div></div>
+                <div class="summary-row" style="margin-top: 8px;"><span>Sản phẩm</span><span style="float: right; font-weight: 600;">Remote Signing</span><div style="clear:both;"></div></div>
+                <div class="summary-row" style="margin-top: 8px;"><span>Đối tượng</span><span id="fs_type" style="float: right; font-weight: 600;">Cá nhân</span><div style="clear:both;"></div></div>
+                <div class="summary-row" style="margin-top: 8px;"><span>Gói</span><span id="fs_pkg" style="float: right; font-weight: 600;">—</span><div style="clear:both;"></div></div>
+                <div class="summary-row" style="margin-top: 8px;"><span>Hiệu lực đến</span><span id="fs_expire" style="float: right; font-weight: 600; color: var(--primary-navy);">—</span><div style="clear:both;"></div></div>
+            </div>
+            <div class="final-note" style="font-size: 14px; margin-bottom: 24px; color: var(--text-muted);">
+                Bạn có thể bắt đầu ký số ngay trên ứng dụng <strong>CA2 Remote Signing</strong>.
+            </div>
+            <div class="final-actions" style="display: flex; gap: 10px;">
+                <a href="index.html" class="btn btn-primary" style="flex:1;">🏠 Về trang chủ</a>
+                <a href="#" class="btn btn-outline" style="flex:1;">📖 HDSD</a>
+            </div>
+        </div>
+
     </div>
 
     <script src="js/pricing-data.js"></script>

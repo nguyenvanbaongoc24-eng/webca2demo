@@ -300,6 +300,48 @@
 .success-modal { background: white; padding: 50px; border-radius: 12px; text-align: center; max-width: 520px; width: 90%; animation: scaleIn 0.4s ease; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
 @keyframes scaleIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
+/* =========================================
+   FLOW ROUTING SCREENS
+   ========================================= */
+.flow-overlay { position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; overflow-y: auto;}
+.flow-overlay > div { background: white; padding: 40px; border-radius: 12px; text-align: center; max-width: 520px; width: 100%; animation: scaleIn 0.4s ease; box-shadow: 0 10px 40px rgba(0,0,0,0.2); margin: auto; }
+
+/* Flow B */
+.success-screen h2, .vneid-guide-screen h2, .review-status-screen h2, .final-screen h2 { color: var(--primary-navy); margin-bottom: 10px; font-size: 24px; }
+.ticket-badge { background: #fff8e1; border: 1px dashed #ffc107; color: #b45309; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-size: 15px; }
+.success-summary { background: #f8faff; border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 24px; text-align: left; }
+.summary-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px; color: var(--text-main); }
+.summary-row:last-child { margin-bottom: 0; }
+.summary-row span:last-child { font-weight: 600; color: var(--primary-navy); }
+
+.next-steps-box { text-align: left; margin-bottom: 24px; }
+.next-steps-title { font-weight: 700; color: var(--primary-navy); margin-bottom: 10px; font-size: 15px; }
+.next-steps-list { padding-left: 20px; color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+.next-steps-list li { margin-bottom: 8px; }
+
+.support-note { font-size: 13px; color: var(--text-muted); padding: 15px; background: #fcfcfc; border-radius: 8px; margin-bottom: 24px; }
+.success-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+/* Flow A */
+.pdf-download-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.pdf-btn { display: flex; flex-direction: column; text-align: left; padding: 12px 16px; background: #fcfcfc; border: 1.5px solid var(--border-color); border-radius: 8px; text-decoration: none; color: var(--primary-navy); font-weight: 600; font-size: 14px; transition: all 0.2s; }
+.pdf-btn:hover { border-color: var(--primary-navy); background: #f8faff; }
+.pdf-sub { font-size: 11px; color: var(--text-muted); font-weight: 400; margin-top: 4px; }
+
+.guide-steps { text-align: left; background: #e8eef8; padding: 20px; border-radius: 8px; margin-bottom: 24px; }
+.guide-title { font-weight: 700; color: var(--primary-navy); margin-bottom: 10px; }
+.guide-steps ol { padding-left: 20px; color: var(--text-main); font-size: 13px; line-height: 1.6; margin: 0; }
+.guide-steps li { margin-bottom: 6px; }
+
+.upload-signed-title { font-weight: 700; color: var(--text-main); margin-bottom: 12px; text-align: left; }
+.upload-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.upload-zone { border: 1.5px dashed var(--border-color); border-radius: 8px; padding: 20px 10px; background: #fcfcfc; cursor: pointer; transition: all 0.2s; }
+.upload-zone:hover { border-color: var(--primary-navy); background: #f8faff; }
+.upload-zone.uploaded { border-color: var(--success-green); border-style: solid; background: #f0fdf4; }
+
+.act-step { display: flex; gap: 16px; padding: 20px; background: #fcfcfc; border: 1px solid var(--border-color); border-radius: 8px; position: relative; }
+.act-step-num { width: 28px; height: 28px; background: #003087; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+.act-step.disabled .act-step-num { background: #d0d5e0; }
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -307,4 +349,6 @@
   .order-sidebar   { position: static; }
   .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
   .upload-grid { grid-template-columns: 1fr; }
+  .success-actions { flex-direction: column; }
+  .success-actions .btn { width: 100%; }
 }
