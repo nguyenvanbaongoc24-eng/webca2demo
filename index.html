@@ -7,7 +7,7 @@
     <meta name="description" content="Nacencomm – Nền tảng chuyển đổi số toàn diện. Tăng tốc số hóa, bảo mật hàng đầu và tối ưu hiệu quả kinh doanh.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="style/global.css?v=7">
+    <link rel="stylesheet" href="style/global.css?v=8">
 </head>
 <body>
     <!-- ═══ HEADER ═══ -->
@@ -17,18 +17,18 @@
                 <div class="logo-badge">CA2</div>
                 <div class="logo-text"><h1>NACENCOMM</h1></div>
             </a>
-            <nav>
+            <nav id="main-nav">
                 <ul>
-                    <li><a href="index.html" class="nav-active">Trang chủ</a></li>
-                    <li><a href="products.html">Sản phẩm</a></li>
-                    <li><a href="pricing.html">Bảng giá</a></li>
-                    <li><a href="index.html#solutions">Giải pháp</a></li>
-                    <li><a href="index.html#contact">Liên hệ</a></li>
+                    <li><a href="index.html" class="nav-active">Sản phẩm</a></li>
+                    <li><a href="#solutions">Giải pháp</a></li>
+                    <li><a href="pricing.html">Hỗ trợ</a></li>
+                    <li><a href="pricing.html">Giới thiệu</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="pricing.html" class="btn-register-online" style="background: var(--accent-red); border: none; padding: 10px 20px;">Đăng ký ngay</a>
-                <a href="#" class="btn-login" style="margin-left: 10px; border: 1.5px solid var(--border-soft); padding: 9px 18px; border-radius: 10px; font-weight: 600; text-decoration: none; color: var(--text-main);">Đăng nhập</a>
+                <a href="pricing.html" class="btn-register-online">Đăng ký ngay</a>
+                <a href="#" class="btn-login" style="margin-left: 12px; border: 1.5px solid var(--border-soft); padding: 9px 18px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-main);">Đăng nhập</a>
             </div>
         </div>
     </header>
@@ -41,8 +41,8 @@
                     <h1 style="font-size: 56px; line-height: 1.1; font-weight: 800; margin-bottom: 24px;">Nền tảng chuyển đổi số toàn diện cho doanh nghiệp Việt</h1>
                     <p style="font-size: 18px; opacity: 0.9; margin-bottom: 40px; line-height: 1.6;">Tăng tốc số hóa, bảo mật hàng đầu và tối ưu hiệu quả kinh doanh cùng giải pháp chữ ký số và an ninh mạng từ Nacencomm.</p>
                     <div class="hero-btns" style="justify-content: flex-start;">
-                        <a href="products.html" class="btn-hero-white" style="border-radius: 12px; font-weight: 700;">Khám phá nền tảng</a>
-                        <a href="pricing.html" class="btn-hero-red" style="border-radius: 12px; font-weight: 700; background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.3);">Xem demo sản phẩm</a>
+                        <a href="products.html" class="btn-hero-white" style="font-weight: 700;">Khám phá nền tảng</a>
+                        <a href="pricing.html" class="btn-hero-red" style="font-weight: 700;">Xem demo sản phẩm</a>
                     </div>
                 </div>
                 <div class="split-hero-image fade-in">
@@ -51,47 +51,66 @@
             </div>
         </section>
 
-        <!-- ═══ PRICING SECTION (STITCH STYLE) ═══ -->
+        <!-- ═══ PRICING SECTION (STITCH ADVANCED STYLE) ═══ -->
         <section class="section" id="pricing" style="background: #fcfcfc;">
             <div class="container">
                 <div class="section-title section-title-center">
-                    <h2 style="font-size: 32px; font-weight: 800; color: var(--dark-navy);">Bảng giá sản phẩm</h2>
-                    <p>Chọn gói phù hợp nhất với quy trình đăng ký online trong vài bước.</p>
+                    <h2 style="font-size: 36px; margin-bottom: 16px;">Bảng giá sản phẩm</h2>
+                    <p>Giá đã bao gồm VAT. Bàn giao dịch vụ trong 24h làm việc. Đội ngũ hỗ trợ 1900 5454 07 luôn sẵn sàng.</p>
                 </div>
                 
-                <div class="stitch-pricing-grid">
+                <div class="stitch-pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <!-- Package 1 -->
                     <div class="stitch-pkg-card">
-                        <div class="stitch-pkg-icon">🔑</div>
-                        <h3>Chữ ký số USB Token</h3>
-                        <p>Giải pháp ký số công cộng phổ biến cho cá nhân và tổ chức.</p>
-                        <a href="product-detail.html?slug=cks-token" class="btn btn-outline" style="width: 100%; margin-bottom: 12px; border-radius: 8px;">Tìm hiểu thêm</a>
-                        <a href="pricing.html?product=cks-token" class="btn btn-accent" style="width: 100%; background: var(--accent-red); color: white; border-radius: 8px;">🛒 Mua ngay</a>
+                        <div class="stitch-pkg-icon">⚡</div>
+                        <h3 style="font-size: 24px;">Gói 1 Năm</h3>
+                        <p style="min-height: auto; margin-bottom: 10px;">Dành cho nhu cầu ngắn hạn</p>
+                        <div style="font-size: 13px; color: var(--text-light); margin-bottom: 20px;">Đã bao gồm VAT 10%</div>
+                        <ul style="text-align: left; margin-bottom: 30px; border-top: 1px solid var(--border-soft); padding-top: 20px;">
+                            <li style="margin-bottom: 12px; font-size: 14px;">✅ Chứng thư số công cộng CA2 (1 năm)</li>
+                            <li style="margin-bottom: 12px; font-size: 14px;">✅ Tặng kèm 01 thiết bị USB Token chuyên dụng</li>
+                            <li style="margin-bottom: 12px; font-size: 14px;">✅ Hỗ trợ kê khai thuế, BHXH, Hải quan 24/7</li>
+                        </ul>
+                        <a href="pricing.html?product=cks-token&duration=1" class="btn btn-accent" style="width: 100%;">🛒 Mua ngay</a>
                     </div>
-                    <div class="stitch-pkg-card">
-                        <div class="stitch-pkg-icon">📱</div>
-                        <h3>Remote Signing</h3>
-                        <p>Ký số không dùng thiết bị, an toàn và tiện lợi trên di động.</p>
-                        <a href="product-detail.html?slug=remote-signing" class="btn btn-outline" style="width: 100%; margin-bottom: 12px; border-radius: 8px;">Tìm hiểu thêm</a>
-                        <a href="pricing.html?product=remote-signing" class="btn btn-accent" style="width: 100%; background: var(--accent-red); color: white; border-radius: 8px;">🛒 Mua ngay</a>
+
+                    <!-- Package 2 -->
+                    <div class="stitch-pkg-card" style="border-color: var(--primary-navy); transform: scale(1.05); z-index: 2;">
+                        <div class="stitch-pkg-icon">⭐</div>
+                        <h3 style="font-size: 24px;">Gói 2 Năm</h3>
+                        <p style="min-height: auto; margin-bottom: 10px;">Cân bằng chi phí & thời gian</p>
+                        <div style="font-size: 13px; color: var(--text-light); margin-bottom: 20px;">Đã bao gồm VAT 10%</div>
+                        <ul style="text-align: left; margin-bottom: 30px; border-top: 1px solid var(--border-soft); padding-top: 20px;">
+                            <li style="margin-bottom: 12px; font-size: 14px;">✅ Chứng thư số công cộng CA2 (2 năm)</li>
+                            <li style="margin-bottom: 12px; font-size: 14px;">✅ Tặng kèm 01 thiết bị USB Token cao cấp</li>
+                            <li style="margin-bottom: 12px; font-size: 14px;">✅ Ưu tiên hỗ trợ kỹ thuật tận nơi</li>
+                            <li style="margin-bottom: 12px; font-size: 14px;">✅ Tặng 100 số hóa đơn điện tử CA2</li>
+                        </ul>
+                        <a href="pricing.html?product=cks-token&duration=2" class="btn btn-accent" style="width: 100%;">🛒 Mua ngay</a>
                     </div>
+
+                    <!-- Package 3 -->
                     <div class="stitch-pkg-card">
-                        <div class="stitch-pkg-icon">🏛️</div>
-                        <h3>CA2 Sign Platform</h3>
-                        <p>Nền tảng ký số tập trung cho quản trị doanh nghiệp hiện đại.</p>
-                        <a href="product-detail.html?slug=ca2-sign" class="btn btn-outline" style="width: 100%; margin-bottom: 12px; border-radius: 8px;">Tìm hiểu thêm</a>
-                        <a href="pricing.html?product=ca2-sign" class="btn btn-accent" style="width: 100%; background: var(--accent-red); color: white; border-radius: 8px;">🛒 Mua ngay</a>
-                    </div>
-                    <div class="stitch-pkg-card">
-                        <div class="stitch-pkg-icon">🧾</div>
-                        <h3>Hóa đơn điện tử CA2</h3>
-                        <p>Phát hành và quản lý hóa đơn điện tử chuẩn quy định BTC.</p>
-                        <a href="product-detail.html?slug=hoa-don-dien-tu" class="btn btn-outline" style="width: 100%; margin-bottom: 12px; border-radius: 8px;">Tìm hiểu thêm</a>
-                        <a href="pricing.html?product=hoa-don-dien-tu" class="btn btn-accent" style="width: 100%; background: var(--accent-red); color: white; border-radius: 8px;">🛒 Mua ngay</a>
+                        <div class="stitch-pkg-icon">💎</div>
+                        <h3 style="font-size: 24px;">Gói 3 Năm</h3>
+                        <p style="min-height: auto; margin-bottom: 10px;">Tiết kiệm tối đa đến 30%</p>
+                        <div style="font-size: 13px; color: var(--text-light); margin-bottom: 20px;">Đã bao gồm VAT 10%</div>
+                        <ul style="text-align: left; margin-bottom: 30px; border-top: 1px solid var(--border-soft); padding-top: 20px;">
+                            <li style="margin-bottom: 12px; font-size: 14px;">✅ Chứng thư số công cộng CA2 (3 năm)</li>
+                            <li style="margin-bottom: 12px; font-size: 14px;">✅ Tặng kèm 01 thiết bị USB Token cao cấp</li>
+                            <li style="margin-bottom: 12px; font-size: 14px;">✅ Gói bảo hành phần cứng trọn đời</li>
+                            <li style="margin-bottom: 12px; font-size: 14px;">✅ Tặng 300 số hóa đơn điện tử CA2</li>
+                        </ul>
+                        <a href="pricing.html?product=cks-token&duration=3" class="btn btn-accent" style="width: 100%;">🛒 Mua ngay</a>
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 40px;">
-                    <a href="pricing.html" class="btn btn-outline" style="background: var(--dark-navy); color: white; border: none; padding: 10px 30px; border-radius: 8px; font-weight: 700;">Xem tất cả 14 sản phẩm</a>
+                <p style="text-align: center; margin-top: 40px; font-size: 14px; color: var(--text-light); font-style: italic;">
+                    * Giá đã bao gồm VAT 10%. Cấp mới CKS Token kèm USB Token. Nhân viên kinh doanh sẽ xác nhận báo giá chi tiết trước khi thu phí.
+                </p>
+
+                <div style="text-align: center; margin-top: 32px;">
+                    <a href="pricing.html" class="btn btn-outline" style="border-color: var(--primary-navy); color: var(--primary-navy); padding: 12px 40px;">Xem tất cả 14 sản phẩm & giải pháp →</a>
                 </div>
             </div>
         </section>
@@ -104,7 +123,7 @@
                     <div class="feature-block-content">
                         <h2>CA2 Remote Signing toàn Sign platform</h2>
                         <p>Tăng tốc số hóa, bảo mật hàng đầu và tối ưu hiệu quả kinh doanh cùng giải pháp chữ ký số và an ninh mạng từ Nacencomm.</p>
-                        <a href="product-detail.html?slug=remote-signing" class="btn btn-accent" style="padding: 12px 30px; border-radius: 999px; background: var(--primary-navy); color: white;">Tìm hiểu thêm →</a>
+                        <a href="product-detail.html?slug=remote-signing" class="btn btn-accent" style="padding: 12px 30px; border-radius: 999px;">Tìm hiểu thêm →</a>
                     </div>
                     <div class="feature-block-image">
                         <img src="assets/dashboard-remote.png" alt="Remote Signing Dashboard">
@@ -130,7 +149,7 @@
                                 <span style="font-size: 14px; color: var(--text-light);">Ký duyệt tập trung</span>
                             </div>
                         </div>
-                        <a href="product-detail.html?slug=ca2-sign" class="btn btn-outline" style="margin-top: 40px; border-radius: 8px;">Tìm hiểu thêm</a>
+                        <a href="product-detail.html?slug=ca2-sign" class="btn btn-outline" style="margin-top: 40px;">Tìm hiểu thêm</a>
                     </div>
                     <div class="feature-block-image">
                         <img src="assets/dashboard-sign.png" alt="Sign Platform Dashboard">
@@ -140,24 +159,21 @@
         </section>
 
         <!-- ═══ FEATURES ROW ═══ -->
-        <section class="section" style="background: #f8faff;">
+        <section class="section" style="background: var(--bg-soft);">
             <div class="container">
-                <div class="section-title section-title-center">
-                    <h2 style="font-size: 24px; font-weight: 800; color: var(--primary-navy); letter-spacing: 2px;">FEATURES</h2>
-                </div>
                 <div class="why-grid">
-                    <div class="why-card" style="background: transparent; border: none; box-shadow: none;">
-                        <div class="why-icon" style="background: var(--light-navy); width: 60px; height: 60px; margin: 0 auto 20px;">🛡️</div>
+                    <div class="why-card">
+                        <div class="why-icon">🛡️</div>
                         <h3>Bảo mật tối đa</h3>
                         <p>Hệ thống bảo mật đa lớp chuẩn quốc tế, đảm bảo an toàn tuyệt đối cho mọi dữ liệu và giao dịch.</p>
                     </div>
-                    <div class="why-card" style="background: transparent; border: none; box-shadow: none;">
-                        <div class="why-icon" style="background: var(--light-navy); width: 60px; height: 60px; margin: 0 auto 20px;">🎧</div>
+                    <div class="why-card">
+                        <div class="why-icon">🎧</div>
                         <h3>Hỗ trợ 24/7 chuyên nghiệp</h3>
                         <p>Đội ngũ kỹ thuật giàu kinh nghiệm luôn sẵn sàng hỗ trợ khách hàng mọi lúc, mọi nơi.</p>
                     </div>
-                    <div class="why-card" style="background: transparent; border: none; box-shadow: none;">
-                        <div class="why-icon" style="background: var(--light-navy); width: 60px; height: 60px; margin: 0 auto 20px;">📜</div>
+                    <div class="why-card">
+                        <div class="why-icon">📜</div>
                         <h3>Tuân thủ pháp lý cao nhất</h3>
                         <p>Mọi giải pháp đều tuân thủ nghiêm ngặt các quy định pháp luật Việt Nam về chữ ký số.</p>
                     </div>
@@ -167,9 +183,48 @@
     </main>
 
     <!-- ═══ FOOTER ═══ -->
-    <footer style="background: var(--dark-navy); color: white; padding: 40px 0; text-align: center;">
+    <footer id="contact" style="background: var(--primary-navy); color: white; padding: 80px 0 40px;">
         <div class="container">
-            <p style="font-size: 14px; opacity: 0.6;">© 2026 Nacencomm. All rights reserved.</p>
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px;">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 24px;">
+                        <div class="logo-badge">CA2</div>
+                        <h2 style="color: white; font-size: 20px;">NACENCOMM</h2>
+                    </div>
+                    <p style="opacity: 0.7; margin-bottom: 24px; font-size: 14px;">Đơn vị cung cấp giải pháp số hàng đầu Việt Nam. TOP 3 CA tại thị trường nội địa. Thành viên tập đoàn HANEL.</p>
+                    <div style="font-weight: 700; font-size: 18px;">Hotline: 1900 5454 07</div>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 24px; font-size: 16px;">Sản phẩm</h4>
+                    <ul style="opacity: 0.7; font-size: 14px; display: flex; flex-direction: column; gap: 12px;">
+                        <li><a href="#">Chữ ký số Token</a></li>
+                        <li><a href="#">Remote Signing</a></li>
+                        <li><a href="#">Hoá đơn điện tử</a></li>
+                        <li><a href="#">Phần mềm BHXH</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 24px; font-size: 16px;">Công ty</h4>
+                    <ul style="opacity: 0.7; font-size: 14px; display: flex; flex-direction: column; gap: 12px;">
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Tin tức</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 24px; font-size: 16px;">Pháp lý</h4>
+                    <ul style="opacity: 0.7; font-size: 14px; display: flex; flex-direction: column; gap: 12px;">
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Quy chế chứng thực</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; font-size: 13px; opacity: 0.5;">
+                <span>© 2026 Nacencomm. All rights reserved.</span>
+                <span>Thiết kế bởi CA2 Premium Design System</span>
+            </div>
         </div>
     </footer>
 
