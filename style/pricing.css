@@ -97,8 +97,8 @@
     width: 320px;
     background: white;
     border: 1.5px solid var(--border-color);
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0,48,135,0.14);
+    border-radius: var(--card-radius);
+    box-shadow: 0 8px 32px rgba(11, 59, 142, 0.14);
     z-index: 200;
     padding: 8px 0;
     animation: dropFadeIn 0.18s ease;
@@ -162,7 +162,7 @@
 
 .pricing-subtab {
     padding: 10px 24px;
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -216,7 +216,7 @@
 .pricing-toggle button.active {
     background: var(--primary-navy);
     color: white;
-    box-shadow: 0 2px 8px rgba(0, 48, 135, 0.25);
+    box-shadow: 0 2px 8px rgba(11, 59, 142, 0.25);
 }
 
 /* ===== AUDIENCE RADIO (DN / HKD) ===== */
@@ -236,7 +236,7 @@
     font-weight: 500;
     color: var(--text-muted);
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 12px;
     border: 2px solid var(--border-color);
     background: white;
     transition: all 0.25s;
@@ -307,14 +307,14 @@
 
 .pkg-card:hover {
     border-color: var(--primary-navy);
-    box-shadow: 0 4px 20px rgba(0, 48, 135, 0.12);
+    box-shadow: 0 4px 20px rgba(11, 59, 142, 0.12);
     transform: translateY(-4px);
 }
 
 .pkg-card.selected {
     border-color: var(--primary-navy);
     background: var(--light-navy);
-    box-shadow: 0 4px 16px rgba(0, 48, 135, 0.12);
+    box-shadow: 0 4px 16px rgba(11, 59, 142, 0.12);
 }
 
 .pkg-card.popular {
@@ -396,7 +396,7 @@
     color: white;
     border: none;
     padding: 11px 0;
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -447,7 +447,7 @@
 
 .cart-modal {
     background: white;
-    border-radius: 12px;
+    border-radius: var(--card-radius);
     width: 100%;
     max-width: 900px;
     max-height: 90vh;
