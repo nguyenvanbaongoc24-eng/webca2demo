@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nacencomm - Bảng giá giải pháp chuyển đổi số</title>
+<!-- Load Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style data-purpose="typography">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+    }
+  </style>
+<style data-purpose="custom-components">
+    /* Custom toggle switch styling */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #2a60b1;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider:before { transform: translateX(26px); }
+
+    /* Ribbon for highlighted card */
+    .ribbon {
+      position: absolute;
+      top: 24px;
+      right: -35px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: white;
+      padding: 4px 40px;
+      transform: rotate(45deg);
+      font-size: 0.75rem;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    /* Gradient backgrounds for combo cards */
+    .gradient-blue-purple { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+    .gradient-blue-cyan { background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%); }
+    .gradient-dark-blue { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
+  </style>
+</head>
+<body class="antialiased">
+<!-- BEGIN: Navigation -->
+<header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<div class="flex items-center gap-2"><img alt="Nacencomm Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0uj9t4uZ3qjO79_O_s5kRAjqUmO-vP6psIhIPm-qqQJmXnHZol8r0x4cueppXFjVCDyysoxDGd6JSvwqySMVMRgD0HmnvvLV0hXO7uNiSL2T9qA-oytO2307fnscfwesK_Z8uv4Wd5tZPf9A3xvGHhC92ZEFGIzgopCdNxFcSUxJrnYNvUBetQxUBiNqIJQaqKRqI-r3Y66HLYVRHycIHli-1UVmXKdpVf6l2lOHIPcV7DIaH4VrHeZQuA4" style="object-fit: cover; object-position: 0% 0%; width: 180px; height: 40px; clip-path: inset(4% 80% 92% 5%); transform: scale(1.5);"/></div>
+<div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+<a class="hover:text-blue-600" href="#">Trang chủ</a>
+<a class="hover:text-blue-600" href="#">Sản phẩm</a>
+<a class="text-blue-600 border-b-2 border-blue-600 pb-1" href="#">Bảng giá</a>
+<a class="hover:text-blue-600" href="#">Giải pháp</a>
+<a class="hover:text-blue-600" href="#">Liên hệ</a>
+</div>
+<div>
+<button class="bg-[#e63946] text-white px-6 py-2.5 rounded-md font-semibold text-sm hover:bg-red-700 transition-colors transform hover:scale-105 hover:opacity-90">
+          Đăng Ký ngay
+        </button>
+</div>
+</nav>
+</header>
+<!-- END: Navigation -->
+<main>
+<!-- BEGIN: Hero Section -->
+<section class="py-16 px-4 bg-white text-center">
+<div class="max-w-4xl mx-auto">
+<h1 class="text-4xl md:text-5xl text-slate-900 mb-6 leading-relaxed font-extrabold">
+          Bảng giá giải pháp chuyển đổi số<br/>cho doanh nghiệp hiện đại
+        </h1>
+<div class="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-500 mb-10">
+<div class="flex items-center gap-2">
+<span class="bg-slate-100 p-1.5 rounded-full"><svg class="w-4 h-4 text-blue-600" fill="currentColor" viewbox="0 0 20 20"><path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg></span>
+<span class="font-bold">ISO 27001</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-yellow-400"><svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></span>
+<span>Tin dùng bởi <strong class="text-slate-800">280.000+</strong> khách hàng</span>
+</div>
+</div>
+<!-- Toggle Switch -->
+<div class="flex items-center justify-center gap-4">
+<span class="text-sm font-semibold text-gray-500">Doanh nghiệp</span>
+<label class="toggle-switch">
+<input checked="" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<span class="text-sm font-semibold text-blue-600">Cá nhân</span>
+</div>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: Pricing Cards -->
+<section class="pb-24 px-4 bg-white">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+<!-- 1 Year Plan -->
+<div class="bg-white border border-gray-200 rounded-2xl p-8 flex flex-col items-center shadow-sm hover:shadow transition-shadow">
+<div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h3 class="text-lg font-bold text-gray-900">1 Năm</h3>
+<div class="text-3xl font-extrabold text-blue-900 mt-2 mb-1">1.638.000 đ</div>
+<p class="text-sm text-gray-400 mb-8">Đã bao gồm VAT 10%</p>
+<button class="w-full py-3 px-6 bg-blue-600 text-white rounded-lg font-bold mb-8 hover:bg-blue-700 transition-all transform hover:scale-105 hover:opacity-90">Mua ngay</button>
+<ul class="w-full space-y-4 text-sm text-gray-600"><!-- FAQ 1 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nèo cúc vục dải pháp số oh sre điện cmm?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Nacencomm rừi qy ds yôn dưng lí/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can cần ttiện trss qun liên điện?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div>
+<!-- FAQ 3 (Open) -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can thanh thanh thanh?
+              <svg class="w-5 h-5 text-gray-400 rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm rừi phẩn bii hắt số mét các vụ dố vụ thớt sự phm nhấn thăn n jay giá vớ:ré thành hằng kei hồ ríu mẹ một iả! ear vòi.dch ctxryảy dối tọ inan câu vặc định họi trên bãi pháp số khoan may gian.
+            </div>
+</div>
+<!-- FAQ 4 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nho trri inup1gr an co tanh bạn?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm roi qy ds yôn dưng lic/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 5 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Hũ im Nã hỗ trọ thị dĩ vè nào?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div></ul>
+</div>
+<!-- 2 Year Plan (Popular) -->
+<div class="bg-white border-2 border-red-500 rounded-2xl p-8 flex flex-col items-center shadow-lg relative overflow-hidden transform scale-105 z-10">
+<div class="ribbon">Phổ biến nhất</div>
+<div class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mb-6">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h3 class="text-lg font-bold text-gray-900">2 Năm</h3>
+<div class="text-3xl font-extrabold text-blue-900 mt-2 mb-1">2.189.000 đ</div>
+<p class="text-sm text-gray-400 mb-8">Đã bao gồm VAT 10%</p>
+<button class="w-full py-3 px-6 bg-[#e63946] text-white rounded-lg font-bold mb-8 hover:bg-red-700 transition-all transform hover:scale-105 hover:opacity-90">Mua ngay</button>
+<ul class="w-full space-y-4 text-sm text-gray-600"><!-- FAQ 1 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nèo cúc vục dải pháp số oh sre điện cmm?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Nacencomm rừi qy ds yôn dưng lí/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can cần ttiện trss qun liên điện?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div>
+<!-- FAQ 3 (Open) -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can thanh thanh thanh?
+              <svg class="w-5 h-5 text-gray-400 rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm rừi phẩn bii hắt số mét các vụ dố vụ thớt sự phm nhấn thăn n jay giá vớ:ré thành hằng kei hồ ríu mẹ một iả! ear vòi.dch ctxryảy dối tọ inan câu vặc định họi trên bãi pháp số khoan may gian.
+            </div>
+</div>
+<!-- FAQ 4 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nho trri inup1gr an co tanh bạn?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm roi qy ds yôn dưng lic/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 5 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Hũ im Nã hỗ trọ thị dĩ vè nào?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div></ul>
+</div>
+<!-- 3 Year Plan -->
+<div class="bg-white border border-gray-200 rounded-2xl p-8 flex flex-col items-center shadow-sm hover:shadow transition-shadow">
+<div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h3 class="text-lg font-bold text-gray-900">3 Năm</h3>
+<div class="text-3xl font-extrabold text-blue-900 mt-2 mb-1">3.100.000 đ</div>
+<p class="text-sm text-gray-400 mb-8">Đã bao gồm VAT 10%</p>
+<button class="w-full py-3 px-6 bg-blue-600 text-white rounded-lg font-bold mb-8 hover:bg-blue-700 transition-all transform hover:scale-105 hover:opacity-90">Mua ngay</button>
+<ul class="w-full space-y-4 text-sm text-gray-600"><!-- FAQ 1 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nèo cúc vục dải pháp số oh sre điện cmm?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Nacencomm rừi qy ds yôn dưng lí/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can cần ttiện trss qun liên điện?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div>
+<!-- FAQ 3 (Open) -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can thanh thanh thanh?
+              <svg class="w-5 h-5 text-gray-400 rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm rừi phẩn bii hắt số mét các vụ dố vụ thớt sự phm nhấn thăn n jay giá vớ:ré thành hằng kei hồ ríu mẹ một iả! ear vòi.dch ctxryảy dối tọ inan câu vặc định họi trên bãi pháp số khoan may gian.
+            </div>
+</div>
+<!-- FAQ 4 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nho trri inup1gr an co tanh bạn?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm roi qy ds yôn dưng lic/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 5 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Hũ im Nã hỗ trọ thị dĩ vè nào?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div></ul>
+</div>
+</div>
+</section>
+<!-- END: Pricing Cards -->
+<!-- BEGIN: Combo Section -->
+<section class="py-20 px-4 bg-slate-50">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl font-bold text-slate-900 mb-2">Combo Ưu đãi</h2>
+<p class="text-gray-500 mb-8 max-w-2xl">Chọn gói bằng: lượng giải trình/đăng ký tài khoản, cá nhân, sàn thương mại điện tử.</p>
+<div class="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+<!-- Combo Card 1 -->
+<div class="min-w-[340px] gradient-blue-purple p-6 rounded-2xl text-white relative"><span class="absolute top-4 right-4 bg-yellow-400 text-slate-800 font-bold px-3 py-1 rounded-full text-sm">-35%</span>
+<div class="flex items-center gap-2 mb-4">
+<div class="p-2 bg-white rounded-xl text-blue-600"><svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0z"></path></svg></div>
+<span class="text-xl font-bold">+</span>
+<div class="p-2 bg-white rounded-xl text-blue-600"><svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg></div>
+</div>
+<h4 class="font-bold text-lg mb-1">Gói Tăng Tốc: CKS Token +</h4>
+<h4 class="font-bold text-lg mb-4">Hóa đơn điện tử</h4>
+<p class="text-white/80 text-sm">Giá gốc: <span class="line-through">1.638.000 đ</span></p></div>
+<!-- Combo Card 2 -->
+<div class="min-w-[340px] gradient-blue-cyan p-6 rounded-2xl text-white relative"><span class="absolute top-4 right-4 bg-yellow-400 text-slate-800 font-bold px-3 py-1 rounded-full text-sm">-30%</span>
+<div class="flex items-center gap-2 mb-4">
+<div class="p-2 bg-white rounded-xl text-blue-600"><svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.477.859h4z"></path></svg></div>
+<span class="text-xl font-bold">+</span>
+<div class="p-2 bg-white rounded-xl text-blue-600"><svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" fill-rule="evenodd"></path></svg></div>
+</div>
+<h4 class="font-bold text-lg mb-1">Gói Tăng Tốc: CKS Token +</h4>
+<h4 class="font-bold text-lg mb-4">Hóa đơn điện tử</h4>
+<p class="text-white/80 text-sm">Giá gốc: <span class="line-through">1.390.000 đ</span></p></div>
+<!-- Combo Card 3 -->
+<div class="min-w-[340px] gradient-dark-blue p-6 rounded-2xl text-white relative"><span class="absolute top-4 right-4 bg-yellow-400 text-slate-800 font-bold px-3 py-1 rounded-full text-sm">-60%</span>
+<div class="flex items-center gap-2 mb-4">
+<div class="p-2 bg-white rounded-xl text-blue-600"><svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path><path clip-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" fill-rule="evenodd"></path></svg></div>
+<span class="text-xl font-bold">+</span>
+<div class="p-2 bg-white rounded-xl text-blue-600"><svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path><path clip-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" fill-rule="evenodd"></path></svg></div>
+</div>
+<h4 class="font-bold text-lg mb-1">Gói Tăng Tốc: CKS Token +</h4>
+<h4 class="font-bold text-lg mb-4">Hóa đơn điện tử</h4>
+<p class="text-white/80 text-sm">Giá gốc: <span class="line-through">1.120.000 đ</span></p></div>
+</div>
+</div>
+</section>
+<!-- END: Combo Section -->
+<!-- BEGIN: Comparison Table -->
+<section class="py-20 px-4 bg-white">
+<div class="max-w-7xl mx-auto overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50 text-gray-700">
+<th class="p-5 font-bold border-b">Tính năng</th>
+<th class="p-5 font-bold border-b text-center">Tính di động</th>
+<th class="p-5 font-bold border-b text-center">USB Token</th>
+<th class="p-5 font-bold border-b text-center">Remote Signing</th>
+</tr>
+</thead>
+<tbody class="text-xs align-middle">
+<tr class="border-b border-gray-100">
+<td class="p-5 font-medium">Tốc độ ký</td>
+<td class="p-5 text-center">100 s</td>
+<td class="p-5 text-center flex justify-center"><svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg></td>
+<td class="p-5 text-center flex justify-center"><svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg></td>
+</tr>
+<tr class="border-b border-gray-100">
+<td class="p-5 font-medium">Bảo mật phần cứng</td>
+<td class="p-5 text-center">Cứng</td>
+<td class="p-5 text-center flex justify-center"><svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg></td>
+<td class="p-5 text-center flex justify-center"><svg class="w-5 h-5 text-red-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg></td>
+</tr>
+<tr class="border-b border-gray-100">
+<td class="p-5 font-medium">Tích hợp hệ thống</td>
+<td class="p-5 text-center">Tính di động</td>
+<td class="p-5 text-center flex justify-center"><svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg></td>
+<td class="p-5 text-center flex justify-center"><svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg></td>
+</tr>
+<tr class="border-b border-gray-100">
+<td class="p-5 font-medium">Khả năng mở rộng</td>
+<td class="p-5 text-center">6 - 10t</td>
+<td class="p-5 text-center flex justify-center"><svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg></td>
+<td class="p-5 text-center flex justify-center"><svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg></td>
+</tr>
+<tr>
+<td class="p-5 font-medium text-blue-600">Chi phí bảo trì</td>
+<td class="p-5 text-center text-blue-600 font-bold">$50$</td>
+<td class="p-5 text-center flex justify-center"><svg class="w-5 h-5 text-red-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg></td>
+<td class="p-5 text-center flex justify-center"><svg class="w-5 h-5 text-red-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- END: Comparison Table -->
+<!-- BEGIN: FAQ Section -->
+<section class="py-20 px-4 bg-slate-50">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-3xl font-bold text-center text-slate-900 mb-12">Câu hỏi thường gặp</h2>
+<div class="space-y-4"><!-- FAQ 1 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nèo cúc vục dải pháp số oh sre điện cmm?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Nacencomm rừi qy ds yôn dưng lí/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can cần ttiện trss qun liên điện?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div>
+<!-- FAQ 3 (Open) -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can thanh thanh thanh?
+              <svg class="w-5 h-5 text-gray-400 rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm rừi phẩn bii hắt số mét các vụ dố vụ thớt sự phm nhấn thăn n jay giá vớ:ré thành hằng kei hồ ríu mẹ một iả! ear vòi.dch ctxryảy dối tọ inan câu vặc định họi trên bãi pháp số khoan may gian.
+            </div>
+</div>
+<!-- FAQ 4 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nho trri inup1gr an co tanh bạn?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm roi qy ds yôn dưng lic/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 5 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Hũ im Nã hỗ trọ thị dĩ vè nào?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div></div>
+</div>
+</section>
+<!-- END: FAQ Section -->
+<!-- BEGIN: CTA Section -->
+<section class="py-24 px-4 bg-gradient-to-r from-blue-700 to-blue-900 text-center text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100"><path d="M0 100 L100 0 L100 100 Z" fill="white"></path></svg>
+</div>
+<div class="max-w-4xl mx-auto relative z-10">
+<h2 class="text-4xl font-bold mb-10">Sẵn sàng chuyển đổi số ngay hôm nay?</h2>
+<button class="bg-[#e63946] text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-red-700 shadow-xl transition-all transform hover:scale-105">
+          Bắt đầu ngay
+        </button>
+</div>
+</section>
+<!-- END: CTA Section -->
+</main>
+<!-- BEGIN: Footer -->
+<footer class="bg-slate-900 text-slate-300 py-16 px-4">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div>
+<div class="flex items-center gap-2 mb-6 text-white">
+<div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center font-bold">N</div>
+<span class="text-lg font-extrabold uppercase">Nacencomm</span>
+</div>
+<p class="text-sm leading-relaxed">
+          Tiên phong cung cấp các giải pháp chữ ký số và chuyển đổi số tại Việt Nam.
+        </p>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Trợ giúp</h4>
+<ul class="space-y-4 text-sm"><!-- FAQ 1 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nèo cúc vục dải pháp số oh sre điện cmm?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Nacencomm rừi qy ds yôn dưng lí/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can cần ttiện trss qun liên điện?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div>
+<!-- FAQ 3 (Open) -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can thanh thanh thanh?
+              <svg class="w-5 h-5 text-gray-400 rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm rừi phẩn bii hắt số mét các vụ dố vụ thớt sự phm nhấn thăn n jay giá vớ:ré thành hằng kei hồ ríu mẹ một iả! ear vòi.dch ctxryảy dối tọ inan câu vặc định họi trên bãi pháp số khoan may gian.
+            </div>
+</div>
+<!-- FAQ 4 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nho trri inup1gr an co tanh bạn?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm roi qy ds yôn dưng lic/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 5 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Hũ im Nã hỗ trọ thị dĩ vè nào?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div></ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Tài nguyên</h4>
+<ul class="space-y-4 text-sm"><!-- FAQ 1 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nèo cúc vục dải pháp số oh sre điện cmm?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Nacencomm rừi qy ds yôn dưng lí/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can cần ttiện trss qun liên điện?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div>
+<!-- FAQ 3 (Open) -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can thanh thanh thanh?
+              <svg class="w-5 h-5 text-gray-400 rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm rừi phẩn bii hắt số mét các vụ dố vụ thớt sự phm nhấn thăn n jay giá vớ:ré thành hằng kei hồ ríu mẹ một iả! ear vòi.dch ctxryảy dối tọ inan câu vặc định họi trên bãi pháp số khoan may gian.
+            </div>
+</div>
+<!-- FAQ 4 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nho trri inup1gr an co tanh bạn?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm roi qy ds yôn dưng lic/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 5 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Hũ im Nã hỗ trọ thị dĩ vè nào?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div></ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Về Nacencomm</h4>
+<ul class="space-y-4 text-sm"><!-- FAQ 1 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nèo cúc vục dải pháp số oh sre điện cmm?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Nacencomm rừi qy ds yôn dưng lí/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can cần ttiện trss qun liên điện?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div>
+<!-- FAQ 3 (Open) -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Can thanh thanh thanh?
+              <svg class="w-5 h-5 text-gray-400 rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm rừi phẩn bii hắt số mét các vụ dố vụ thớt sự phm nhấn thăn n jay giá vớ:ré thành hằng kei hồ ríu mẹ một iả! ear vòi.dch ctxryảy dối tọ inan câu vặc định họi trên bãi pháp số khoan may gian.
+            </div>
+</div>
+<!-- FAQ 4 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Nho trri inup1gr an co tanh bạn?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              A. Nacencomm roi qy ds yôn dưng lic/cr mdt báo tạnh bạn.
+            </div>
+</div>
+<!-- FAQ 5 -->
+<div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+<button class="w-full p-5 text-left flex justify-between items-center font-bold text-slate-800" onclick="this.nextElementSibling.classList.toggle('hidden')">
+              Q. Hũ im Nã hỗ trọ thị dĩ vè nào?
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="hidden p-5 pt-0 text-sm text-gray-600 border-t border-gray-50">
+              Content for this FAQ goes here.
+            </div>
+</div></ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
+      © 2023 Nacencomm. All rights reserved.
+    </div>
+</footer>
+<!-- END: Footer -->
+</body></html>
