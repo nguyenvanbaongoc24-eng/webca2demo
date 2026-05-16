@@ -255,42 +255,54 @@ export function PricingGrid() {
                 </div>
               )}
 
-              <div className="mb-8">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-black text-brand-dark">{plan.label}</h3>
-                  {plan.popular && <Star className="w-5 h-5 text-orange-500 fill-orange-500" />}
+              <div className="flex flex-col h-full">
+                <div className="flex justify-between items-start mb-6">
+                  <h3 className="text-xl font-black text-brand-dark tracking-tighter">{plan.label}</h3>
+                  {plan.popular && (
+                    <div className="p-2 bg-orange-50 rounded-lg">
+                      <Star className="w-4 h-4 text-orange-500 fill-orange-500" />
+                    </div>
+                  )}
                 </div>
-                <div className="space-y-4 mb-10">
+                
+                <div className="space-y-4 mb-10 flex-grow">
                   {plan.includes.map((inc, i) => (
-                    <div key={i} className="flex items-start gap-3 text-xs text-gray-500 font-medium leading-relaxed">
-                      <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                    <div key={i} className="flex items-start gap-3 text-xs text-gray-500 font-bold leading-relaxed">
+                      <div className="w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 mt-0.5">
+                        <CheckCircle2 className="w-2.5 h-2.5 text-emerald-500" />
+                      </div>
                       <span>{inc}</span>
                     </div>
                   ))}
                 </div>
                 
-                <div className="mt-auto pt-6 border-t border-gray-50">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-black text-brand-dark tracking-tighter">{plan.price}</span>
-                    <span className="text-sm font-bold text-gray-400">đ</span>
+                <div className="pt-8 border-t border-gray-50">
+                  <div className="flex items-baseline gap-1 mb-1">
+                    <span className={cn(
+                      "text-4xl font-black tracking-tighter",
+                      plan.popular ? "text-gradient" : "text-brand-dark"
+                    )}>
+                      {plan.price}
+                    </span>
+                    <span className="text-xs font-black text-gray-400">VNĐ</span>
                   </div>
-                  <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">Đã bao gồm VAT 10%</div>
+                  <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Đã bao gồm VAT 10%</div>
                 </div>
-              </div>
 
-              <Link href={`/register?pkg=${plan.id}&type=${customerType}`} className="w-full mt-auto">
-                <Button 
-                  variant={plan.popular ? "primary" : "outline"} 
-                  className={cn(
-                    "w-full py-5 rounded-2xl text-xs font-black flex items-center justify-center gap-2 transition-all",
-                    plan.popular 
-                      ? "bg-brand-blue hover:bg-brand-blue/90 shadow-xl shadow-brand-blue/30" 
-                      : "bg-blue-50/50 border-transparent text-brand-blue hover:bg-brand-blue hover:text-white"
-                  )}
-                >
-                  <ShoppingCart className="w-4 h-4" /> MUA NGAY
-                </Button>
-              </Link>
+                <Link href={`/register?pkg=${plan.id}&type=${customerType}`} className="w-full mt-10">
+                  <Button 
+                    variant={plan.popular ? "primary" : "outline"} 
+                    className={cn(
+                      "w-full py-7 rounded-2xl text-xs font-black flex items-center justify-center gap-3 transition-all duration-300",
+                      plan.popular 
+                        ? "bg-brand-blue hover:bg-brand-blue/90 shadow-glow-blue border-none text-white scale-[1.02]" 
+                        : "bg-blue-50/30 border-transparent text-brand-blue hover:bg-brand-blue hover:text-white"
+                    )}
+                  >
+                    MUA NGAY <ShoppingCart className="w-4 h-4" />
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
           )) : (
             <div className="col-span-full py-20 text-center bg-white rounded-3xl border-2 border-dashed border-gray-100">
