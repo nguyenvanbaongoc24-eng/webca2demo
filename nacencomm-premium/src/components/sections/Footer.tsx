@@ -15,7 +15,7 @@ export function Footer() {
           <div className="space-y-8">
             <div className="flex items-center gap-3">
               <img 
-                src="https://secure.ca2.com.vn/Content/Images/logo/logo-main.png" 
+                src="https://www.nacencomm.com.vn/wp-content/uploads/2021/04/logo-nacencomm.png" 
                 alt="Nacencomm" 
                 className="h-10 brightness-0 invert"
               />
