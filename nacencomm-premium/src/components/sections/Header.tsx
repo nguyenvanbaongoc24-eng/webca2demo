@@ -23,7 +23,7 @@ export function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <img 
-            src="/logo.png" 
+            src="https://www.nacencomm.com.vn/wp-content/uploads/2021/04/logo-nacencomm.png" 
             alt="Nacencomm" 
             className="h-10 w-auto transition-transform group-hover:scale-105"
           />
