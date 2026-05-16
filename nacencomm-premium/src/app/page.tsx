@@ -1,5 +1,6 @@
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
+import { FeaturedProducts } from "@/components/sections/FeaturedProducts";
 import { PricingGrid } from "@/components/sections/PricingGrid";
 import { ProductInfo } from "@/components/sections/ProductInfo";
 import { Footer } from "@/components/sections/Footer";
@@ -9,6 +10,7 @@ export default function Home() {
     <main className="min-h-screen bg-white selection:bg-brand-blue selection:text-white">
       <Header />
       <Hero />
+      <FeaturedProducts />
       <PricingGrid />
       <ProductInfo />
       <Footer />

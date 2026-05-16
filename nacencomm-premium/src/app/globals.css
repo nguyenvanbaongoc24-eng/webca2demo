@@ -12,13 +12,15 @@
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
   
-  --shadow-premium: 0 10px 30px -10px rgba(0, 71, 171, 0.1);
-  --shadow-premium-hover: 0 20px 40px -15px rgba(0, 71, 171, 0.15);
+  --shadow-premium: 0 10px 40px -10px rgba(0, 71, 171, 0.08), 0 2px 10px -5px rgba(0, 0, 0, 0.02);
+  --shadow-premium-hover: 0 30px 60px -15px rgba(0, 71, 171, 0.12), 0 5px 20px -5px rgba(0, 0, 0, 0.05);
+  --shadow-cta: 0 10px 20px -5px rgba(230, 57, 70, 0.3);
+  --shadow-glow-blue: 0 0 30px -5px rgba(0, 71, 171, 0.4);
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #1e293b;
+  --foreground: #0f172a;
   --brand-blue: #0047AB;
   --brand-dark: #030821;
 }
@@ -29,17 +31,25 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
 @layer utilities {
   .glass-effect {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
+    @apply bg-white/70 backdrop-blur-xl border border-white/20;
+  }
+  .glass-dark {
+    @apply bg-brand-dark/40 backdrop-blur-xl border border-white/5;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-indigo-500;
+  }
+  .text-gradient-red {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red to-orange-500;
+  }
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(0, 71, 171, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 71, 171, 0.05) 1px, transparent 1px);
+  }
+  .bg-glow-conic {
+    background: conic-gradient(from 180deg at 50% 50%, var(--brand-blue) 0deg, #6366f1 120deg, #ec4899 240deg, var(--brand-blue) 360deg);
   }
 }

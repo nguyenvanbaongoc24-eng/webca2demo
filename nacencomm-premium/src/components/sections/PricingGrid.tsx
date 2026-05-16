@@ -102,34 +102,35 @@ export function PricingGrid() {
   const plans = getPlans();
 
   return (
-    <section id="pricing" className="py-24 bg-[#F8FAFC] relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="pricing" className="py-20 bg-gray-50/50 relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
         
         {/* Header Badge */}
         <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 bg-blue-50 text-brand-blue px-4 py-1.5 rounded-full border border-blue-100 text-[10px] font-bold uppercase tracking-widest">
-            <div className="w-1.5 h-1.5 bg-brand-blue rounded-full animate-pulse" />
-            Bảng giá niêm yết
+          <div className="inline-flex items-center gap-2 bg-blue-50 text-brand-blue px-4 py-1.5 rounded-full border border-blue-100 text-[10px] font-black uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 bg-brand-blue rounded-full animate-pulse" />
+            Bảng giá niêm yết 2026
           </div>
         </div>
 
         {/* Title Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-black text-brand-dark mb-6 tracking-tight leading-tight">
-            Giải pháp số tối ưu cho mọi quy mô doanh nghiệp
+          <h2 className="text-3xl md:text-5xl font-black text-brand-dark mb-6 tracking-tighter leading-tight">
+            Giải pháp tối ưu cho <br />
+            <span className="text-gradient">Mọi quy mô doanh nghiệp</span>
           </h2>
-          <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2 text-green-600 font-bold">
-              <ShieldCheck className="w-4 h-4" /> ISO 27001
+          <div className="flex flex-wrap justify-center gap-6 text-xs font-bold text-gray-400">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-500" /> ISO 27001
             </div>
-            <div className="flex items-center gap-2 text-yellow-600 font-bold">
-              <Star className="w-4 h-4 fill-yellow-600" /> Tin dùng bởi 280.000+ KH
+            <div className="flex items-center gap-2">
+              <Star className="w-4 h-4 text-amber-500 fill-amber-500" /> 280.000+ KH tin dùng
             </div>
           </div>
         </div>
 
         {/* Service Selection Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12 bg-white p-2 rounded-2xl shadow-sm border border-gray-100 max-w-4xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-2 mb-10 bg-white p-2 rounded-2xl shadow-premium border border-gray-100 max-w-4xl mx-auto">
           {SERVICE_TABS.map((tab) => (
             <button
               key={tab.id}
@@ -139,13 +140,13 @@ export function PricingGrid() {
                 if (tab.id === "hoa-don") setCustomerType("dn");
               }}
               className={cn(
-                "flex items-center gap-2 px-6 py-3 rounded-xl transition-all duration-300 font-bold text-sm shrink-0",
+                "flex items-center gap-2 px-6 py-3.5 rounded-xl transition-all duration-300 font-black text-xs shrink-0",
                 activeService === tab.id
-                  ? "bg-brand-blue text-white shadow-lg shadow-brand-blue/20"
-                  : "text-gray-500 hover:bg-gray-50"
+                  ? "bg-brand-blue text-white shadow-glow-blue"
+                  : "text-gray-400 hover:bg-gray-50"
               )}
             >
-              <tab.icon className={cn("w-4 h-4", activeService === tab.id ? "text-white" : "text-gray-400")} />
+              <tab.icon className={cn("w-4 h-4", activeService === tab.id ? "text-white" : "text-gray-300")} />
               {tab.name}
             </button>
           ))}
@@ -154,21 +155,21 @@ export function PricingGrid() {
             <button
               onClick={() => setShowDropdown(!showDropdown)}
               className={cn(
-                "flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm text-gray-500 hover:bg-gray-50 transition-all",
+                "flex items-center gap-2 px-6 py-3.5 rounded-xl font-black text-xs text-gray-400 hover:bg-gray-50 transition-all",
                 showDropdown && "bg-gray-100"
               )}
             >
-              <Menu className="w-4 h-4" /> Sản phẩm khác <ChevronDown className={cn("w-3 h-3 transition-transform", showDropdown && "rotate-180")} />
+              <Menu className="w-4 h-4" /> SẢN PHẨM KHÁC <ChevronDown className={cn("w-3 h-3 transition-transform", showDropdown && "rotate-180")} />
             </button>
             <AnimatePresence>
               {showDropdown && (
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
-                  className="absolute top-full right-0 mt-2 w-64 bg-white rounded-2xl shadow-premium border border-gray-100 p-2 z-50 overflow-hidden"
+                  className="absolute top-full right-0 mt-3 w-72 bg-white/80 backdrop-blur-xl rounded-2xl shadow-premium border border-white/20 p-2 z-50 overflow-hidden"
                 >
                   <div className="grid grid-cols-1 gap-1">
                     {OTHER_PRODUCTS.map((p) => (
-                      <button key={p.id} className="w-full text-left p-3 rounded-xl text-xs font-bold text-gray-600 hover:bg-brand-blue hover:text-white transition-all flex items-center justify-between group">
+                      <button key={p.id} className="w-full text-left px-4 py-3 rounded-xl text-[11px] font-black text-gray-500 hover:bg-brand-blue hover:text-white transition-all flex items-center justify-between group">
                         {p.name} <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100" />
                       </button>
                     ))}
@@ -181,7 +182,7 @@ export function PricingGrid() {
 
         {/* Remote Signing Subtabs */}
         {activeService === "remote-signing" && (
-          <div className="flex justify-center gap-2 mb-10">
+          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-center gap-2 mb-10">
             {[
               { id: "theo_nam", name: "Theo năm" },
               { id: "theo_luot", name: "Theo lượt ký" }
@@ -190,16 +191,16 @@ export function PricingGrid() {
                 key={st.id}
                 onClick={() => setRsSubtab(st.id)}
                 className={cn(
-                  "px-6 py-2 rounded-full text-xs font-bold border-2 transition-all",
+                  "px-8 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all border-2",
                   rsSubtab === st.id
-                    ? "bg-white border-brand-blue text-brand-blue"
-                    : "border-gray-200 text-gray-400 hover:border-brand-blue/30"
+                    ? "bg-white border-brand-blue text-brand-blue shadow-lg"
+                    : "border-gray-100 text-gray-400 hover:border-brand-blue/30"
                 )}
               >
                 {st.name}
               </button>
             ))}
-          </div>
+          </motion.div>
         )}
 
         {/* Filters: Type Toggle */}
@@ -207,23 +208,23 @@ export function PricingGrid() {
           <div className="bg-white p-1.5 rounded-2xl flex items-center gap-2 border border-gray-100 shadow-sm">
             {[
               { id: "dn", name: "Doanh nghiệp / Tổ chức", badge: activeService === "cks-token" ? "Phổ biến" : null },
-              { id: "cn", name: "HKD / Cá nhân", badge: activeService === "remote-signing" ? "PHỔ BIẾN" : null },
+              { id: "cn", name: "HKD / Cá nhân", badge: activeService === "remote-signing" ? "MỚI" : null },
             ].map((type) => (
               <button
                 key={type.id}
                 disabled={activeService === "hoa-don" && type.id === "cn"}
                 onClick={() => setCustomerType(type.id)}
                 className={cn(
-                  "relative flex items-center gap-3 px-6 py-3.5 rounded-xl text-sm font-bold transition-all",
+                  "relative flex items-center gap-3 px-6 py-3.5 rounded-xl text-xs font-black transition-all",
                   customerType === type.id
                     ? "bg-brand-blue text-white shadow-lg"
                     : "text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
                 )}
               >
-                <div className={cn("w-4 h-4 rounded-full border-2", customerType === type.id ? "border-white bg-white/20" : "border-gray-300")} />
+                <div className={cn("w-4 h-4 rounded-full border-2", customerType === type.id ? "border-white bg-white/20" : "border-gray-200")} />
                 {type.name}
                 {type.badge && (
-                  <span className="bg-orange-500 text-[8px] text-white px-2 py-0.5 rounded-md ml-1 uppercase font-black">
+                  <span className="bg-brand-red text-[8px] text-white px-2 py-0.5 rounded-md ml-1 uppercase font-black">
                     {type.badge}
                   </span>
                 )}
@@ -233,7 +234,7 @@ export function PricingGrid() {
         </div>
 
         {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto px-4">
           {plans ? plans.map((plan, index) => (
             <motion.div
               key={plan.id}
@@ -242,10 +243,10 @@ export function PricingGrid() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className={cn(
-                "group relative flex flex-col p-8 rounded-3xl transition-all duration-500",
+                "group relative flex flex-col p-8 rounded-[2rem] transition-all duration-500",
                 plan.popular 
-                  ? "bg-white shadow-premium border-2 border-brand-blue scale-105 z-20" 
-                  : "bg-white border border-gray-100 hover:shadow-2xl hover:border-brand-blue/20 z-10"
+                  ? "bg-white shadow-premium border-2 border-brand-blue/20 scale-[1.02] z-20 ring-4 ring-brand-blue/5" 
+                  : "bg-white border border-gray-100 hover:shadow-premium-hover hover:border-brand-blue/20 z-10"
               )}
             >
               {plan.popular && (
