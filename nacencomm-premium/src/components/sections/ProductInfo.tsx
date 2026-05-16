@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ChevronRight, ShieldCheck, Headphones, FileCheck } from "lucide-react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 export function ProductInfo() {
   return (
