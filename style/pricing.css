@@ -101,9 +101,9 @@
     width: 320px;
     background: white;
     border: 1.5px solid var(--border-color);
-    border-radius: var(--card-radius);
+    border-radius: var(--radius-md);
     box-shadow: 0 8px 32px rgba(11, 59, 142, 0.14);
-    z-index: 200;
+    z-index: 1000;
     padding: 8px 0;
     animation: dropFadeIn 0.18s ease;
     text-align: left;
@@ -111,6 +111,56 @@
 @keyframes dropFadeIn {
     from { opacity: 0; transform: translateY(-6px); }
     to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Remote Signing Subtabs ── */
+.pricing-subtabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.pricing-subtab {
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-light);
+    background: var(--bg-soft);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.pricing-subtab.active {
+    background: var(--primary-navy);
+    color: white;
+}
+
+.pricing-toggle {
+    display: flex;
+    background: var(--bg-soft);
+    padding: 4px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+}
+
+.pricing-toggle button {
+    padding: 8px 24px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.pricing-toggle button.active {
+    background: white;
+    color: var(--primary-navy);
+    box-shadow: var(--shadow-sm);
 }
 
 /* ── Nhóm trong dropdown ── */

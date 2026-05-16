@@ -27,7 +27,7 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="pricing.html" class="btn-register-online">Đăng ký ngay</a>
+                <a href="pricing.html" class="btn-register-online">🛒 Đăng ký online</a>
             </div>
         </div>
     </header>
@@ -35,20 +35,47 @@
     <main>
         <!-- ═══ SPLIT HERO ═══ -->
         <section class="split-hero">
-            <div class="container" style="display: flex; align-items: center; gap: 60px;">
-                <div class="split-hero-content fade-in">
-                    <h1 style="font-size: 56px; line-height: 1.1; font-weight: 800; margin-bottom: 24px;">Nền tảng chuyển đổi số toàn diện cho doanh nghiệp Việt</h1>
-                    <p style="font-size: 18px; opacity: 0.9; margin-bottom: 40px; line-height: 1.6;">Tăng tốc số hóa, bảo mật hàng đầu và tối ưu hiệu quả kinh doanh cùng giải pháp chữ ký số và an ninh mạng từ Nacencomm.</p>
-                    <div class="hero-btns" style="justify-content: flex-start;">
-                        <a href="products.html" class="btn-hero-white">Khám phá nền tảng</a>
-                        <a href="pricing.html" class="btn-hero-red">Xem demo sản phẩm</a>
+            <div class="container">
+                <div style="display: flex; align-items: center; gap: 60px;">
+                    <div class="split-hero-content fade-in">
+                        <h1>Nền tảng chuyển đổi số toàn diện cho doanh nghiệp Việt</h1>
+                        <p>Tăng tốc số hóa, bảo mật hàng đầu và tối ưu hiệu quả kinh doanh cùng giải pháp chữ ký số và an ninh mạng từ Nacencomm.</p>
+                        <div class="hero-btns">
+                            <a href="products.html" class="btn-hero-white">Khám phá nền tảng</a>
+                            <a href="pricing.html" class="btn-hero-red">🛒 Đăng ký online</a>
+                        </div>
+                    </div>
+                    <div class="split-hero-image fade-in">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNq1kzEyQUdlyvM_aqBhPRetGWlEmnXszWNpRVlTxIlrU6chKV9pBa4fQDS1pbWdtfJdEVg5eP42jDuFHYCIb7l9UgeSbQPREuu41D4lmUxke2nae3OLd8Ni7rh9LsL_t6lab90rJMYHke-GBXrOU-dRo1z2XSTzWDA752Tmp3HG5ApifXr4_WcxuPRFoa6iaxMwZpu3NV-0LZLjnwNusju8rsU7xfEmut6o6JQx385deOkhpKHyeIZqLBJPY5cI6PTIPFbt4OBn4" alt="Digital Infrastructure Illustration">
                     </div>
                 </div>
-                <div class="split-hero-image fade-in">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNq1kzEyQUdlyvM_aqBhPRetGWlEmnXszWNpRVlTxIlrU6chKV9pBa4fQDS1pbWdtfJdEVg5eP42jDuFHYCIb7l9UgeSbQPREuu41D4lmUxke2nae3OLd8Ni7rh9LsL_t6lab90rJMYHke-GBXrOU-dRo1z2XSTzWDA752Tmp3HG5ApifXr4_WcxuPRFoa6iaxMwZpu3NV-0LZLjnwNusju8rsU7xfEmut6o6JQx385deOkhpKHyeIZqLBJPY5cI6PTIPFbt4OBn4" alt="Digital Infrastructure Illustration" style="max-width: 100%; height: auto;">
+
+                <!-- Hero Cards Grid -->
+                <div class="hero-cards-grid fade-in" id="hero-cards-mount" style="animation-delay: 0.3s;">
+                    <!-- Rendered by JS -->
                 </div>
             </div>
         </section>
+
+        <script>
+            const HERO_CARDS = [
+                { title: 'Chữ ký số Token', icon: '🔑', img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80', slug: 'cks-token' },
+                { title: 'Remote Signing', icon: '📱', img: 'https://images.unsplash.com/photo-1551288049-bb6c725ecad4?auto=format&fit=crop&w=400&q=80', slug: 'remote-signing' },
+                { title: 'Hóa đơn điện tử', icon: '📄', img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=400&q=80', slug: 'e-invoice' },
+                { title: 'Hợp đồng điện tử', icon: '✍️', img: 'https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&w=400&q=80', slug: 'e-contract' },
+                { title: 'Phần mềm BHXH', icon: '🏥', img: 'https://images.unsplash.com/photo-1576091160550-2173bdd99625?auto=format&fit=crop&w=400&q=80', slug: 'social-insurance' }
+            ];
+
+            const mount = document.getElementById('hero-cards-mount');
+            if (mount) {
+                mount.innerHTML = HERO_CARDS.map(card => `
+                    <div class="hero-card" style="background-image: url('${card.img}')" onclick="location.href='pricing.html?product=${card.slug}'">
+                        <div class="card-icon">${card.icon}</div>
+                        <div class="card-title">${card.title}</div>
+                    </div>
+                `).join('');
+            }
+        </script>
 
         <!-- ═══ PRICING SECTION (STITCH ADVANCED STYLE) ═══ -->
         <section class="section" id="pricing" style="background: #fcfcfc;">
@@ -125,7 +152,7 @@
                         <a href="product-detail.html?slug=remote-signing" class="btn btn-accent" style="padding: 12px 30px; border-radius: 999px;">Tìm hiểu thêm →</a>
                     </div>
                     <div class="feature-block-image">
-                        <img src="assets/dashboard-remote.png" alt="Remote Signing Dashboard">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Remote Signing Dashboard">
                     </div>
                 </div>
 
@@ -151,7 +178,7 @@
                         <a href="product-detail.html?slug=ca2-sign" class="btn btn-outline" style="margin-top: 40px;">Tìm hiểu thêm</a>
                     </div>
                     <div class="feature-block-image">
-                        <img src="assets/dashboard-sign.png" alt="Sign Platform Dashboard">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Sign Platform Dashboard">
                     </div>
                 </div>
             </div>

@@ -43,37 +43,41 @@
                     <h1 style="font-size: 48px; font-weight: 800; color: var(--dark-navy); margin-bottom: 16px;">Bảng giá giải pháp chuyển đổi số cho doanh nghiệp hiện đại</h1>
                     <div style="display: flex; justify-content: center; gap: 24px; font-size: 14px; color: var(--text-light);">
                         <span>✅ ISO 27001</span>
-                        <span>⭐ Tin dùng bởi 280.000+ khách hàng</span>
-                    </div>
-                </div>
-
-                <!-- Product Menu Tabs -->
-                <div class="pricing-tabs-wrap" style="border-bottom: 1px solid var(--border-soft); margin-bottom: 48px;">
-                    <div class="pricing-tabs" style="justify-content: center; border: none; background: transparent; backdrop-filter: none; position: static; box-shadow: none;">
+                                      <!-- Product Menu Tabs -->
+                <div class="pricing-tabs-wrap">
+                    <div class="pricing-tabs" id="pricing-tabs">
                         <button class="pricing-tab active" data-key="cks-token"><span>🔑</span> CKS USB Token</button>
                         <button class="pricing-tab" data-key="remote-signing"><span>📱</span> Remote Signing</button>
                         <button class="pricing-tab" data-key="hoa-don"><span>📄</span> Hóa đơn điện tử</button>
                         <button class="pricing-tab" data-key="ca2-platform"><span>🏗️</span> CA2 Platform</button>
+                        
+                        <!-- Dropdown for Other Products -->
+                        <div class="tab-dropdown-wrap" id="otherProductsWrap">
+                            <button class="pricing-tab tab-dropdown-trigger" id="otherProductsBtn" onclick="toggleOtherDropdown()">
+                                <span>☰</span> Sản phẩm khác <span class="chevron">▾</span>
+                            </button>
+                            <div class="tab-dropdown-panel" id="otherDropdown" style="display: none;">
+                                <!-- Rendered by JS -->
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Sub Options (Toggle) -->
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 32px; margin-bottom: 48px;">
-                    <div class="type-toggle-pills" style="display: flex; background: white; padding: 4px; border-radius: 12px; border: 1px solid var(--border-color); shadow: var(--shadow-sm);">
-                        <button class="type-btn active" onclick="switchType('usb')"><span>🔑</span> USB Token</button>
-                        <button class="type-btn" onclick="switchType('remote')"><span>📱</span> Remote Signing</button>
+                <!-- Sub Options (Toggles) -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 48px; position: relative; z-index: 10;">
+                    <!-- Sub Tabs (USB vs Remote) -->
+                    <div class="type-toggle-pills" style="display: none;">
+                        <!-- Rendered by JS -->
+                    </div>
+
+                    <!-- RS Mode Toggle (Theo năm vs Theo lượt) -->
+                    <div id="rs-mode-mount">
+                        <!-- Rendered by JS -->
                     </div>
                     
+                    <!-- Audience Toggle (DN vs HKD) -->
                     <div class="audience-toggle" style="display: flex; align-items: center; gap: 32px;">
-                        <label class="toggle-label active">
-                            <input type="radio" name="audience" checked>
-                            <span>Doanh Nghiệp / Tổ Chức</span>
-                            <span class="pulse-badge">Phổ biến</span>
-                        </label>
-                        <label class="toggle-label">
-                            <input type="radio" name="audience">
-                            <span>HKD / Cá Nhân</span>
-                        </label>
+                        <!-- Rendered by JS -->
                     </div>
                 </div>
 
@@ -350,6 +354,8 @@
 
             // Build Sub-Options (USB/Remote) if CKS
             const typePills = document.querySelector('.type-toggle-pills');
+            const rsModeMount = document.getElementById('rs-mode-mount');
+            
             if (isCKS) {
                 typePills.style.display = 'flex';
                 typePills.innerHTML = `
@@ -362,9 +368,23 @@
 
             // Resolve packages
             const isRS = currentPricingKey === 'remote-signing';
+            
+            // Render RS Mode Toggle
+            if (isRS) {
+                rsModeMount.style.display = 'block';
+                rsModeMount.innerHTML = `
+                    <div class="pricing-toggle">
+                        <button class="${activeRsMode === 'theo-nam' ? 'active' : ''}" onclick="toggleRsMode('theo-nam')">Theo năm</button>
+                        <button class="${activeRsMode === 'theo-luot' ? 'active' : ''}" onclick="toggleRsMode('theo-luot')">Theo lượt ký</button>
+                    </div>
+                `;
+            } else {
+                rsModeMount.style.display = 'none';
+            }
+
             let packages;
             let tabs;
-            if (isRS && currentData.subtabs) {
+            if (isRS && currentData.packages) {
                 const modeData = currentData.packages[activeRsMode];
                 tabs = Object.keys(modeData);
                 if (!activeAudience || !tabs.includes(activeAudience)) activeAudience = tabs[0];
@@ -442,6 +462,11 @@
 
         window.switchCksSub = function(sub) {
             activeCksSub = sub;
+            render();
+        };
+
+        window.toggleRsMode = function(mode) {
+            activeRsMode = mode;
             render();
         };
 
