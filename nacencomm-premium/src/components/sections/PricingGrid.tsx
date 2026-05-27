@@ -102,7 +102,7 @@ export function PricingGrid() {
   const plans = getPlans();
 
   return (
-    <section id="pricing" className="py-20 bg-gray-50/50 relative overflow-hidden">
+    <section id="pricing" className="pt-32 pb-20 bg-gray-50/50 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Header Badge */}

@@ -59,11 +59,9 @@ export function ProductInfo() {
               className="order-1 lg:order-2 relative"
             >
               <div className="rounded-[2.5rem] overflow-hidden shadow-premium border border-gray-100 p-2 bg-white">
-                <Image 
-                  src="https://images.unsplash.com/photo-1551288049-bbda483387f5?q=80&w=2070&auto=format&fit=crop" 
+                <img 
+                  src="https://images.unsplash.com/photo-1551288049-bbda483387f5?w=800" 
                   alt="Remote Signing"
-                  width={800}
-                  height={600}
                   className="w-full h-auto rounded-[2rem]"
                 />
               </div>
@@ -95,11 +93,9 @@ export function ProductInfo() {
               className="relative"
             >
               <div className="rounded-[2.5rem] overflow-hidden shadow-premium border border-gray-100 p-2 bg-white">
-                <Image 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" 
+                <img 
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" 
                   alt="Sign Platform"
-                  width={800}
-                  height={600}
                   className="w-full h-auto rounded-[2rem]"
                 />
               </div>

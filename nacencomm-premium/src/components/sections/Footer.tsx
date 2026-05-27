@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Mail, ShieldCheck } from "lucide-react";
 
@@ -14,10 +15,12 @@ export function Footer() {
           {/* Column 1: Brand */}
           <div className="space-y-8">
             <div className="flex items-center gap-3">
-              <img 
-                src="https://www.nacencomm.com.vn/wp-content/uploads/2021/04/logo-nacencomm.png" 
+              <Image 
+                src="/logo-white.png" 
                 alt="Nacencomm" 
-                className="h-10 w-auto brightness-0 invert"
+                width={160}
+                height={40}
+                className="h-10 w-auto"
               />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">

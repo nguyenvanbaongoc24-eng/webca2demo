@@ -9,35 +9,35 @@ const PRODUCTS = [
   { 
     title: "USB Token", 
     desc: "Chữ ký số công cộng truyền thống, an toàn tuyệt đối với thiết bị phần cứng.", 
-    img: "https://images.unsplash.com/photo-1633265485768-3c680d10173d?auto=format&fit=crop&q=80&w=800", 
+    img: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800", 
     badge: "Phổ biến",
     href: "/pricing"
   },
   { 
     title: "Remote Signing", 
     desc: "Ký số từ xa không cần Token, tích hợp VNeID, ký mọi lúc mọi nơi trên di động.", 
-    img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800", 
+    img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800", 
     badge: "Hot",
     href: "/pricing"
   },
   { 
     title: "Hóa đơn điện tử", 
     desc: "Giải pháp hóa đơn tuân thủ NĐ 123/2020, tự động hóa quy trình kế toán.", 
-    img: "https://images.unsplash.com/photo-1554224155-16974398755d?auto=format&fit=crop&q=80&w=800", 
+    img: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800", 
     badge: "Smart",
     href: "/pricing"
   },
   { 
     title: "BHXH Điện tử", 
     desc: "Kê khai bảo hiểm xã hội trực tuyến nhanh chóng, hỗ trợ 24/7.", 
-    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800", 
+    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800", 
     badge: "Fast",
     href: "/pricing"
   },
   { 
     title: "eKYC", 
     desc: "Định danh điện tử khách hàng bằng AI, xác thực sinh trắc học an toàn.", 
-    img: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&q=80&w=800", 
+    img: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800", 
     badge: "Secure",
     href: "/pricing"
   }

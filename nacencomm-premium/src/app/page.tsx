@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white selection:bg-brand-blue selection:text-white">
       <Header />
+      <PricingGrid />
       <Hero />
       <FeaturedProducts />
-      <PricingGrid />
       <ProductInfo />
       <Footer />
     </main>
