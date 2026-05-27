@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen py-20 pb-24 overflow-hidden bg-[#020617]">
+    <section className="relative min-h-screen pt-32 pb-24 overflow-hidden bg-[#020617]">
       {/* Background Grid & Glows */}
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-brand-blue/10 blur-[180px] rounded-full -translate-y-1/2 translate-x-1/4" />
